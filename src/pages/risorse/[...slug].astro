@@ -81,7 +81,7 @@ const related = allPosts
     </nav>
 
     <div class="article-meta">
-      <Pill variant="magenta">{categoryLabels[post.data.category]}</Pill>
+      <Pill variant="accent">{categoryLabels[post.data.category]}</Pill>
       <time datetime={post.data.publishDate.toISOString()}>{fmtDate(post.data.publishDate)}</time>
       {post.data.updateDate && (
         <span class="updated">· Aggiornato {fmtDate(post.data.updateDate)}</span>
@@ -112,7 +112,7 @@ const related = allPosts
         {related.map((r) => (
           <li>
             <a href={`/risorse/${r.id.replace(/\.mdx?$/, "")}`} class="no-underline related__link">
-              <Pill variant="magenta">{categoryLabels[r.data.category]}</Pill>
+              <Pill variant="accent">{categoryLabels[r.data.category]}</Pill>
               <h3>{r.data.title}</h3>
               <p>{r.data.description}</p>
             </a>
@@ -133,7 +133,7 @@ const related = allPosts
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="/audit-llmo" variant="magenta">Vai all'audit</MagneticCTA>
+        <MagneticCTA href="/audit-llmo" variant="accent">Vai all'audit</MagneticCTA>
         <Button href="mailto:r@r4f.it" variant="ghost">Scrivimi</Button>
       </div>
     </div>
@@ -150,7 +150,7 @@ const related = allPosts
     color: var(--color-ink-muted);
     background: none;
   }
-  .bread a:hover { color: var(--color-magenta); }
+  .bread a:hover { color: var(--color-accent); }
 
   .article-meta {
     display: flex;

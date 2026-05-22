@@ -26,7 +26,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
           </li>
         ))}
         <li>
-          <a href="/contatti" class="btn btn--magenta site-nav__cta">Scrivimi</a>
+          <a href="/contatti" class="btn btn--accent site-nav__cta">Scrivimi</a>
         </li>
       </ul>
     </nav>
@@ -52,7 +52,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
       <li><a href="/libri" class="no-underline">Libri</a></li>
       <li><a href="/formazione" class="no-underline">Formazione</a></li>
       <li><a href="/aipia" class="no-underline">AIPIA</a></li>
-      <li><a href="/contatti" class="btn btn--magenta no-underline">Scrivimi</a></li>
+      <li><a href="/contatti" class="btn btn--accent no-underline">Scrivimi</a></li>
     </ul>
   </div>
 </header>
@@ -87,7 +87,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     background: none !important;
   }
   .brand__dot {
-    color: var(--color-magenta);
+    color: var(--color-accent);
     margin-left: 1px;
   }
 
@@ -116,7 +116,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
     left: 0;
     height: 2px;
     width: 0;
-    background: var(--color-magenta);
+    background: var(--color-accent);
     transition: width var(--dur-base) var(--ease-out-quint);
   }
   .site-nav__link:hover,

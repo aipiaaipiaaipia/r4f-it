@@ -1,12 +1,12 @@
 ---
 interface Props {
   href: string;
-  variant?: "ink" | "magenta" | "ghost";
+  variant?: "ink" | "accent" | "ghost";
   external?: boolean;
   class?: string;
 }
 const { href, variant = "ink", external = false, class: extraClass = "" } = Astro.props;
-const variantClass = variant === "magenta" ? "btn--magenta" : variant === "ghost" ? "btn--ghost" : "";
+const variantClass = variant === "accent" ? "btn--accent" : variant === "ghost" ? "btn--ghost" : "";
 const rel = external ? "noopener" : undefined;
 const target = external ? "_blank" : undefined;
 ---

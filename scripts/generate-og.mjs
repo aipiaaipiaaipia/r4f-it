@@ -7,7 +7,7 @@ import { join } from "node:path";
 const OUT = "public/assets/og";
 if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
 
-const ogTemplate = ({ title, eyebrow, accent = "#DB2777" }) => `
+const ogTemplate = ({ title, eyebrow, accent = "#FF5500" }) => `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">

@@ -13,9 +13,9 @@ import {
   breadcrumbSchema,
 } from "../lib/schema";
 
-const title = "Servizi LLMO — Audit, strategia, formazione, consulenza | r4f.it";
+const title = "Servizi LLMO: audit, strategia, formazione, consulenza | r4f.it";
 const description =
-  "Quattro modi per lavorare insieme: audit LLMO (€200 base / €800 completo), strategia & implementazione mensile, formazione team, consulenza continuativa. Pricing trasparente.";
+  "Quattro modi per lavorare insieme: audit LLMO (€200 base / €800 completo), strategia mensile, formazione team, consulenza continuativa. Pricing trasparente, niente lock-in.";
 
 const schema = buildGraph(
   organizationSchema(),
@@ -137,7 +137,7 @@ const verticals = [
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="/audit-llmo" variant="magenta">Vai all'audit LLMO</MagneticCTA>
+        <MagneticCTA href="/audit-llmo" variant="accent">Vai all'audit LLMO</MagneticCTA>
         <Button href="/contatti" variant="ghost">Scrivimi</Button>
       </div>
     </div>
@@ -153,11 +153,11 @@ const verticals = [
     font-size: .82rem;
     color: var(--color-ink-soft);
   }
-  .pricing strong { color: var(--color-magenta); }
+  .pricing strong { color: var(--color-accent-dark); }
 
   .vertical-card {
     padding: 1.6rem;
-    border-left: 3px solid var(--color-magenta);
+    border-left: 3px solid var(--color-accent);
   }
   .vertical-card h3 { margin-bottom: .6rem; }
 

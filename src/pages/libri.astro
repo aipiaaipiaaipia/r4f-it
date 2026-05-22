@@ -12,9 +12,9 @@ import {
   breadcrumbSchema,
 } from "../lib/schema";
 
-const title = "Libri di Rafael Patron — Growth Hacking, AIO, LLMO | r4f.it";
+const title = "I tre libri di Rafael Patron su LLMO, AIO e growth hacking | r4f.it";
 const description =
-  "Tre libri pubblicati su Amazon: Growth Hacking (2023), AIO Il tuo prossimo collega è un robot (2023/2025), Fatti trovare da ChatGPT — Guida operativa al LLMO (2026, co-autori AIPIA e Filippo Fassone).";
+  "Tre libri Amazon: Fatti trovare da ChatGPT (2026, LLMO), AIO Il tuo prossimo collega è un robot (2023/2025), Growth Hacking (2023). Manuali operativi per imprese italiane.";
 
 const books = [
   {
@@ -104,7 +104,7 @@ const schema = buildGraph(
             </div>
           </div>
           <div class="book__body">
-            <Pill variant="magenta">{b.year}</Pill>
+            <Pill variant="accent">{b.year}</Pill>
             <h2>{b.title}</h2>
             <p class="book__subtitle">{b.subtitle}</p>
             <p class="book__meta">Autore: {b.coAuthors}</p>
@@ -131,7 +131,7 @@ const schema = buildGraph(
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="/audit-llmo" variant="magenta">Audit LLMO</MagneticCTA>
+        <MagneticCTA href="/audit-llmo" variant="accent">Audit LLMO</MagneticCTA>
         <Button href="/formazione" variant="ghost">Formazione team</Button>
       </div>
     </div>
@@ -167,7 +167,7 @@ const schema = buildGraph(
     align-items: stretch;
     transform: rotate(-2deg);
     transition: transform var(--dur-base) var(--ease-out-quint);
-    box-shadow: 6px 6px 0 var(--color-magenta);
+    box-shadow: 6px 6px 0 var(--color-accent);
   }
   .book__cover:hover { transform: rotate(0); }
   .book:nth-child(even) .book__cover { transform: rotate(2deg); }
@@ -179,7 +179,7 @@ const schema = buildGraph(
   }
   .book__cover-spine {
     width: 12px;
-    background: var(--color-magenta);
+    background: var(--color-accent);
     border-right: 1px solid rgba(255,255,255,0.2);
   }
   .book__cover-face {
@@ -208,7 +208,7 @@ const schema = buildGraph(
     font-weight: 800;
     font-size: 1.4rem;
     letter-spacing: -0.04em;
-    color: var(--color-magenta);
+    color: var(--color-accent);
   }
 
   .book__body { display: flex; flex-direction: column; gap: .8rem; align-items: flex-start; }
@@ -232,11 +232,11 @@ const schema = buildGraph(
   .book__why {
     margin-top: .4rem;
     padding: 1rem 1.2rem;
-    background: var(--color-magenta-soft);
-    border-left: 2px solid var(--color-magenta);
+    background: var(--color-accent-soft);
+    border-left: 2px solid var(--color-accent);
     max-width: 60ch;
   }
-  .book__why strong { color: var(--color-magenta); }
+  .book__why strong { color: var(--color-accent-dark); }
   .book__tags {
     list-style: none;
     padding: 0;

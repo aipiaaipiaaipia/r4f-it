@@ -12,9 +12,9 @@ import {
   breadcrumbSchema,
 } from "../../lib/schema";
 
-const title = "Risorse LLMO — Articoli su LLM Optimization, AIO, GEO | r4f.it";
+const title = "Articoli e risorse LLMO: guide pratiche per imprese italiane | r4f.it";
 const description =
-  "Articoli pratici su LLM Optimization, AIO, citation rate, schema markup e tutto quello che serve per essere citati da ChatGPT e Gemini. Aggiornati settimanalmente.";
+  "Articoli pratici su LLM Optimization, AIO, citation rate, schema markup e tutto quel che serve per essere citati da ChatGPT, Gemini, Claude. Aggiornati ~3 volte al mese.";
 
 const now = new Date();
 const allPosts = await getCollection("posts");
@@ -76,7 +76,7 @@ const fmtDate = (d: Date) =>
         <li class="post" data-cat={p.data.category} data-reveal style={`--reveal-delay: ${i * 60}ms`}>
           <a href={`/risorse/${p.id.replace(/\.mdx?$/, "")}`} class="no-underline post__link">
             <div class="post__meta">
-              <Pill variant="magenta">{categoryLabels[p.data.category] ?? p.data.category}</Pill>
+              <Pill variant="accent">{categoryLabels[p.data.category] ?? p.data.category}</Pill>
               <time datetime={p.data.publishDate.toISOString()}>{fmtDate(p.data.publishDate)}</time>
             </div>
             <h2 class="post__title">{p.data.title}</h2>
@@ -99,7 +99,7 @@ const fmtDate = (d: Date) =>
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=Suggerimento%20articolo%20risorse" variant="magenta">Suggerisci tema</MagneticCTA>
+        <MagneticCTA href="mailto:r@r4f.it?subject=Suggerimento%20articolo%20risorse" variant="accent">Suggerisci tema</MagneticCTA>
         <Button href="/audit-llmo" variant="ghost">Vai all'audit</Button>
       </div>
     </div>
@@ -198,7 +198,7 @@ const fmtDate = (d: Date) =>
     border-top: 1px solid var(--color-line-soft);
     font-family: var(--font-mono);
     font-size: .8rem;
-    color: var(--color-magenta);
+    color: var(--color-accent-dark);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }

@@ -12,9 +12,9 @@ import {
   breadcrumbSchema,
 } from "../lib/schema";
 
-const title = "Il metodo LLMO — Audit, strategia, implementazione, autonomia | r4f.it";
+const title = "Il metodo LLMO in quattro fasi: audit, strategia, autonomia | r4f.it";
 const description =
-  "Come ottimizzo la visibilità di un brand sui Large Language Model: quattro fasi, metriche di citation rate, sprint mensili e trasferimento di competenze al team interno.";
+  "Quattro fasi per rendere un brand citabile dai LLM: audit, strategia, implementazione, monitoraggio. Sprint mensili, metriche di citation rate, trasferimento competenze al team interno.";
 
 const schema = buildGraph(
   organizationSchema(),
@@ -156,7 +156,7 @@ const phases = [
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="/audit-llmo" variant="magenta">Vai all'audit LLMO</MagneticCTA>
+        <MagneticCTA href="/audit-llmo" variant="accent">Vai all'audit LLMO</MagneticCTA>
         <Button href="/contatti" variant="ghost">Chiamami</Button>
       </div>
     </div>
@@ -200,11 +200,11 @@ const phases = [
     content: "→";
     position: absolute;
     left: 0;
-    color: var(--color-magenta);
+    color: var(--color-accent-dark);
   }
 
   .action-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.3rem; }
-  .action-list strong { color: var(--color-magenta); }
+  .action-list strong { color: var(--color-accent-dark); }
 
   .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
   .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }

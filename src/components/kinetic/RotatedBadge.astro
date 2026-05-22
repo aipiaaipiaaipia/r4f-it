@@ -4,7 +4,7 @@ interface Props {
   center?: string;
   size?: number;
   rotate?: number;
-  variant?: "ink" | "magenta" | "outline";
+  variant?: "ink" | "accent" | "outline";
 }
 
 const {
@@ -21,10 +21,10 @@ const radius = size / 2 - 14;
 const cx = size / 2;
 const cy = size / 2;
 
-const fillColor = variant === "magenta" ? "var(--color-magenta)" : variant === "outline" ? "transparent" : "var(--color-ink)";
-const textColor = variant === "magenta" ? "var(--color-bg)" : variant === "outline" ? "var(--color-ink)" : "var(--color-bg)";
+const fillColor = variant === "accent" ? "var(--color-accent)" : variant === "outline" ? "transparent" : "var(--color-ink)";
+const textColor = variant === "accent" ? "var(--color-bg)" : variant === "outline" ? "var(--color-ink)" : "var(--color-bg)";
 const strokeColor = variant === "outline" ? "var(--color-ink)" : "transparent";
-const centerColor = variant === "magenta" ? "var(--color-bg)" : variant === "outline" ? "var(--color-magenta)" : "var(--color-magenta)";
+const centerColor = variant === "accent" ? "var(--color-bg)" : variant === "outline" ? "var(--color-accent)" : "var(--color-accent)";
 ---
 
 <span class="rotated-badge" style={`--rotate-hover: ${rotate + 8}deg; transform: rotate(${rotate}deg);`} aria-hidden="true">

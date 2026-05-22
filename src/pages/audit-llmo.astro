@@ -15,9 +15,9 @@ import {
   faqSchema,
 } from "../lib/schema";
 
-const title = "Audit LLMO — Come ChatGPT, Claude, Gemini parlano del tuo brand | r4f.it";
+const title = "Audit LLMO: come ChatGPT, Claude, Gemini parlano del tuo brand | r4f.it";
 const description =
-  "Audit LLMO da €200 (call 60 minuti) o €800 (deliverable PDF completo). Analizzo come ChatGPT, Claude, Gemini, Perplexity e le AI Overview di Google rispondono sul tuo brand. Tempi 5-7 giorni.";
+  "Audit LLMO da €200 (call 60 minuti) o €800 (deliverable PDF). Analizzo come ChatGPT, Claude, Gemini, Perplexity e AI Overview rispondono sul tuo brand. Tempi 5-7 giorni.";
 
 const faqs = [
   {
@@ -89,7 +89,7 @@ const cosaAnalizzo = [
 
 <BaseLayout {title} {description} schemaJsonLd={schema}>
   <Section tight>
-    <Pill variant="magenta">Audit LLMO</Pill>
+    <Pill variant="accent">Audit LLMO</Pill>
     <h1>Cosa risponde l'<KineticHeadline primary="AI" secondary="LLM" level={2} /> sul tuo brand. Oggi.</h1>
     <p class="lead">
       Un'analisi sistematica di come ChatGPT, Claude, Gemini, Perplexity e le AI Overview di
@@ -97,7 +97,7 @@ const cosaAnalizzo = [
       misurabile.
     </p>
     <div class="hero-cta">
-      <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO" variant="magenta">Richiedi audit</MagneticCTA>
+      <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO" variant="accent">Richiedi audit</MagneticCTA>
       <Button href="#pricing" variant="ghost">Vedi i prezzi</Button>
     </div>
   </Section>
@@ -120,7 +120,7 @@ const cosaAnalizzo = [
           </div>
           <p>{o.body}</p>
           <ul>{o.bullets.map((b) => <li>{b}</li>)}</ul>
-          <Button href={`mailto:r@r4f.it?subject=${encodeURIComponent("Audit LLMO — " + o.name)}`} variant={o.featured ? "magenta" : "ink"}>{o.cta}</Button>
+          <Button href={`mailto:r@r4f.it?subject=${encodeURIComponent("Audit LLMO — " + o.name)}`} variant={o.featured ? "accent" : "ink"}>{o.cta}</Button>
         </article>
       ))}
     </div>
@@ -191,7 +191,7 @@ const cosaAnalizzo = [
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO%20base" variant="magenta">Prenota call €200</MagneticCTA>
+        <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO%20base" variant="accent">Prenota call €200</MagneticCTA>
         <Button href="mailto:r@r4f.it?subject=Audit%20LLMO%20completo" variant="ghost">Audit completo €800</Button>
       </div>
     </div>
@@ -224,7 +224,7 @@ const cosaAnalizzo = [
     top: 0;
     right: 1.5rem;
     transform: translateY(-50%);
-    background: var(--color-magenta);
+    background: var(--color-accent);
     color: var(--color-bg);
     font-family: var(--font-mono);
     font-size: .68rem;
@@ -237,7 +237,8 @@ const cosaAnalizzo = [
   .price-card__duration { font-family: var(--font-mono); font-size: .82rem; opacity: 0.7; }
   .price-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
   .price-card ul li { font-family: var(--font-mono); font-size: .85rem; padding-left: 1.2rem; position: relative; }
-  .price-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--color-magenta); }
+  .price-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--color-accent-dark); }
+  .price-card--featured ul li::before { color: var(--color-accent); }
 
   .analysis-grid { gap: 1.5rem; margin-top: 2rem; }
   .analysis-card {
@@ -251,7 +252,7 @@ const cosaAnalizzo = [
     font-family: var(--font-mono);
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--color-magenta);
+    color: var(--color-accent);
     flex-shrink: 0;
   }
   .analysis-card h3 { font-size: 1.1rem; margin-bottom: .4rem; font-family: var(--font-body); font-weight: 600; }
@@ -278,7 +279,7 @@ const cosaAnalizzo = [
     content: "+";
     font-family: var(--font-mono);
     font-size: 1.4rem;
-    color: var(--color-magenta);
+    color: var(--color-accent);
     transition: transform var(--dur-fast) var(--ease-out-quint);
   }
   .faq-item[open] summary::after { transform: rotate(45deg); }

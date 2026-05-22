@@ -1,10 +1,10 @@
 ---
 interface Props {
-  variant?: "default" | "magenta" | "ink";
+  variant?: "default" | "accent" | "ink";
   class?: string;
 }
 const { variant = "default", class: extraClass = "" } = Astro.props;
-const variantClass = variant === "magenta" ? "tag--magenta" : "";
+const variantClass = variant === "accent" ? "tag--accent" : "";
 ---
 
 <span class:list={["tag", variantClass, extraClass]}><slot /></span>

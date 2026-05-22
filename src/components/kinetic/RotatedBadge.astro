@@ -1,0 +1,50 @@
+---
+interface Props {
+  text?: string;
+  center?: string;
+  size?: number;
+  rotate?: number;
+  variant?: "ink" | "magenta" | "outline";
+}
+
+const {
+  text = "16 ANNI · 3 LIBRI · PRESIDENTE CTS AIPIA · ",
+  center = "r4f",
+  size = 140,
+  rotate = -3,
+  variant = "ink",
+} = Astro.props;
+
+// Repeat text to fully circle (~ size dependent — we use textPath, just repeat 1x is enough since textPath is bounded by radius)
+const repeated = text.repeat(1);
+const radius = size / 2 - 14;
+const cx = size / 2;
+const cy = size / 2;
+
+const fillColor = variant === "magenta" ? "var(--color-magenta)" : variant === "outline" ? "transparent" : "var(--color-ink)";
+const textColor = variant === "magenta" ? "var(--color-bg)" : variant === "outline" ? "var(--color-ink)" : "var(--color-bg)";
+const strokeColor = variant === "outline" ? "var(--color-ink)" : "transparent";
+const centerColor = variant === "magenta" ? "var(--color-bg)" : variant === "outline" ? "var(--color-magenta)" : "var(--color-magenta)";
+---
+
+<span class="rotated-badge" style={`--rotate-hover: ${rotate + 8}deg; transform: rotate(${rotate}deg);`} aria-hidden="true">
+  <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-hidden="true">
+    <defs>
+      <path id={`circle-${size}-${rotate}`} d={`M ${cx},${cy} m -${radius},0 a ${radius},${radius} 0 1,1 ${radius * 2},0 a ${radius},${radius} 0 1,1 -${radius * 2},0`} />
+    </defs>
+    <circle cx={cx} cy={cy} r={size / 2 - 1} fill={fillColor} stroke={strokeColor} stroke-width="2" />
+    <circle cx={cx} cy={cy} r={size / 2 - 22} fill="transparent" stroke={textColor} stroke-width="0.5" stroke-opacity="0.2" />
+    <text
+      style={`font-family: var(--font-mono); font-size: ${size / 18}px; letter-spacing: 0.18em; font-weight: 500; fill: ${textColor};`}
+    >
+      <textPath href={`#circle-${size}-${rotate}`} startOffset="0">{repeated}{repeated}</textPath>
+    </text>
+    <text
+      x={cx}
+      y={cy}
+      text-anchor="middle"
+      dominant-baseline="central"
+      style={`font-family: var(--font-display); font-weight: 800; font-size: ${size / 4.5}px; fill: ${centerColor}; letter-spacing: -0.04em;`}
+    >{center}</text>
+  </svg>
+</span>

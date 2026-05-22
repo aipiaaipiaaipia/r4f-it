@@ -1,0 +1,152 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href="/" class="brand-foot no-underline" aria-label="r4f.it">
+          <span>r4f</span><span class="brand-foot__dot">.it</span>
+        </a>
+        <p class="site-footer__claim">
+          LLM Optimization per imprese italiane. Audit, strategia, formazione.
+        </p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer">
+        <div>
+          <h4 class="site-footer__heading">Lavora con me</h4>
+          <ul>
+            <li><a href="/audit-llmo">Audit LLMO</a></li>
+            <li><a href="/servizi">Servizi</a></li>
+            <li><a href="/formazione">Formazione</a></li>
+            <li><a href="/audit-aio">Audit AIO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="site-footer__heading">Pillar geo</h4>
+          <ul>
+            <li><a href="/consulente-llmo-genova">Genova</a></li>
+            <li><a href="/consulente-llmo-milano">Milano</a></li>
+            <li><a href="/consulente-llmo-italia">Italia</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="site-footer__heading">Identità</h4>
+          <ul>
+            <li><a href="/chi-sono">Chi sono</a></li>
+            <li><a href="/libri">Libri</a></li>
+            <li><a href="/aipia">AIPIA</a></li>
+            <li><a href="/metodo">Metodo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="site-footer__heading">Contatti</h4>
+          <ul>
+            <li><a href="mailto:info@r4f.it">info@r4f.it</a></li>
+            <li><a href="mailto:r@r4f.it">r@r4f.it</a></li>
+            <li><a class="tel" href="tel:+390107767545">+39 010 776 7545</a></li>
+            <li><a href="https://wa.me/390107767545" rel="noopener">WhatsApp</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="site-footer__legal">
+      <div>
+        <p>&copy; {year} Intarget DMCC · DMCC-809871</p>
+        <p>Jumeirah Lakes Towers, Dubai (UAE) · Ufficio Italia: Via Davide Gagliardo 7, 16043 Chiavari (GE)</p>
+      </div>
+      <ul class="site-footer__links">
+        <li><a href="/privacy-policy">Privacy</a></li>
+        <li><a href="/cookie-policy">Cookie</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="/sitemap-index.xml">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    padding-block: clamp(3rem, 6vw, 5rem) 1.5rem;
+    border-top: 6px solid var(--color-magenta);
+    position: relative;
+    z-index: 2;
+  }
+  .site-footer h4 { color: var(--color-bg); }
+  .site-footer a {
+    color: rgba(250, 247, 240, 0.78);
+    background: none;
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-out-quint);
+  }
+  .site-footer a:hover { color: var(--color-magenta); }
+  .site-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
+  .site-footer__heading {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 240, 0.5);
+    margin-bottom: .8rem;
+  }
+
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(250, 247, 240, 0.1);
+  }
+
+  .brand-foot {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.5rem;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-bg) !important;
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .brand-foot__dot { color: var(--color-magenta); }
+
+  .site-footer__claim {
+    margin-top: 1rem;
+    color: rgba(250, 247, 240, 0.7);
+    max-width: 36ch;
+    font-size: 0.92rem;
+  }
+
+  .site-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 0.78rem;
+    color: rgba(250, 247, 240, 0.55);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .site-footer__legal p { margin: 0 0 .3em; max-width: none; }
+  .site-footer__links { display: flex; gap: 1.2rem; flex-direction: row; }
+
+  @media (max-width: 900px) {
+    .site-footer__top { grid-template-columns: 1fr; }
+    .site-footer__nav { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  }
+  @media (max-width: 540px) {
+    .site-footer__legal { flex-direction: column; align-items: flex-start; }
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  stagger?: number;
+  as?: string;
+  class?: string;
+}
+const { stagger = 80, as: Tag = "div", class: extraClass = "" } = Astro.props;
+---
+
+<Tag class:list={["reveal-stack", extraClass]} data-stagger={stagger}>
+  <slot />
+</Tag>
+
+<script>
+  const stacks = document.querySelectorAll<HTMLElement>(".reveal-stack");
+  stacks.forEach((stack) => {
+    const stagger = Number(stack.dataset.stagger ?? "80");
+    Array.from(stack.children).forEach((child, i) => {
+      const el = child as HTMLElement;
+      if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
+      el.style.setProperty("--reveal-delay", `${i * stagger}ms`);
+    });
+  });
+</script>

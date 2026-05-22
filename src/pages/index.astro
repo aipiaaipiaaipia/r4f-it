@@ -1,0 +1,306 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Button from "../components/ui/Button.astro";
+import Card from "../components/ui/Card.astro";
+import Pill from "../components/ui/Pill.astro";
+import KineticHeadline from "../components/kinetic/KineticHeadline.astro";
+import RotatedBadge from "../components/kinetic/RotatedBadge.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import RevealStack from "../components/kinetic/RevealStack.astro";
+import {
+  buildGraph,
+  websiteSchema,
+  personSchema,
+  organizationSchema,
+  llmoServiceSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "r4f.it — Consulenza LLMO: fatti trovare da ChatGPT, Gemini, Claude";
+const description =
+  "Consulenza LLM Optimization per imprese italiane. Audit misurabili, citation rate certificato, metodo del Presidente del Comitato Tecnico-Scientifico AIPIA. Genova, Milano, Italia.";
+
+const schema = buildGraph(
+  websiteSchema(),
+  organizationSchema(),
+  personSchema(),
+  llmoServiceSchema(),
+  breadcrumbSchema([{ name: "Home", url: "https://r4f.it/" }])
+);
+
+const trustItems = [
+  { value: "20+", label: "anni nel digitale" },
+  { value: "3", label: "libri pubblicati" },
+  { value: "Presidente CTS", label: "AIPIA" },
+  { value: "6 LLM", label: "monitorati daily" },
+];
+
+const phases = [
+  {
+    n: "01",
+    title: "Audit & diagnosi",
+    body:
+      "Misuro come il tuo brand appare oggi su ChatGPT, Claude, Gemini, Perplexity e nelle AI Overview di Google. Mappo i gap rispetto ai competitor e identifico le leve a impatto più rapido.",
+    href: "/audit-llmo",
+    cta: "Vai all'audit",
+  },
+  {
+    n: "02",
+    title: "Strategia & implementazione",
+    body:
+      "Schema markup, llms.txt strutturato, riscrittura per chiarezza semantica, entità Wikidata. Sprint mensili con metriche di citation rate verificabili.",
+    href: "/servizi",
+    cta: "Vedi i servizi",
+  },
+  {
+    n: "03",
+    title: "Formazione & autonomia",
+    body:
+      "Workshop pratici per team marketing, SEO, dev. Strumenti condivisi, checklist operative. Obiettivo: lasciarti competente, non dipendente.",
+    href: "/formazione",
+    cta: "Info formazione",
+  },
+];
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight class="hero">
+    <Pill class="hero__eyebrow">LLM Optimization · Italia</Pill>
+    <h1 class="hero__title" data-reveal>
+      Il tuo sito deve farsi trovare.
+      <br />
+      <span class="hero__title-line">
+        Anche quando lo cerca un
+        <KineticHeadline primary="LLM" secondary="AIO" level={2} />.
+      </span>
+    </h1>
+    <p class="lead hero__lead" data-reveal style="--reveal-delay: 100ms">
+      ChatGPT consiglia aziende. Google genera risposte AI prima dei link blu. Se il tuo brand
+      non compare in quelle risposte, per quel pubblico semplicemente non esisti.
+    </p>
+    <div class="hero__cta" data-reveal style="--reveal-delay: 200ms">
+      <MagneticCTA href="/audit-llmo" variant="magenta">Richiedi un audit</MagneticCTA>
+      <Button href="/metodo" variant="ghost">Scopri il metodo</Button>
+    </div>
+
+    <div class="hero__trust" data-reveal style="--reveal-delay: 320ms">
+      <RotatedBadge text="LLMO · AIPIA · PRESIDENTE CTS · 3 LIBRI · 20 ANNI · " center="r4f" size={130} rotate={-4} />
+      <ul class="trust-line">
+        {trustItems.map((t) => (
+          <li><strong>{t.value}</strong><span>{t.label}</span></li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Il problema</Pill>
+    <h2 class="section-h">La SEO che conosci non basta più.</h2>
+    <div class="grid-2" style="margin-top: 2.5rem;">
+      <div class="prose" data-reveal>
+        <p>
+          Da marzo 2025, Google genera risposte AI in SERP anche sulle query italiane. Il traffico
+          organico tradizionale si riduce e chi non è ottimizzato per le risposte AI perde
+          visibilità giorno dopo giorno.
+        </p>
+        <p>
+          Il punto non è "fare SEO meglio". È fare qualcosa di diverso. I motori AI ragionano in
+          modo nuovo: premiano autorevolezza verificabile, struttura dei dati, chiarezza semantica.
+        </p>
+      </div>
+      <div class="prose" data-reveal style="--reveal-delay: 120ms">
+        <p>
+          Intanto, milioni di persone chiedono a ChatGPT, Gemini, Claude e Perplexity consigli su
+          prodotti, professionisti e servizi. Quelle risposte stanno diventando il primo punto di
+          contatto: se non ci sei, non esisti.
+        </p>
+        <p>
+          <strong>LLMO è la risposta concreta.</strong> Non sostituisce la SEO, la estende. È il
+          livello in più che serve per non restare fuori dalla conversazione.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="ink" id="metodo-preview">
+    <Pill>Come lavoro</Pill>
+    <h2 class="section-h">Tre fasi, risultati misurabili.</h2>
+    <RevealStack class="grid-3 phases" stagger={120}>
+      {phases.map((p) => (
+        <div class="phase-card">
+          <RotatedBadge text={`FASE ${p.n} · ${p.title.toUpperCase()} · `} center={p.n} size={120} rotate={4} variant="outline" />
+          <h3 class="phase-card__title">{p.title}</h3>
+          <p>{p.body}</p>
+          <a href={p.href} class="phase-card__cta no-underline">{p.cta} →</a>
+        </div>
+      ))}
+    </RevealStack>
+  </Section>
+
+  <Section>
+    <div class="grid-2 split">
+      <div data-reveal>
+        <Pill>Esperienza</Pill>
+        <h2 class="section-h">20 anni nel digitale, dall'inizio dell'era AI.</h2>
+        <p class="prose">
+          Ho iniziato con la SEO quando ancora funzionava il keyword stuffing. Ho attraversato
+          ogni aggiornamento algoritmo. Quando le regole cambiano, chi ha le basi solide si
+          adatta; gli altri perdono posizioni.
+        </p>
+        <p class="prose">
+          Oggi sono AI Program Manager presso Intarget DMCC, Presidente del Comitato
+          Tecnico-Scientifico <a href="/aipia">AIPIA</a> e autore di <a href="/libri">tre libri</a>{" "}
+          su growth hacking, AIO e LLMO.
+        </p>
+      </div>
+      <div data-reveal style="--reveal-delay: 120ms">
+        <Pill>Per chi è</Pill>
+        <h2 class="section-h">Imprese che vogliono muoversi prima.</h2>
+        <p class="prose">
+          PMI, studi professionali, ecommerce e brand che capiscono che il mercato sta cambiando.
+          Non serve un budget enorme. Serve una strategia chiara e qualcuno che sappia eseguirla.
+        </p>
+        <p class="prose">
+          Se cerchi un partner per portare risultati concreti nell'era dell'AI search,{" "}
+          <a href="/contatti">scrivimi</a>.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Pillar geo</Pill>
+    <h2 class="section-h">Da dove parto, e dove arrivo.</h2>
+    <p class="lead" style="margin-bottom: 2.5rem;">
+      Base operativa Liguria, clienti in tutta Italia. Tre pagine dedicate ai mercati primari.
+    </p>
+    <div class="grid-3 cards-asym">
+      <Card title="Genova & Liguria" href="/consulente-llmo-genova" cta="Vai al pillar">
+        <p>Il mercato locale con più white space LLMO in Italia. Manifattura, nautica, turismo, vinicole.</p>
+      </Card>
+      <Card title="Milano & Lombardia" href="/consulente-llmo-milano" cta="Vai al pillar">
+        <p>Hub corporate del paese. Per agenzie, fintech, retail e B2B che competono in SERP affollate.</p>
+      </Card>
+      <Card title="Resto Italia" href="/consulente-llmo-italia" cta="Vai al pillar">
+        <p>Lavoro da remoto su tutto il territorio nazionale. Workshop in presenza su richiesta.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="ink" class="cta-final">
+    <div class="cta-final__inner">
+      <div>
+        <Pill>Inizia da qui</Pill>
+        <h2 class="section-h">Vuoi sapere come l'AI vede il tuo brand?</h2>
+        <p class="lead">
+          Un audit LLMO ti dice cosa risponde ChatGPT su di te oggi, dove sei invisibile, e cosa
+          fare per primo. Rispondo entro 24 ore lavorative.
+        </p>
+      </div>
+      <div class="cta-final__actions">
+        <MagneticCTA href="/audit-llmo" variant="magenta">Richiedi un audit</MagneticCTA>
+        <Button href="mailto:r@r4f.it" variant="ghost" arrow={false}>r@r4f.it</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .section-h { margin-bottom: .5em; }
+
+  .hero {
+    padding-top: clamp(3rem, 6vw, 5rem);
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+    position: relative;
+  }
+  .hero__eyebrow { margin-bottom: 1.5rem; }
+  .hero__title {
+    max-width: 18ch;
+    margin-bottom: 1.4rem;
+  }
+  .hero__title-line { display: block; }
+  .hero__lead { max-width: 38ch; margin-bottom: 2rem; }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero__trust {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-line-soft);
+    flex-wrap: wrap;
+  }
+
+  .trust-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem 2.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .trust-line li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .trust-line strong {
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    text-transform: none;
+  }
+
+  .phases { margin-top: 2.5rem; gap: 2rem; }
+  .phase-card {
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+    align-items: flex-start;
+  }
+  .phase-card__title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
+  .phase-card__cta {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-magenta);
+    background: none;
+    padding-top: .8rem;
+  }
+
+  .split { gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+
+  .cta-final__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .cta-final__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 900px) {
+    .cta-final__inner { grid-template-columns: 1fr; }
+  }
+</style>

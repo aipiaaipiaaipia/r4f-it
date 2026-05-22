@@ -1,0 +1,137 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  schemaJsonLd?: unknown;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = "/assets/og/og-default.png",
+  ogType = "website",
+  noindex = false,
+  schemaJsonLd,
+} = Astro.props;
+
+const site = "https://r4f.it";
+const computed = new URL(Astro.url.pathname, site).toString().replace(/\/$/, "") || site;
+const fullCanonical = canonical ?? computed;
+const fullOg = ogImage.startsWith("http") ? ogImage : `${site}${ogImage}`;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FAF7F0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1A1815" media="(prefers-color-scheme: dark)" />
+    <meta name="generator" content={Astro.generator} />
+
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {!noindex && <meta name="robots" content="index, follow" />}
+
+    <link rel="canonical" href={fullCanonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={fullCanonical} />
+    <meta property="og:image" content={fullOg} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="r4f.it" />
+    <meta property="og:locale" content="it_IT" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOg} />
+    <meta name="twitter:creator" content="@rafaelpatron" />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/llms+text" href="/llms.txt" />
+
+    {schemaJsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(schemaJsonLd)} />
+    )}
+
+    <slot name="head" />
+  </head>
+  <body class="noise">
+    <a href="#main" class="skip-link">Salta al contenuto</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Reveal on scroll
+      const els = document.querySelectorAll("[data-reveal]");
+      if ("IntersectionObserver" in window && els.length) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                (e.target as HTMLElement).classList.add("is-visible");
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        els.forEach((el) => el.classList.add("is-visible"));
+      }
+
+      // Magnetic CTA on pointer:fine only
+      const mq = window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)");
+      if (mq.matches) {
+        document.querySelectorAll<HTMLElement>(".magnetic").forEach((btn) => {
+          const strength = 18;
+          btn.addEventListener("mousemove", (e) => {
+            const r = btn.getBoundingClientRect();
+            const x = e.clientX - (r.left + r.width / 2);
+            const y = e.clientY - (r.top + r.height / 2);
+            const dist = Math.hypot(x, y);
+            if (dist > 100) return;
+            btn.style.transform = `translate(${(x / r.width) * strength}px, ${(y / r.height) * strength}px)`;
+          });
+          btn.addEventListener("mouseleave", () => {
+            btn.style.transform = "translate(0, 0)";
+          });
+        });
+      }
+
+      // Mobile nav toggle
+      const navToggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+      const navDrawer = document.querySelector<HTMLElement>("[data-nav-drawer]");
+      if (navToggle && navDrawer) {
+        navToggle.addEventListener("click", () => {
+          const open = navDrawer.getAttribute("data-open") === "true";
+          navDrawer.setAttribute("data-open", open ? "false" : "true");
+          navToggle.setAttribute("aria-expanded", open ? "false" : "true");
+          document.body.style.overflow = open ? "" : "hidden";
+        });
+      }
+    </script>
+  </body>
+</html>

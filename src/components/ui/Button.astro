@@ -1,0 +1,39 @@
+---
+interface Props {
+  href?: string;
+  variant?: "ink" | "magenta" | "ghost";
+  type?: "button" | "submit";
+  external?: boolean;
+  arrow?: boolean;
+  class?: string;
+}
+const {
+  href,
+  variant = "ink",
+  type = "button",
+  external = false,
+  arrow = true,
+  class: extraClass = "",
+} = Astro.props;
+const variantClass =
+  variant === "magenta" ? "btn--magenta" : variant === "ghost" ? "btn--ghost" : "";
+const rel = external ? "noopener" : undefined;
+const target = external ? "_blank" : undefined;
+---
+
+{href ? (
+  <a
+    href={href}
+    class:list={["btn", "no-underline", variantClass, extraClass]}
+    target={target}
+    rel={rel}
+  >
+    <slot />
+    {arrow && <span class="arrow" aria-hidden="true">→</span>}
+  </a>
+) : (
+  <button type={type} class:list={["btn", variantClass, extraClass]}>
+    <slot />
+    {arrow && <span class="arrow" aria-hidden="true">→</span>}
+  </button>
+)}

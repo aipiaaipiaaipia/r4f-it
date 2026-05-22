@@ -1,0 +1,20 @@
+---
+interface Props {
+  tone?: "default" | "alt" | "deep" | "ink";
+  tight?: boolean;
+  class?: string;
+  id?: string;
+}
+const { tone = "default", tight = false, class: extraClass = "", id } = Astro.props;
+const toneClass =
+  tone === "alt" ? "bg-alt" : tone === "deep" ? "bg-deep" : tone === "ink" ? "bg-ink" : "";
+---
+
+<section
+  id={id}
+  class:list={["section", tight && "section--tight", toneClass, extraClass]}
+>
+  <div class="wrap">
+    <slot />
+  </div>
+</section>

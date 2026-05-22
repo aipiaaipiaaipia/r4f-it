@@ -1,0 +1,47 @@
+---
+interface Props {
+  number?: string;
+  title?: string;
+  href?: string;
+  cta?: string;
+  variant?: "default" | "compact";
+  class?: string;
+}
+const {
+  number,
+  title,
+  href,
+  cta,
+  variant = "default",
+  class: extraClass = "",
+} = Astro.props;
+---
+
+<article class:list={["card", variant === "compact" && "card--compact", extraClass]}>
+  {number && <div class="card__number">{number}</div>}
+  {title && <h3 class="card__title">{title}</h3>}
+  <div class="card__body">
+    <slot />
+  </div>
+  {href && cta && (
+    <p class="card__cta">
+      <a href={href} class="no-underline">{cta} <span aria-hidden="true">→</span></a>
+    </p>
+  )}
+</article>
+
+<style>
+  .card--compact { padding: 1.4rem 1.2rem 1.1rem; gap: .5rem; }
+  .card__cta { margin: 1rem 0 0; padding-top: .9rem; border-top: 1px solid var(--color-line-soft); }
+  .card__cta a {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-magenta);
+    font-weight: 500;
+    background: none;
+    transition: gap var(--dur-fast) var(--ease-out-quint);
+  }
+  .card__cta a:hover span { transform: translateX(3px); display: inline-block; }
+</style>

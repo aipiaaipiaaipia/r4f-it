@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  variant?: "ink" | "magenta" | "ghost";
+  external?: boolean;
+  class?: string;
+}
+const { href, variant = "ink", external = false, class: extraClass = "" } = Astro.props;
+const variantClass = variant === "magenta" ? "btn--magenta" : variant === "ghost" ? "btn--ghost" : "";
+const rel = external ? "noopener" : undefined;
+const target = external ? "_blank" : undefined;
+---
+
+<a
+  href={href}
+  class:list={["btn", "magnetic", "no-underline", variantClass, extraClass]}
+  target={target}
+  rel={rel}
+>
+  <slot />
+  <span class="arrow" aria-hidden="true">→</span>
+</a>

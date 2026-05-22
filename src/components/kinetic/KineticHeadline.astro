@@ -1,0 +1,53 @@
+---
+interface Props {
+  primary?: string;
+  secondary?: string;
+  prefix?: string;
+  suffix?: string;
+  level?: 1 | 2 | 3;
+}
+const { primary = "LLMO", secondary = "AIO", prefix = "", suffix = "", level = 1 } = Astro.props;
+const Tag = `h${level}` as keyof HTMLElementTagNameMap;
+---
+
+<Tag class="kinetic-headline">
+  {prefix && <span class="kinetic-prefix">{prefix} </span>}
+  <span class="kinetic-stack" aria-live="off">
+    <span class="kinetic-word" aria-label={`${primary} alternato a ${secondary}`}>{primary}</span>
+    <span class="kinetic-word kinetic-word--alt" aria-hidden="true">{secondary}</span>
+  </span>
+  {suffix && <span class="kinetic-suffix"> {suffix}</span>}
+</Tag>
+
+<style>
+  .kinetic-headline {
+    line-height: 1.04;
+  }
+  .kinetic-stack {
+    position: relative;
+    display: inline-block;
+    color: var(--color-magenta);
+    white-space: nowrap;
+  }
+  .kinetic-word {
+    display: inline-block;
+    will-change: transform, font-variation-settings, opacity;
+  }
+  .kinetic-word--alt {
+    position: absolute;
+    inset: 0;
+    animation-delay: -4s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kinetic-stack { white-space: normal; }
+    .kinetic-word--alt {
+      position: static;
+      animation: none;
+    }
+    .kinetic-word--alt::before {
+      content: " / ";
+      color: var(--color-ink-muted);
+      opacity: 0.5;
+    }
+  }
+</style>

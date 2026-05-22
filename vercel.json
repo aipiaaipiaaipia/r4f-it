@@ -1,0 +1,52 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.r4f.it" }], "destination": "https://r4f.it/$1", "statusCode": 301 },
+    { "source": "/chi-siamo", "destination": "/chi-sono", "statusCode": 301 },
+    { "source": "/aio-ecommerce", "destination": "/servizi#ecommerce", "statusCode": 301 },
+    { "source": "/aio-professionisti", "destination": "/servizi#professionisti", "statusCode": 301 },
+    { "source": "/glossario", "destination": "/risorse", "statusCode": 301 },
+    { "source": "/faq", "destination": "/audit-llmo#faq", "statusCode": 301 },
+    { "source": "/iniziamo", "destination": "/contatti", "statusCode": 301 },
+    { "source": "/privacy", "destination": "/privacy-policy", "statusCode": 301 },
+    { "source": "/servizi/rafael-patron", "destination": "/chi-sono", "statusCode": 301 },
+    { "source": "/servizi/ai-shopping", "destination": "/servizi#ecommerce", "statusCode": 301 },
+    { "source": "/servizi/aio-specialist", "destination": "/servizi", "statusCode": 301 },
+    { "source": "/aio-associazioni-terzo-settore-aipia", "destination": "/aipia", "statusCode": 301 },
+    { "source": "/dove", "destination": "/contatti", "statusCode": 301 },
+    { "source": "/dove/aio-milano", "destination": "/consulente-llmo-milano", "statusCode": 301 },
+    { "source": "/dove/aio-genova", "destination": "/consulente-llmo-genova", "statusCode": 301 },
+    { "source": "/dove/aio-roma", "destination": "/consulente-llmo-italia", "statusCode": 301 },
+    { "source": "/index.php", "destination": "/", "statusCode": 301 },
+    { "source": "/sample-page", "destination": "/", "statusCode": 301 },
+    { "source": "/readme.html", "destination": "/", "statusCode": 301 },
+    { "source": "/xmlrpc.php", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-login.php", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-admin/(.*)", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-content/(.*)", "destination": "/", "statusCode": 301 },
+    { "source": "/wp-includes/(.*)", "destination": "/", "statusCode": 301 },
+    { "source": "/author/(.*)", "destination": "/chi-sono", "statusCode": 301 },
+    { "source": "/category/(.*)", "destination": "/risorse", "statusCode": 301 },
+    { "source": "/tag/(.*)", "destination": "/risorse", "statusCode": 301 }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}

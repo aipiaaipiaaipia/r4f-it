@@ -1,0 +1,215 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import Pill from "../../components/ui/Pill.astro";
+import Button from "../../components/ui/Button.astro";
+import MagneticCTA from "../../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  articleSchema,
+  breadcrumbSchema,
+} from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const now = new Date();
+  const all = await getCollection("posts");
+  const visible = all.filter((p) => !p.data.draft && p.data.publishDate <= now);
+  return visible.map((p) => ({
+    params: { slug: p.id.replace(/\.mdx?$/, "") },
+    props: { post: p },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const categoryLabels: Record<string, string> = {
+  llmo: "LLMO",
+  aio: "AIO",
+  tecnico: "Tecnico",
+  strategia: "Strategia",
+  geo: "Geo",
+};
+
+const slug = post.id.replace(/\.mdx?$/, "");
+const url = `https://r4f.it/risorse/${slug}`;
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  articleSchema({
+    title: post.data.title,
+    description: post.data.description,
+    publishDate: post.data.publishDate,
+    updateDate: post.data.updateDate,
+    slug,
+    category: categoryLabels[post.data.category],
+  }),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Risorse", url: "https://r4f.it/risorse" },
+    { name: post.data.title, url },
+  ])
+);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
+
+// Get related posts (same category, exclude self, up to 3)
+const allPosts = await getCollection("posts");
+const now = new Date();
+const related = allPosts
+  .filter((p) => !p.data.draft && p.data.publishDate <= now)
+  .filter((p) => p.id !== post.id && p.data.category === post.data.category)
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate)
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={`${post.data.title} | r4f.it`}
+  description={post.data.description}
+  canonical={url}
+  ogType="article"
+  schemaJsonLd={schema}
+>
+  <Section tight>
+    <nav class="bread" aria-label="Breadcrumb">
+      <a href="/risorse" class="no-underline">← Risorse</a>
+    </nav>
+
+    <div class="article-meta">
+      <Pill variant="magenta">{categoryLabels[post.data.category]}</Pill>
+      <time datetime={post.data.publishDate.toISOString()}>{fmtDate(post.data.publishDate)}</time>
+      {post.data.updateDate && (
+        <span class="updated">· Aggiornato {fmtDate(post.data.updateDate)}</span>
+      )}
+    </div>
+
+    <h1 class="article-title">{post.data.title}</h1>
+    <p class="lead">{post.data.description}</p>
+
+    {post.data.tags?.length > 0 && (
+      <ul class="article-tags">
+        {post.data.tags.map((t: string) => <li><span class="tag">{t}</span></li>)}
+      </ul>
+    )}
+  </Section>
+
+  <Section>
+    <article class="prose article-body">
+      <Content />
+    </article>
+  </Section>
+
+  {related.length > 0 && (
+    <Section tone="alt">
+      <Pill>Articoli correlati</Pill>
+      <h2>Altri sullo stesso tema.</h2>
+      <ul class="related">
+        {related.map((r) => (
+          <li>
+            <a href={`/risorse/${r.id.replace(/\.mdx?$/, "")}`} class="no-underline related__link">
+              <Pill variant="magenta">{categoryLabels[r.data.category]}</Pill>
+              <h3>{r.data.title}</h3>
+              <p>{r.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  )}
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Trovi utile?</Pill>
+        <h2>Vuoi un audit LLMO per il tuo sito?</h2>
+        <p class="lead">
+          Una call di un'ora dove testiamo dal vivo come l'AI risponde sul tuo brand. €200 base
+          o €800 deliverable PDF completo. Niente lock-in.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="/audit-llmo" variant="magenta">Vai all'audit</MagneticCTA>
+        <Button href="mailto:r@r4f.it" variant="ghost">Scrivimi</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .bread {
+    margin-bottom: 1.5rem;
+  }
+  .bread a {
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--color-ink-muted);
+    background: none;
+  }
+  .bread a:hover { color: var(--color-magenta); }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+  .article-meta time, .article-meta .updated {
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--color-ink-muted);
+  }
+  .article-title {
+    font-size: clamp(2.2rem, 5vw + .5rem, 4rem);
+    max-width: 22ch;
+    margin-bottom: 1rem;
+  }
+  .article-tags {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+  .article-tags li { margin: 0; }
+
+  .article-body {
+    max-width: 70ch;
+  }
+
+  .related {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .related li { margin: 0; }
+  .related__link {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    height: 100%;
+    transition: transform var(--dur-base) var(--ease-out-quint);
+  }
+  .related__link:hover { transform: translateY(-3px); }
+  .related__link h3 { font-size: 1.1rem; font-weight: 600; font-family: var(--font-body); margin: 0; }
+  .related__link p { font-size: .92rem; color: var(--color-ink-soft); margin: 0; }
+
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+  @media (max-width: 900px) {
+    .related { grid-template-columns: 1fr; }
+  }
+</style>

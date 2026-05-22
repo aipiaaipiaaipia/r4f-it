@@ -1,0 +1,30 @@
+name: Scheduled drip-deploy
+
+# Trigger Vercel deploy daily at 07:15 UTC (09:15 CET) so that articles
+# whose publishDate has passed become visible on the production site.
+# Filter logic in /risorse + /llms.txt picks only posts with
+# publishDate <= now() AND draft === false. Every rebuild promotes
+# newly-eligible posts.
+
+on:
+  schedule:
+    - cron: "15 7 * * *"
+  workflow_dispatch:
+
+jobs:
+  trigger-vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK_URL" ]; then
+            echo "::warning ::VERCEL_DEPLOY_HOOK_URL not configured. Create a deploy hook in Vercel (Project Settings → Git → Deploy Hooks) and add it as a GitHub Actions secret."
+            exit 0
+          fi
+          echo "Triggering scheduled rebuild..."
+          curl -sS -X POST "$HOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d '{"reason":"daily-drip-schedule"}'
+          echo "Deploy triggered at $(date -u +%Y-%m-%dT%H:%M:%SZ)"

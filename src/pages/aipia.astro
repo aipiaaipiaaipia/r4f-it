@@ -1,0 +1,171 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import RotatedBadge from "../components/kinetic/RotatedBadge.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "AIPIA — Associazione Italiana Professionisti IA · Presidenza CTS | r4f.it";
+const description =
+  "AIPIA è l'Associazione Italiana Professionisti dell'Intelligenza Artificiale. Sono Presidente del Comitato Tecnico-Scientifico dal giugno 2025. La community fonda la mia consulenza LLMO.";
+
+const aipiaSchema = {
+  "@context": "https://schema.org",
+  "@type": "OrganizationRole",
+  "roleName": "Presidente Comitato Tecnico-Scientifico",
+  "startDate": "2025-06",
+  "memberOf": {
+    "@type": "Organization",
+    "name": "AIPIA — Associazione Italiana Professionisti Intelligenza Artificiale",
+    "url": "https://aipia.it",
+    "foundingDate": "2024-02",
+    "areaServed": "IT",
+  },
+  "member": { "@id": "https://r4f.it/#rafael" },
+};
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  aipiaSchema,
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "AIPIA", url: "https://r4f.it/aipia" },
+  ])
+);
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <div class="grid-2 hero-grid">
+      <div>
+        <Pill>AIPIA</Pill>
+        <h1>L'associazione dei professionisti AI in Italia.</h1>
+        <p class="lead">
+          Sono Presidente del Comitato Tecnico-Scientifico di AIPIA dal giugno 2025. La community
+          di colleghi che lavorano con l'AI in Italia mi permette di restare allineato alle
+          evoluzioni reali del settore, non solo a quelle filtrate dai blog di marketing.
+        </p>
+        <div class="hero-cta">
+          <Button href="https://aipia.it" variant="ink" external>Vai su aipia.it</Button>
+          <Button href="/chi-sono" variant="ghost">Chi sono</Button>
+        </div>
+      </div>
+      <div class="badge-area">
+        <RotatedBadge text="AIPIA · CTS · PRESIDENTE · 2025 · " center="CTS" size={200} rotate={-6} variant="magenta" />
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose">
+      <Pill>Cos'è AIPIA</Pill>
+      <h2>Associazione culturale, professionisti AI.</h2>
+      <p>
+        AIPIA — Associazione Italiana Professionisti dell'Intelligenza Artificiale — è
+        un'associazione culturale senza scopo di lucro fondata nel febbraio 2024. Riunisce chi
+        lavora con l'AI in Italia: consulenti, developer, ricercatori, manager, formatori,
+        product manager.
+      </p>
+      <p>
+        L'obiettivo è creare una comunità professionale che promuova best practice nell'uso
+        dell'intelligenza artificiale, favorisca il networking tra professionisti e contribuisca
+        al dibattito pubblico sull'AI in modo competente e responsabile.
+      </p>
+      <p>
+        Sede legale a Roma, oltre 320 membri attivi, presenza in conferenze nazionali, pubblicazioni
+        editoriali (tra cui la Guida OpenClaw), convenzioni e partnership con istituzioni come
+        European AI Alliance e Rome Call for AI Ethics.
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Cosa fa AIPIA</Pill>
+    <h2>Quattro pilastri.</h2>
+    <div class="grid-2 cards-asym" style="margin-top: 2.5rem;">
+      <Card title="Networking professionale">
+        <p>Eventi periodici (online e in presenza), gruppi di discussione tematica, occasioni di incontro tra professionisti AI di tutta Italia.</p>
+      </Card>
+      <Card title="Formazione continua">
+        <p>Workshop su AI, machine learning, prompt engineering, AI ethics. Aggiornamento sui modelli più recenti e sulle pratiche emergenti.</p>
+      </Card>
+      <Card title="Pubblicazioni operative">
+        <p>Guide come OpenClaw, position paper su temi regolatori, contributi alle consultazioni pubbliche italiane ed europee.</p>
+      </Card>
+      <Card title="Rappresentanza del settore">
+        <p>Voce dei professionisti AI italiani nei tavoli istituzionali, nei media e nelle iniziative internazionali (European AI Alliance, Rome Call).</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose">
+      <Pill>Il mio ruolo</Pill>
+      <h2>Presidente del Comitato Tecnico-Scientifico.</h2>
+      <p>
+        Sono stato eletto Presidente del Comitato Tecnico-Scientifico di AIPIA all'unanimità nel
+        giugno 2025. Il CTS è l'organo che indirizza le linee tecniche, valida le pubblicazioni
+        e definisce le posizioni sul tema AI in modo competente.
+      </p>
+      <p>
+        Per il mio lavoro di consulente LLMO, fare parte di AIPIA significa avere accesso quotidiano
+        a centinaia di colleghi che applicano l'AI in contesti diversi: marketing, prodotto,
+        ricerca, formazione. È una lente sul mercato che nessun blog può sostituire.
+      </p>
+      <p>
+        Importante distinzione: <strong>AIPIA non è il mio business</strong>. È una credenziale
+        professionale verificabile e un'appartenenza che informa il mio modo di lavorare. Sul
+        sito r4f.it AIPIA è citata come parte della mia identità di consulente, mai come ente
+        del mercato target.
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Vuoi iscriverti?</Pill>
+    <h2>Se lavori con l'AI in Italia.</h2>
+    <div class="grid-2 split-cta">
+      <div class="prose">
+        <p>
+          L'iscrizione ad AIPIA è aperta a chi lavora professionalmente con l'AI in Italia. Quote
+          annuali contenute, vantaggi concreti (convenzioni, formazioni, eventi), rappresentanza
+          ufficiale.
+        </p>
+        <p>
+          <strong>Non sono io il punto di ingresso per iscriversi</strong>: tutto è gestito tramite
+          il sito ufficiale aipia.it. Da lì trovi modulo di adesione, statuto, calendario eventi.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="https://aipia.it" variant="magenta">Vai su aipia.it</MagneticCTA>
+        <Button href="/chi-sono" variant="ghost">Torna alla mia bio</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero-grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .badge-area { display: flex; justify-content: center; }
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; margin-top: 2rem; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .badge-area { justify-content: flex-start; }
+  }
+</style>

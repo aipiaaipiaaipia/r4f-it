@@ -1,0 +1,258 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  bookSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Libri di Rafael Patron — Growth Hacking, AIO, LLMO | r4f.it";
+const description =
+  "Tre libri pubblicati su Amazon: Growth Hacking (2023), AIO Il tuo prossimo collega è un robot (2023/2025), Fatti trovare da ChatGPT — Guida operativa al LLMO (2026, co-autori AIPIA e Filippo Fassone).";
+
+const books = [
+  {
+    asin: "B0GQ37KM4S",
+    title: "Fatti trovare da ChatGPT",
+    subtitle: "Guida operativa al LLMO (Large Language Model Optimization)",
+    year: "2026",
+    publishDate: "2026-01-15",
+    coAuthors: "Rafael Patron, AIPIA, Filippo Fassone",
+    abstract:
+      "Il primo manuale italiano di LLMO. Come ottimizzare la presenza online perché ChatGPT, Claude, Gemini e Perplexity citino e raccomandino il tuo brand. Schema.org, llms.txt, entità Wikidata, citation rate: framework operativi testati su clienti reali.",
+    why:
+      "Se hai un sito o gestisci la presenza online di un brand, questo libro ti dà il framework che applico quotidianamente nelle mie consulenze.",
+    tags: ["LLMO", "AI Search", "Schema.org", "Citation Rate"],
+  },
+  {
+    asin: "B0FBL336QV",
+    title: "AIO: Il tuo prossimo collega è un robot",
+    subtitle: "C'era una volta Google. Ora non cerchiamo più: chiediamo, e chi possiede la risposta domina il mercato.",
+    year: "2023, nuova ed. 2025",
+    publishDate: "2023-09-01",
+    coAuthors: "Rafael Patron, AIPIA",
+    abstract:
+      "Come l'Intelligenza Artificiale sta trasformando il mondo del lavoro e come prepararsi. Scritto con il supporto di AIPIA, affronta il tema dell'AI in azienda con un approccio pratico e accessibile. Nuova edizione 2025 con aggiornamenti su LLM e AI Overview.",
+    why:
+      "Se la tua azienda sta valutando come integrare l'AI nei processi quotidiani, questo libro ti dà un quadro non astratto né allarmistico.",
+    tags: ["AI Operations", "AI Strategy", "Lavoro"],
+  },
+  {
+    asin: "B0CN538KZL",
+    title: "Growth Hacking",
+    subtitle: "I segreti di una crescita rapida e sostenibile. Una guida per affrontare il labirinto del Growth Hacking.",
+    year: "2023/2024",
+    publishDate: "2023-12-01",
+    coAuthors: "Rafael Patron",
+    abstract:
+      "Manuale operativo per startup e PMI che vogliono crescere velocemente con risorse limitate. Strategie testate sul campo, casi studio reali, framework applicabili da subito. Niente teoria americana riciclata: principi calati sul mercato italiano.",
+    why:
+      "Se stai lanciando un prodotto o vuoi accelerare un'attività esistente con budget limitato, ti dà un metodo strutturato.",
+    tags: ["Growth Hacking", "Startup", "PMI"],
+  },
+];
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  ...books.map((b) =>
+    bookSchema({
+      name: b.title,
+      description: b.abstract,
+      author: "Rafael Patron",
+      datePublished: b.publishDate,
+      asin: b.asin,
+      abstract: b.subtitle,
+    })
+  ),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Libri", url: "https://r4f.it/libri" },
+  ])
+);
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Libri</Pill>
+    <h1>Tre libri per capire il digitale che cambia.</h1>
+    <p class="lead">
+      Scritti per chi vuole capire e agire, non per chi cerca buzzword. Disponibili su Amazon in
+      formato cartaceo e Kindle. Il più recente — "Fatti trovare da ChatGPT" — è il primo manuale
+      italiano dedicato interamente al LLMO.
+    </p>
+  </Section>
+
+  <Section tone="alt">
+    <div class="books">
+      {books.map((b, i) => (
+        <article class="book" data-reveal style={`--reveal-delay: ${i * 120}ms`}>
+          <div class="book__cover" aria-hidden="true">
+            <div class="book__cover-inner">
+              <div class="book__cover-spine"></div>
+              <div class="book__cover-face">
+                <span class="book__cover-year">{b.year}</span>
+                <span class="book__cover-title">{b.title}</span>
+                <span class="book__cover-mark">r4f</span>
+              </div>
+            </div>
+          </div>
+          <div class="book__body">
+            <Pill variant="magenta">{b.year}</Pill>
+            <h2>{b.title}</h2>
+            <p class="book__subtitle">{b.subtitle}</p>
+            <p class="book__meta">Autore: {b.coAuthors}</p>
+            <p class="prose">{b.abstract}</p>
+            <p class="book__why"><strong>Perché leggerlo.</strong> {b.why}</p>
+            <ul class="book__tags">
+              {b.tags.map((t) => <li><span class="tag">{t}</span></li>)}
+            </ul>
+            <Button href={`https://www.amazon.it/dp/${b.asin}`} variant="ink" external>Vedi su Amazon</Button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Vuoi approfondire?</Pill>
+        <h2>Consulenza o workshop sui temi dei libri.</h2>
+        <p class="lead">
+          Se vuoi applicare quello che racconto nei libri al tuo business, scrivimi. Audit LLMO,
+          retainer mensile o workshop on-site per il team.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="/audit-llmo" variant="magenta">Audit LLMO</MagneticCTA>
+        <Button href="/formazione" variant="ghost">Formazione team</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .books {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 1rem;
+  }
+  .book {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .book:nth-child(even) {
+    grid-template-columns: 1fr 200px;
+  }
+  .book:nth-child(even) .book__cover {
+    order: 2;
+  }
+
+  .book__cover {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    display: flex;
+    align-items: stretch;
+    transform: rotate(-2deg);
+    transition: transform var(--dur-base) var(--ease-out-quint);
+    box-shadow: 6px 6px 0 var(--color-magenta);
+  }
+  .book__cover:hover { transform: rotate(0); }
+  .book:nth-child(even) .book__cover { transform: rotate(2deg); }
+  .book:nth-child(even) .book__cover:hover { transform: rotate(0); }
+
+  .book__cover-inner {
+    display: flex;
+    width: 100%;
+  }
+  .book__cover-spine {
+    width: 12px;
+    background: var(--color-magenta);
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .book__cover-face {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .book__cover-year {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 240, 0.6);
+  }
+  .book__cover-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+  .book__cover-mark {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.04em;
+    color: var(--color-magenta);
+  }
+
+  .book__body { display: flex; flex-direction: column; gap: .8rem; align-items: flex-start; }
+  .book__body h2 { font-size: clamp(1.6rem, 2.4vw + .5rem, 2.4rem); margin: .4rem 0 .4rem; }
+  .book__subtitle {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-ink-soft);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-style: italic;
+    margin-bottom: .4rem;
+  }
+  .book__meta {
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .book__why {
+    margin-top: .4rem;
+    padding: 1rem 1.2rem;
+    background: var(--color-magenta-soft);
+    border-left: 2px solid var(--color-magenta);
+    max-width: 60ch;
+  }
+  .book__why strong { color: var(--color-magenta); }
+  .book__tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+  .book__tags li { margin: 0; }
+
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+  @media (max-width: 760px) {
+    .book, .book:nth-child(even) { grid-template-columns: 1fr; gap: 1.5rem; }
+    .book:nth-child(even) .book__cover { order: 0; }
+    .book__cover { max-width: 220px; }
+  }
+</style>

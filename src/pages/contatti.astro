@@ -1,0 +1,185 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Contatti — Scrivimi per consulenza LLMO | r4f.it";
+const description =
+  "Tre modi per contattarmi: email diretta r@r4f.it o info@r4f.it, telefono +39 010 776 7545, WhatsApp. Niente form. Risposta entro 24 ore lavorative. Base operativa Chiavari (GE).";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  {
+    "@type": "ContactPage",
+    name: "Contatti r4f.it",
+    url: "https://r4f.it/contatti",
+  },
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Contatti", url: "https://r4f.it/contatti" },
+  ])
+);
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Contatti</Pill>
+    <h1>Tre modi diretti. Niente form.</h1>
+    <p class="lead">
+      Email, telefono o WhatsApp. Ti risponde la persona giusta, di solito entro 24 ore lavorative.
+      Se dopo il primo scambio ha senso parlarne a voce, fissiamo una call da 30 minuti.
+    </p>
+  </Section>
+
+  <Section tone="alt">
+    <div class="grid-3 contact-grid">
+      <article class="contact-card">
+        <span class="contact-card__num">01</span>
+        <h2>Email</h2>
+        <p>Per consulenza, preventivi, domande tecniche.</p>
+        <ul class="contact-list">
+          <li><span class="label">Lavoro</span><a href="mailto:r@r4f.it">r@r4f.it</a></li>
+          <li><span class="label">Generale</span><a href="mailto:info@r4f.it">info@r4f.it</a></li>
+        </ul>
+        <p class="hint">Dimmi in breve cosa fai, qual è la situazione attuale del sito e cosa vorresti ottenere. Più sei specifico, più la risposta sarà utile.</p>
+      </article>
+
+      <article class="contact-card">
+        <span class="contact-card__num">02</span>
+        <h2>Telefono</h2>
+        <p>Per richieste rapide o se l'email non è il tuo canale.</p>
+        <ul class="contact-list">
+          <li><span class="label">Italia</span><a class="tel" href="tel:+390107767545">+39 010 776 7545</a></li>
+          <li><span class="label">Orario</span><span class="tel">9:30 – 18:30 (CET)</span></li>
+        </ul>
+        <p class="hint">Se non rispondo, scrivimi via WhatsApp o email e ti richiamo entro la giornata lavorativa.</p>
+      </article>
+
+      <article class="contact-card">
+        <span class="contact-card__num">03</span>
+        <h2>WhatsApp</h2>
+        <p>Per scambi rapidi quando il telefono è la via più diretta.</p>
+        <ul class="contact-list">
+          <li><span class="label">Chat</span><a href="https://wa.me/390107767545" rel="noopener">wa.me/390107767545</a></li>
+        </ul>
+        <p class="hint">Niente catene marketing, niente broadcast. Solo conversazione di lavoro.</p>
+      </article>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="grid-2 office">
+      <div class="prose">
+        <Pill>Ufficio Italia</Pill>
+        <h2>Chiavari, Liguria.</h2>
+        <address class="address">
+          Via Davide Gagliardo 7<br />
+          16043 Chiavari (GE)<br />
+          Italia
+        </address>
+        <p>
+          Workshop, kick-off, sessioni strategiche on-site su appuntamento. 40 minuti di treno da
+          Genova Brignole, autostrada A12 diretta. Tigullio e Riviera di Levante in 20-30 minuti.
+        </p>
+      </div>
+      <div class="prose">
+        <Pill>Dati fiscali</Pill>
+        <h2>Intarget DMCC, Dubai.</h2>
+        <p>
+          Le fatture sono emesse da <strong>Intarget DMCC</strong>, licenza DMCC-809871, sede a
+          Jumeirah Lakes Towers, Dubai (UAE). Per clienti b2b italiani la prestazione è gestita
+          come servizio internazionale.
+        </p>
+        <p>
+          Per dettagli fiscali specifici (regime IVA, fattura elettronica italiana, modalità di
+          pagamento bonifico/Stripe), ne parliamo prima di iniziare il lavoro.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="cta-final">
+      <Pill>Iniziamo?</Pill>
+      <h2>Il modo più rapido è una mail.</h2>
+      <p class="lead">
+        Audit, retainer, workshop, o solo una chiacchierata per capire se ha senso lavorare
+        insieme. Rispondo entro 24 ore lavorative.
+      </p>
+      <MagneticCTA href="mailto:r@r4f.it" variant="magenta">r@r4f.it</MagneticCTA>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .contact-grid { gap: 1.5rem; margin-top: 1rem; }
+  .contact-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    padding: 1.8rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    position: relative;
+  }
+  .contact-card__num {
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--color-magenta);
+    font-weight: 600;
+  }
+  .contact-card h2 { font-size: 1.5rem; margin: 0; }
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding: .9rem 0;
+    border-top: 1px solid var(--color-line-soft);
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .contact-list li { display: flex; flex-direction: column; gap: 2px; }
+  .contact-list .label {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .contact-list a, .contact-list .tel {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    color: var(--color-ink);
+    background: none;
+    white-space: nowrap;
+  }
+  .contact-list a:hover { color: var(--color-magenta); }
+  .hint { font-size: .92rem; color: var(--color-ink-soft); margin: 0; }
+
+  .office { gap: clamp(2rem, 4vw, 4rem); }
+  .address {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-style: normal;
+    margin: 1rem 0;
+    padding: 1rem 1.2rem;
+    border-left: 3px solid var(--color-magenta);
+    max-width: max-content;
+  }
+
+  .cta-final { text-align: left; max-width: 60ch; }
+  .cta-final h2 { margin-bottom: .5em; }
+  .cta-final .lead { margin-bottom: 2rem; }
+</style>

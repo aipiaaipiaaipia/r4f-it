@@ -1,0 +1,14 @@
+{
+  "name": "r4f.it — Consulenza LLMO",
+  "short_name": "r4f.it",
+  "description": "Consulenza LLM Optimization per imprese italiane.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F0",
+  "theme_color": "#DB2777",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/favicon-32.png", "sizes": "32x32", "type": "image/png" }
+  ]
+}

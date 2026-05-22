@@ -1,0 +1,216 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Button from "../components/ui/Button.astro";
+import RotatedBadge from "../components/kinetic/RotatedBadge.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Il metodo LLMO — Audit, strategia, implementazione, autonomia | r4f.it";
+const description =
+  "Come ottimizzo la visibilità di un brand sui Large Language Model: quattro fasi, metriche di citation rate, sprint mensili e trasferimento di competenze al team interno.";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Metodo", url: "https://r4f.it/metodo" },
+  ])
+);
+
+const phases = [
+  {
+    n: "01",
+    title: "Audit & diagnosi",
+    body:
+      "Misuro lo stato di partenza. Quante volte il tuo brand viene citato su ChatGPT, Claude, Gemini e Perplexity sulle query strategiche del settore. Mappa dei competitor, gap analysis, lista delle leve a impatto più rapido. Deliverable: documento operativo, non un report decorativo.",
+    bullets: [
+      "Test su 30-60 query reali del tuo settore",
+      "Confronto con 3-5 competitor diretti",
+      "Citation rate baseline misurato",
+      "Knowledge graph + entità Wikidata mappate",
+    ],
+  },
+  {
+    n: "02",
+    title: "Strategia",
+    body:
+      "Definisco la roadmap. Quali contenuti riscrivere, quali creare, quale schema implementare, quali entità da consolidare. Ogni azione ha una metrica di riferimento. Lavoro a sprint mensili con obiettivi chiari e checkpoint settimanali.",
+    bullets: [
+      "Roadmap a 90 giorni",
+      "Backlog prioritizzato per impact/effort",
+      "KPI: citation rate, AI Overview share, mention frequency",
+      "Allineamento con team interno e fornitori",
+    ],
+  },
+  {
+    n: "03",
+    title: "Implementazione",
+    body:
+      "Passo all'esecuzione. Schema markup avanzato (Organization, Service, Product, FAQPage, HowTo, Person), llms.txt strutturato, dati strutturati, riscrittura contenuti per chiarezza semantica, ottimizzazione entità per knowledge graph, asset citabili dai modelli.",
+    bullets: [
+      "Schema.org JSON-LD per ogni tipo pagina",
+      "llms.txt e robots.txt mirati per AI bot",
+      "Wikidata / Wikipedia entity strengthening",
+      "FAQ strategiche scritte per essere citate",
+    ],
+  },
+  {
+    n: "04",
+    title: "Monitoraggio & autonomia",
+    body:
+      "Monitoro i risultati su base settimanale. Confronto citation rate prima/dopo. Ti formo per gestire la routine in autonomia: strumenti, checklist, processi documentati. L'obiettivo è che il team interno gestisca le attività ordinarie senza dipendere da me.",
+    bullets: [
+      "Dashboard citation rate semplice e leggibile",
+      "Checklist editoriali pubblicabili",
+      "Onboarding team con documentazione operativa",
+      "Sessione Q&A di follow-up a 30 giorni",
+    ],
+  },
+];
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Metodo</Pill>
+    <h1>Quattro fasi. Risultati misurabili.</h1>
+    <p class="lead">
+      Non esiste una formula magica. Esiste un processo strutturato, testato su decine di
+      progetti, che produce risultati misurabili. Ecco come funziona.
+    </p>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose" style="max-width: 70ch;">
+      <h2>Perché serve un metodo nuovo</h2>
+      <p>
+        La SEO tradizionale si basa su un presupposto: ottimizzi il sito per Google, Google ti
+        premia con traffico. Per vent'anni ha funzionato. Adesso non basta più.
+      </p>
+      <p>
+        Google ha introdotto le AI Overview, risposte generate dall'AI che compaiono prima dei
+        risultati organici. In parallelo, ChatGPT, Claude, Perplexity e Gemini stanno diventando
+        il primo punto di contatto per milioni di utenti che cercano prodotti, servizi e
+        professionisti.
+      </p>
+      <p>
+        Il metodo LLMO nasce per affrontare questa realtà. Non sostituisce la SEO — la evolve,
+        aggiungendo un livello di ottimizzazione esplicita per i modelli di linguaggio AI.
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Le quattro fasi</Pill>
+    <h2>Dalla diagnosi all'autonomia.</h2>
+    <div class="phases">
+      {phases.map((p, i) => (
+        <article class="phase-row" data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+          <div class="phase-row__num">
+            <RotatedBadge text={`FASE ${p.n} · ${p.title.toUpperCase()} · `} center={p.n} size={120} rotate={i % 2 === 0 ? -4 : 5} variant="outline" />
+          </div>
+          <div class="phase-row__body">
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+            <ul class="phase-row__bullets">
+              {p.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Cosa cambia concretamente</Pill>
+    <h2>Su cosa agisco sul tuo sito.</h2>
+    <div class="grid-2" style="margin-top: 2rem;">
+      <ul class="action-list">
+        <li><strong>Contenuti.</strong> Riscrittura per chiarezza semantica, FAQ citabili, long-form pensati per essere ripresi dai modelli AI come fonte autorevole.</li>
+        <li><strong>Struttura tecnica.</strong> Schema markup avanzato, dati strutturati, architettura delle informazioni, llms.txt strutturato, breadcrumb consistenti.</li>
+        <li><strong>Entità.</strong> Ottimizzazione della rappresentazione del brand nei knowledge graph di Google e nei dataset di training degli LLM. Wikidata, Wikipedia, sameAs network.</li>
+      </ul>
+      <ul class="action-list">
+        <li><strong>Autorevolezza.</strong> Strategia di backlink qualitativi, menzioni su fonti autorevoli del settore, presenza dove conta — non SPAM link building.</li>
+        <li><strong>Monitoraggio.</strong> Tracking sistematico della presenza nelle risposte AI con tool dedicati e prompt scripting. Confronto regolare con competitor.</li>
+        <li><strong>Trasferimento competenze.</strong> Documentazione operativa per il tuo team interno. Niente lock-in: vendo competenza, non dipendenza.</li>
+      </ul>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Pronto a partire?</Pill>
+        <h2>Vuoi capire dove sei oggi?</h2>
+        <p class="lead">
+          L'audit LLMO è il punto d'ingresso. Una call di un'ora con prima diagnosi e raccomandazioni
+          operative — €200. Versione full deliverable PDF — €800.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="/audit-llmo" variant="magenta">Vai all'audit LLMO</MagneticCTA>
+        <Button href="/contatti" variant="ghost">Chiamami</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .phases {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .phase-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-line-soft);
+  }
+  .phase-row:last-child { border-bottom: none; }
+  .phase-row__body h3 { font-size: 1.6rem; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; margin-bottom: .7rem; }
+  .phase-row__body p { margin-bottom: 1rem; }
+  .phase-row__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem 1.5rem;
+  }
+  .phase-row__bullets li {
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--color-ink-soft);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .phase-row__bullets li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-magenta);
+  }
+
+  .action-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.3rem; }
+  .action-list strong { color: var(--color-magenta); }
+
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+  @media (max-width: 760px) {
+    .phase-row { grid-template-columns: 1fr; gap: 1rem; }
+    .phase-row__bullets { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,242 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import RotatedBadge from "../components/kinetic/RotatedBadge.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Chi sono — Rafael Patron, consulente LLMO e Presidente CTS AIPIA | r4f.it";
+const description =
+  "Rafael Patron: oltre 20 anni nel digitale, Presidente del Comitato Tecnico-Scientifico AIPIA, autore di tre libri su growth hacking, AIO e LLMO. Docente IED Milano, UNIFI, Nana Bianca. Consulenza LLMO da Liguria a tutta Italia.";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Chi sono", url: "https://r4f.it/chi-sono" },
+  ])
+);
+
+const credentials = [
+  { title: "Presidente CTS AIPIA", body: "Eletto giugno 2025 al Comitato Tecnico-Scientifico dell'Associazione Italiana Professionisti dell'Intelligenza Artificiale." },
+  { title: "AI Program Manager — Intarget DMCC", body: "Dal 2019, agenzia digital con HQ Jumeirah Lakes Towers, Dubai." },
+  { title: "Founder Patron Multimedia", body: "Dal 2012, base operativa Chiavari (Liguria). Consulenza diretta digital + AI." },
+];
+
+const teachings = [
+  { where: "IED Milano", what: "Docente Master Evolution Marketing & Growth Hacking — da oltre 6 anni" },
+  { where: "Università degli Studi di Firenze", what: "Docente AI applicata" },
+  { where: "Nana Bianca (Firenze)", what: "Formazione startup incubatore" },
+  { where: "Corporate (TIM, Microsoft, AC Milan)", what: "Workshop team digital, AI strategy" },
+];
+
+const skills = [
+  "Large Language Model Optimization", "AIO", "Generative Engine Optimization",
+  "Answer Engine Optimization", "AI Program Management", "Growth Hacking",
+  "Schema.org Structured Data", "Knowledge Graph", "Wikidata Entity Authority",
+  "Technical SEO", "Prompt Engineering", "RAG Architecture",
+  "Salesforce", "HubSpot", "Digital Marketing Strategy",
+];
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <div class="bio-hero">
+      <div>
+        <Pill>Chi sono</Pill>
+        <h1>Rafael Patron.</h1>
+        <p class="lead">
+          Consulente LLMO/AIO, AI Program Manager, Presidente del Comitato Tecnico-Scientifico AIPIA.
+          Lavoro nel digitale da oltre vent'anni e nell'AI applicata da quando ha smesso di essere
+          fantascienza.
+        </p>
+        <div class="bio-hero__cta">
+          <MagneticCTA href="/audit-llmo" variant="magenta">Richiedi un audit</MagneticCTA>
+          <Button href="/libri" variant="ghost">I miei libri</Button>
+        </div>
+      </div>
+      <div class="bio-hero__badge">
+        <RotatedBadge text="LLMO · AIPIA CTS · 20 ANNI · IED · UNIFI · " center="r4f" size={200} rotate={-5} variant="ink" />
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="grid-2" style="gap: clamp(2rem, 4vw, 4rem);">
+      <div class="prose">
+        <Pill>Il percorso</Pill>
+        <h2>Da Cogorno a Dubai, e ritorno.</h2>
+        <p>
+          Sono nato in Perù e cresciuto in Liguria, dai tre anni. La mia famiglia ha radici a
+          Cogorno, in provincia di Genova, dove mio nonno è tornato dopo l'emigrazione in
+          Sudamerica.
+        </p>
+        <p>
+          Ho iniziato nel digital marketing quando Google era ancora giovane. SEO, SEM, growth
+          hacking — li ho fatti tutti, per startup che dovevano crescere in fretta e per aziende
+          che volevano innovare senza sprecare budget. Passaggi formativi a Google San Francisco
+          (2012-2013), Snap Inc. prima dell'IPO (2016-2017, quando Snapchat acquisì un sistema
+          sviluppato dal mio team sui sensori smartphone), Microsoft Milano, TIM, Eni.
+        </p>
+        <p>
+          Quando l'intelligenza artificiale ha iniziato a cambiare le regole del gioco, non ho
+          aspettato. Ho contribuito a fondare il Comitato Tecnico-Scientifico di AIPIA, di cui
+          oggi sono Presidente. Ho scritto tre libri: "Growth Hacking", "AIO: Il tuo prossimo
+          collega è un robot", "Fatti trovare da ChatGPT — Guida operativa al LLMO".
+        </p>
+        <p>
+          Oggi opero tra Italia e UAE. Base operativa Chiavari (Liguria), agenzia di riferimento
+          Intarget DMCC a Dubai. Clienti in tutta Italia e su progetti internazionali.
+        </p>
+      </div>
+      <div class="prose">
+        <Pill>Perché LLMO</Pill>
+        <h2>Il termine cambia, l'urgenza no.</h2>
+        <p>
+          Dopo vent'anni di SEO ho visto il settore cambiare radicalmente con l'arrivo delle AI
+          Overview e degli assistenti AI. La domanda non è più solo "come mi posiziono su Google".
+          È "come compaio quando qualcuno chiede a ChatGPT chi è il migliore nel mio settore?".
+        </p>
+        <p>
+          LLMO — Large Language Model Optimization — è la risposta concreta. Non è una buzzword:
+          è un set di pratiche tecniche per rendere il brand <em>comprensibile e raccomandabile</em>{" "}
+          dai modelli di linguaggio AI. Schema.org, entità Wikidata, llms.txt, citation rate,
+          knowledge graph: strumenti vecchi e nuovi che funzionano insieme.
+        </p>
+        <p>
+          L'AIO — Artificial Intelligence Optimization — resta il termine generico di famiglia.
+          Lo uso ancora, e ho una pagina dedicata <a href="/audit-aio">/audit-aio</a> per chi
+          arriva da quella keyword. Ma sul tema della visibilità nei motori generativi, "LLMO"
+          è il termine più preciso.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Ruoli</Pill>
+    <h2>Tre cappelli, una sola direzione.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      {credentials.map((c) => (
+        <Card title={c.title}>
+          <p>{c.body}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="grid-2" style="gap: clamp(2rem, 4vw, 4rem); align-items: start;">
+      <div>
+        <Pill>Formazione</Pill>
+        <h2>Da Genova a Harvard.</h2>
+        <ul class="formation-list">
+          <li><strong>Università degli Studi di Genova</strong><span>2008-2011 · Laurea in Economia Aziendale e Gestione d'Impresa</span></li>
+          <li><strong>IED Milano</strong><span>2012-2013 · Master Evolution Marketing &amp; Social Media</span></li>
+          <li><strong>Università Bocconi</strong><span>2021-2022 · Bitcoin and Blockchain Program</span></li>
+          <li><strong>Harvard University</strong><span>2023-2024 · CS50's Introduction to AI with Python</span></li>
+        </ul>
+      </div>
+      <div>
+        <Pill>Docenze</Pill>
+        <h2>Cosa insegno, dove.</h2>
+        <ul class="formation-list">
+          {teachings.map((t) => (
+            <li><strong>{t.where}</strong><span>{t.what}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Competenze</Pill>
+    <h2>Stack tecnico verificabile.</h2>
+    <p class="lead">
+      Oltre 50 certificazioni internazionali tra Salesforce, Google, HubSpot, SEMrush, Amazon,
+      YouTube. Le competenze chiave per il lavoro LLMO/AIO sono queste.
+    </p>
+    <ul class="skills">
+      {skills.map((s) => <li><span class="tag">{s}</span></li>)}
+    </ul>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Lavoriamo insieme?</Pill>
+        <h2>Scrivimi.</h2>
+        <p class="lead">
+          Niente form, niente CRM intermedi. Una mail diretta. Rispondo entro 24 ore lavorative;
+          se vale la pena, fissiamo una call da 30 minuti.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it" variant="magenta">r@r4f.it</MagneticCTA>
+        <Button href="/contatti" variant="ghost">Tutti i contatti</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .bio-hero {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .bio-hero h1 { margin-top: 1rem; margin-bottom: 1rem; }
+  .bio-hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .bio-hero__badge { display: flex; justify-content: center; }
+
+  .formation-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .formation-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-magenta);
+  }
+  .formation-list strong { font-size: 1.08rem; font-weight: 600; }
+  .formation-list span { font-family: var(--font-mono); font-size: .82rem; color: var(--color-ink-muted); }
+
+  .skills {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+  }
+  .skills li { margin: 0; }
+
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+  @media (max-width: 900px) {
+    .bio-hero { grid-template-columns: 1fr; }
+    .bio-hero__badge { justify-self: start; }
+  }
+</style>

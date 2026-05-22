@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import KineticHeadline from "../components/kinetic/KineticHeadline.astro";
+
+const title = "Pagina non trovata — 404 | r4f.it";
+const description = "La pagina che cerchi non esiste. Torna in homepage o esplora i servizi LLMO.";
+---
+
+<BaseLayout {title} {description} noindex>
+  <Section class="four-oh-four">
+    <div class="four-oh-four__inner">
+      <p class="four-oh-four__path" id="path-display">/sito/perduto</p>
+      <h1 class="four-oh-four__h">
+        <KineticHeadline primary="404" secondary="NOPE" level={2} />
+      </h1>
+      <p class="lead">
+        Questa pagina non esiste, è stata spostata, o non l'ho mai pubblicata.
+        Capita anche ai migliori siti — anzi, soprattutto a loro.
+      </p>
+      <div class="four-oh-four__cta">
+        <MagneticCTA href="/" variant="magenta">Torna in home</MagneticCTA>
+        <Button href="/audit-llmo" variant="ghost">Vai all'audit LLMO</Button>
+      </div>
+
+      <ul class="four-oh-four__links">
+        <li><a href="/servizi">Servizi</a></li>
+        <li><a href="/metodo">Metodo</a></li>
+        <li><a href="/chi-sono">Chi sono</a></li>
+        <li><a href="/libri">Libri</a></li>
+        <li><a href="/risorse">Risorse</a></li>
+        <li><a href="/contatti">Contatti</a></li>
+      </ul>
+    </div>
+  </Section>
+</BaseLayout>
+
+<script>
+  const el = document.getElementById("path-display");
+  if (el) el.textContent = window.location.pathname || "/sito/perduto";
+</script>
+
+<style>
+  .four-oh-four {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .four-oh-four__inner { text-align: left; max-width: 60ch; }
+  .four-oh-four__path {
+    font-family: var(--font-mono);
+    font-size: .9rem;
+    color: var(--color-magenta);
+    margin: 0 0 .8rem;
+    background: var(--color-magenta-soft);
+    padding: .4rem .7rem;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  .four-oh-four__h {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 14vw, 9rem);
+    line-height: 1;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.04em;
+    color: var(--color-ink);
+  }
+  .four-oh-four__cta {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  .four-oh-four__links {
+    list-style: none;
+    padding: 1.5rem 0 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.5rem;
+    border-top: 1px solid var(--color-line-soft);
+  }
+  .four-oh-four__links li { margin: 0; }
+  .four-oh-four__links a {
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--color-ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+</style>

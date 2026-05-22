@@ -1,0 +1,289 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import KineticHeadline from "../components/kinetic/KineticHeadline.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  llmoServiceSchema,
+  breadcrumbSchema,
+  faqSchema,
+} from "../lib/schema";
+
+const title = "Audit LLMO — Come ChatGPT, Claude, Gemini parlano del tuo brand | r4f.it";
+const description =
+  "Audit LLMO da €200 (call 60 minuti) o €800 (deliverable PDF completo). Analizzo come ChatGPT, Claude, Gemini, Perplexity e le AI Overview di Google rispondono sul tuo brand. Tempi 5-7 giorni.";
+
+const faqs = [
+  {
+    q: "Cos'è esattamente un audit LLMO?",
+    a: "È un'analisi sistematica di come i Large Language Model (ChatGPT, Claude, Gemini, Perplexity, Copilot) e le AI Overview di Google rispondono alle query strategiche del tuo settore. Misura quanto e come il tuo brand viene citato, dove sei invisibile, e cosa fanno i competitor che oggi compaiono al tuo posto.",
+  },
+  {
+    q: "Qual è la differenza tra audit LLMO da €200 e quello da €800?",
+    a: "L'audit da €200 è una call di 60 minuti: condividiamo lo schermo, testiamo 10-15 query insieme su ChatGPT/Perplexity e identifico le tre azioni a impatto più rapido. È il punto d'ingresso. L'audit completo da €800 è un deliverable PDF strutturato: 30-60 query testate su 5 modelli, screenshot delle risposte, citation rate calcolato, gap map vs 3-5 competitor, lista di 15-25 azioni prioritizzate, call di restituzione da 60 minuti. Richiede 5-7 giorni lavorativi.",
+  },
+  {
+    q: "Per quali settori funziona?",
+    a: "LLMO funziona meglio dove la decisione d'acquisto passa per ricerca informata: servizi B2B, professionisti (avvocati, commercialisti, medici, consulenti), ecommerce di prodotti considerati, software/SaaS, formazione. Funziona meno bene per brand FMCG di largo consumo dove la ricerca AI è marginale rispetto al display advertising.",
+  },
+  {
+    q: "Quanto serve per vedere risultati?",
+    a: "Il citation rate inizia a muoversi entro 30-60 giorni dall'implementazione delle prime azioni (schema markup, llms.txt, FAQ strutturate). I risultati più consolidati — presenza stabile in AI Overview, citazioni regolari su ChatGPT, knowledge graph rinforzato — richiedono 90-180 giorni di lavoro costante. Niente quick win definitivi: è un compounding effect.",
+  },
+  {
+    q: "L'audit include suggerimenti di implementazione?",
+    a: "Sì. La versione completa include la lista di azioni prioritizzate per impact/effort, con suggerimenti tecnici concreti (schema da implementare, contenuti da riscrivere, entità da consolidare). Se vuoi che mi occupi io dell'implementazione, possiamo proseguire con un retainer mensile separato. Niente lock-in: tutto è documentato e replicabile dal tuo team.",
+  },
+  {
+    q: "Posso pagare con fattura italiana?",
+    a: "Sì. Le fatture sono emesse da Intarget DMCC (Dubai, DMCC-809871). Per clienti italiani b2b è gestita come prestazione di servizi internazionale. Per dettagli fiscali specifici, ne parliamo prima di iniziare.",
+  },
+];
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  llmoServiceSchema(),
+  faqSchema(faqs),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Audit LLMO", url: "https://r4f.it/audit-llmo" },
+  ])
+);
+
+const pricingOptions = [
+  {
+    name: "Audit base",
+    price: "€200",
+    duration: "Call 60 minuti",
+    body: "Sessione live condividendo lo schermo. Testiamo 10-15 query insieme su ChatGPT e Perplexity. Identifico tre azioni a impatto più rapido. Recap email scritto.",
+    bullets: ["10-15 query testate live", "3 azioni prioritarie identificate", "Recap email scritto", "Nessun deliverable PDF"],
+    cta: "Prenota call",
+  },
+  {
+    name: "Audit completo",
+    price: "€800",
+    duration: "5-7 giorni lavorativi",
+    body: "Deliverable PDF strutturato. 30-60 query testate su 5 modelli (ChatGPT, Claude, Gemini, Perplexity, Copilot). Citation rate calcolato. Gap map competitor. Call di restituzione da 60 minuti.",
+    bullets: ["30-60 query · 5 modelli", "Citation rate misurato", "3-5 competitor mappati", "15-25 azioni prioritizzate", "Call restituzione 60 min", "PDF condivisibile internamente"],
+    cta: "Richiedi audit",
+    featured: true,
+  },
+];
+
+const cosaAnalizzo = [
+  { what: "ChatGPT (free + Plus)", why: "Il modello con la base utenti più ampia. Diversi pattern di risposta tra free e Plus." },
+  { what: "Claude (Sonnet + Opus)", why: "Modello con citation più conservative ma autorevoli. Citazioni più affidabili sulle decisioni B2B." },
+  { what: "Gemini (free + Advanced)", why: "Integrato con Google Search. Le citazioni in Gemini correlano con AI Overview." },
+  { what: "Perplexity", why: "Citation rate esplicito e leggibile. Ottimo segnale di partenza per il citation tracking." },
+  { what: "AI Overview di Google", why: "L'esperienza che impatta più direttamente il traffico organico tradizionale." },
+  { what: "Knowledge graph + Wikidata", why: "L'ossatura entità che alimenta tutti i modelli. Lacune qui = lacune ovunque." },
+];
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill variant="magenta">Audit LLMO</Pill>
+    <h1>Cosa risponde l'<KineticHeadline primary="AI" secondary="LLM" level={2} /> sul tuo brand. Oggi.</h1>
+    <p class="lead">
+      Un'analisi sistematica di come ChatGPT, Claude, Gemini, Perplexity e le AI Overview di
+      Google rispondono alle query del tuo settore. Non un report decorativo: un piano d'azione
+      misurabile.
+    </p>
+    <div class="hero-cta">
+      <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO" variant="magenta">Richiedi audit</MagneticCTA>
+      <Button href="#pricing" variant="ghost">Vedi i prezzi</Button>
+    </div>
+  </Section>
+
+  <Section tone="alt" id="pricing">
+    <Pill>Pricing trasparente</Pill>
+    <h2>Due livelli, nessun preventivo opaco.</h2>
+    <p class="lead">
+      Niente "richiedi un preventivo" senza prezzo di riferimento. Due opzioni chiare con
+      deliverable diversi.
+    </p>
+    <div class="grid-2 pricing-grid">
+      {pricingOptions.map((o) => (
+        <article class:list={["price-card", o.featured && "price-card--featured"]}>
+          {o.featured && <span class="price-card__ribbon">Più richiesto</span>}
+          <h3>{o.name}</h3>
+          <div class="price-card__price">
+            <span class="price-card__amount">{o.price}</span>
+            <span class="price-card__duration">{o.duration}</span>
+          </div>
+          <p>{o.body}</p>
+          <ul>{o.bullets.map((b) => <li>{b}</li>)}</ul>
+          <Button href={`mailto:r@r4f.it?subject=${encodeURIComponent("Audit LLMO — " + o.name)}`} variant={o.featured ? "magenta" : "ink"}>{o.cta}</Button>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Cosa analizzo</Pill>
+    <h2>Sei superfici di osservazione.</h2>
+    <div class="grid-2 analysis-grid">
+      {cosaAnalizzo.map((c, i) => (
+        <div class="analysis-card">
+          <span class="analysis-card__num">0{i + 1}</span>
+          <div>
+            <h3>{c.what}</h3>
+            <p>{c.why}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Cosa ricevi</Pill>
+    <h2>Audit completo: deliverable concreti.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      <Card number="01" title="Documento PDF strutturato">
+        <p>30-60 query testate su 5 modelli, screenshot delle risposte, citation rate calcolato, knowledge graph mapping.</p>
+      </Card>
+      <Card number="02" title="Gap map competitor">
+        <p>Confronto con 3-5 competitor diretti. Dove vengono citati al posto tuo. Cosa fanno tecnicamente di diverso.</p>
+      </Card>
+      <Card number="03" title="Lista azioni prioritizzate">
+        <p>15-25 azioni concrete con impact/effort scoring. Cosa fare in 30, 60, 90 giorni. Niente generic best practice.</p>
+      </Card>
+      <Card number="04" title="Schema markup audit">
+        <p>Quale schema c'è oggi, quale manca, cosa va corretto. Snippet JSON-LD pronti da copiare.</p>
+      </Card>
+      <Card number="05" title="Call restituzione 60 min">
+        <p>Sessione di approfondimento per chiarire dubbi, prioritizzare insieme, decidere i prossimi passi.</p>
+      </Card>
+      <Card number="06" title="30 giorni follow-up email">
+        <p>Risposte rapide via email per 30 giorni post-consegna. Niente lock-in, solo continuità.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section id="faq">
+    <Pill>Domande frequenti</Pill>
+    <h2>FAQ audit LLMO.</h2>
+    <div class="faqs">
+      {faqs.map((f, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary><span>{f.q}</span></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Pronto a partire?</Pill>
+        <h2>Inizia con una call di un'ora.</h2>
+        <p class="lead">
+          L'audit base da €200 è il modo più veloce per capire se il lavoro insieme ha senso.
+          Se decidi di proseguire, l'audit completo si scala da lì.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO%20base" variant="magenta">Prenota call €200</MagneticCTA>
+        <Button href="mailto:r@r4f.it?subject=Audit%20LLMO%20completo" variant="ghost">Audit completo €800</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+
+  .pricing-grid { gap: 1.5rem; align-items: stretch; margin-top: 2rem; }
+  .price-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    padding: 2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+  }
+  .price-card--featured {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border-color: var(--color-ink);
+  }
+  .price-card--featured h3 { color: var(--color-bg); }
+  .price-card--featured ul li { color: rgba(250, 247, 240, 0.78); }
+
+  .price-card__ribbon {
+    position: absolute;
+    top: 0;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    background: var(--color-magenta);
+    color: var(--color-bg);
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: .35rem .7rem;
+  }
+  .price-card__price { display: flex; align-items: baseline; gap: .8rem; padding-bottom: 1rem; border-bottom: 1px solid currentColor; }
+  .price-card__amount { font-family: var(--font-display); font-size: 3rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+  .price-card__duration { font-family: var(--font-mono); font-size: .82rem; opacity: 0.7; }
+  .price-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+  .price-card ul li { font-family: var(--font-mono); font-size: .85rem; padding-left: 1.2rem; position: relative; }
+  .price-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--color-magenta); }
+
+  .analysis-grid { gap: 1.5rem; margin-top: 2rem; }
+  .analysis-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.4rem;
+    border: 1px solid var(--color-line-soft);
+    background: var(--color-bg);
+  }
+  .analysis-card__num {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-magenta);
+    flex-shrink: 0;
+  }
+  .analysis-card h3 { font-size: 1.1rem; margin-bottom: .4rem; font-family: var(--font-body); font-weight: 600; }
+
+  .faqs { display: flex; flex-direction: column; gap: 0; margin-top: 2rem; }
+  .faq-item {
+    border-bottom: 1px solid var(--color-line-soft);
+    padding: 1.5rem 0;
+  }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: var(--color-magenta);
+    transition: transform var(--dur-fast) var(--ease-out-quint);
+  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { margin-top: 1rem; max-width: 70ch; }
+
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+</style>

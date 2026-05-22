@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Audit AIO — Analisi visibilità AI Overview e ChatGPT | r4f.it";
+const description =
+  "Audit AIO (Artificial Intelligence Optimization): come il tuo brand appare su Google AI Overview, ChatGPT, Claude, Perplexity. Report operativo con priorità e azioni concrete. Tempi 5-7 giorni.";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Audit AIO", url: "https://r4f.it/audit-aio" },
+  ])
+);
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Audit AIO</Pill>
+    <h1>Scopri come l'AI vede il tuo brand.</h1>
+    <p class="lead">
+      Un'analisi completa della presenza del tuo business nelle risposte generate
+      dall'intelligenza artificiale. Non un report generico — un piano d'azione.
+    </p>
+
+    <div class="callout-aio" data-reveal style="--reveal-delay: 100ms">
+      <p>
+        <strong>AIO o LLMO?</strong> Sono lo stesso lavoro, due nomi. <em>AIO</em> (Artificial
+        Intelligence Optimization) è il termine generico di famiglia. <em>LLMO</em> (Large
+        Language Model Optimization) è il termine più preciso per l'applicazione concreta sui
+        modelli di linguaggio AI. Sul sito uso entrambi: questa pagina parla la lingua di chi
+        cerca "AIO", la pagina <a href="/audit-llmo">/audit-llmo</a> parla la lingua di chi cerca
+        "LLMO". Il servizio è lo stesso.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Cosa analizzo</Pill>
+    <h2>Le superfici dove cerco il tuo brand.</h2>
+    <ul class="prose-list" style="margin-top: 2rem;">
+      <li><strong>Google AI Overview:</strong> le risposte AI in SERP. Il tuo sito viene citato? I competitor sì?</li>
+      <li><strong>ChatGPT (free + Plus):</strong> cosa risponde quando un utente chiede del tuo settore, dei tuoi servizi, dei competitor?</li>
+      <li><strong>Claude, Perplexity, Gemini, Copilot:</strong> stessa analisi sugli altri LLM rilevanti per il tuo mercato.</li>
+      <li><strong>Knowledge Graph:</strong> come Google rappresenta la tua entità aziendale? Errori, lacune, opportunità di consolidamento.</li>
+      <li><strong>Competitor:</strong> chi viene citato al posto tuo e perché? Cosa fanno tecnicamente di diverso?</li>
+    </ul>
+  </Section>
+
+  <Section>
+    <Pill>Cosa ricevi</Pill>
+    <h2>Documento operativo strutturato.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      <Card number="01" title="Screenshot risposte AI">
+        <p>Le risposte testuali e visive che restituiscono i 5 modelli sulle query strategiche del tuo settore.</p>
+      </Card>
+      <Card number="02" title="Mappa dei gap">
+        <p>Cosa raccontano i competitor che tu non racconti, e con quali contenuti e schema lo fanno.</p>
+      </Card>
+      <Card number="03" title="Azioni prioritizzate">
+        <p>Cosa fare prima, cosa dopo. Impact/effort scoring. Niente best practice generica.</p>
+      </Card>
+      <Card number="04" title="Raccomandazioni tecniche">
+        <p>Schema markup, struttura contenuti, link building, llms.txt, ottimizzazione entità.</p>
+      </Card>
+      <Card number="05" title="Call restituzione">
+        <p>60 minuti per discutere i risultati, chiarire dubbi, decidere i prossimi passi insieme.</p>
+      </Card>
+      <Card number="06" title="Versione condivisibile">
+        <p>PDF strutturato per girare internamente al team. Niente PowerPoint da agenzia.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose">
+      <Pill>Tempistiche e investimento</Pill>
+      <h2>5-7 giorni, deliverable PDF.</h2>
+      <p>
+        L'audit richiede 5-7 giorni lavorativi dalla conferma del brief. L'investimento dipende
+        dalla complessità del settore e dal numero di query da analizzare: parte da €800 per la
+        versione standard. Scrivimi con il link del tuo sito per ricevere un preventivo specifico.
+      </p>
+      <p>
+        Se preferisci una sessione introduttiva più rapida (call 60 minuti, 10-15 query testate
+        live), l'opzione audit base è €200. Vedi tutti i dettagli su{" "}
+        <a href="/audit-llmo">/audit-llmo</a>.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Pronto a sapere?</Pill>
+        <h2>Vuoi sapere come l'AI vede la tua azienda?</h2>
+        <p class="lead">
+          Scrivimi con il link del tuo sito e una riga sul settore. Ti rispondo con una prima
+          indicazione e il preventivo.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20AIO" variant="magenta">Richiedi audit AIO</MagneticCTA>
+        <Button href="/audit-llmo" variant="ghost">Vedi versione LLMO</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .callout-aio {
+    margin-top: 2rem;
+    padding: 1.4rem 1.6rem;
+    background: var(--color-magenta-soft);
+    border-left: 3px solid var(--color-magenta);
+    max-width: 70ch;
+  }
+  .callout-aio p { margin: 0; }
+
+  .prose-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 72ch;
+  }
+  .prose-list li {
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.55;
+  }
+  .prose-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-magenta);
+    font-weight: 600;
+  }
+  .prose-list strong { color: var(--color-ink); }
+
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+</style>

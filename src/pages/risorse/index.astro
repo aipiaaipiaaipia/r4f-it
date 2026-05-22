@@ -1,0 +1,212 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import Pill from "../../components/ui/Pill.astro";
+import Button from "../../components/ui/Button.astro";
+import MagneticCTA from "../../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  breadcrumbSchema,
+} from "../../lib/schema";
+
+const title = "Risorse LLMO — Articoli su LLM Optimization, AIO, GEO | r4f.it";
+const description =
+  "Articoli pratici su LLM Optimization, AIO, citation rate, schema markup e tutto quello che serve per essere citati da ChatGPT e Gemini. Aggiornati settimanalmente.";
+
+const now = new Date();
+const allPosts = await getCollection("posts");
+const posts = allPosts
+  .filter((p) => !p.data.draft && p.data.publishDate <= now)
+  .sort((a, b) => +b.data.publishDate - +a.data.publishDate);
+
+const categoryLabels: Record<string, string> = {
+  llmo: "LLMO",
+  aio: "AIO",
+  tecnico: "Tecnico",
+  strategia: "Strategia",
+  geo: "Geo",
+};
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  {
+    "@type": "Blog",
+    name: "Risorse r4f.it",
+    description,
+    url: "https://r4f.it/risorse",
+    publisher: { "@id": "https://r4f.it/#org" },
+    author: { "@id": "https://r4f.it/#rafael" },
+    inLanguage: "it",
+  },
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Risorse", url: "https://r4f.it/risorse" },
+  ])
+);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("it-IT", { day: "numeric", month: "short", year: "numeric" });
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Risorse</Pill>
+    <h1>Articoli su LLMO, AIO e visibilità AI.</h1>
+    <p class="lead">
+      Quello che scrivo quando un cliente mi pone una domanda nuova, o quando vedo un pattern
+      ricorrente negli audit. Pubblico ~3 articoli al mese, mai filler.
+    </p>
+  </Section>
+
+  <Section tone="alt">
+    <div class="filter-row">
+      <span class="filter-label">Filtra per categoria:</span>
+      <a href="#" class="tag is-active" data-cat="all">Tutti</a>
+      {Object.entries(categoryLabels).map(([k, v]) => (
+        <a href={`#${k}`} class="tag" data-cat={k}>{v}</a>
+      ))}
+    </div>
+
+    <ul class="posts" id="posts-list">
+      {posts.map((p, i) => (
+        <li class="post" data-cat={p.data.category} data-reveal style={`--reveal-delay: ${i * 60}ms`}>
+          <a href={`/risorse/${p.id.replace(/\.mdx?$/, "")}`} class="no-underline post__link">
+            <div class="post__meta">
+              <Pill variant="magenta">{categoryLabels[p.data.category] ?? p.data.category}</Pill>
+              <time datetime={p.data.publishDate.toISOString()}>{fmtDate(p.data.publishDate)}</time>
+            </div>
+            <h2 class="post__title">{p.data.title}</h2>
+            <p class="post__desc">{p.data.description}</p>
+            <span class="post__cta">Leggi →</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Vuoi che ne scriva uno?</Pill>
+        <h2>Suggerisci un tema.</h2>
+        <p class="lead">
+          Se hai una domanda tecnica su LLMO che vorresti vedere approfondita, scrivimi. Le
+          richieste reali sono la fonte di ispirazione migliore.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it?subject=Suggerimento%20articolo%20risorse" variant="magenta">Suggerisci tema</MagneticCTA>
+        <Button href="/audit-llmo" variant="ghost">Vai all'audit</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<script>
+  const filters = document.querySelectorAll<HTMLAnchorElement>("[data-cat]");
+  const items = document.querySelectorAll<HTMLLIElement>(".post");
+  filters.forEach((f) => {
+    f.addEventListener("click", (e) => {
+      e.preventDefault();
+      const cat = f.dataset.cat;
+      filters.forEach((x) => x.classList.toggle("is-active", x === f));
+      items.forEach((it) => {
+        const show = cat === "all" || it.dataset.cat === cat;
+        it.style.display = show ? "" : "none";
+      });
+    });
+  });
+</script>
+
+<style>
+  .filter-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-bottom: 2.5rem;
+  }
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-ink-muted);
+    margin-right: .5rem;
+  }
+  .filter-row .tag {
+    background: var(--color-bg);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .filter-row .tag.is-active {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border-color: var(--color-ink);
+  }
+
+  .posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .post { margin: 0; }
+  .post__link {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    padding: 1.8rem 1.6rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-line);
+    transition: transform var(--dur-base) var(--ease-out-quint), box-shadow var(--dur-base) var(--ease-out-quint);
+    height: 100%;
+  }
+  .post__link:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--color-ink); }
+  .post__meta {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    flex-wrap: wrap;
+  }
+  .post__meta time {
+    font-family: var(--font-mono);
+    font-size: .76rem;
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .post__title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--color-ink);
+  }
+  .post__desc { color: var(--color-ink-soft); margin: 0; flex: 1; }
+  .post__cta {
+    margin-top: .5rem;
+    padding-top: .8rem;
+    border-top: 1px solid var(--color-line-soft);
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    color: var(--color-magenta);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+
+  @media (max-width: 760px) {
+    .posts { grid-template-columns: 1fr; }
+  }
+</style>

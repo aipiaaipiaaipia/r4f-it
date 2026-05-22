@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+
+const title = "Privacy Policy | r4f.it";
+const description =
+  "Informativa sul trattamento dei dati personali di r4f.it, gestito da Intarget DMCC.";
+const updated = "2026-05-22";
+---
+
+<BaseLayout {title} {description} noindex>
+  <Section tight>
+    <Pill>Legali</Pill>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Ultimo aggiornamento: {updated}</p>
+  </Section>
+
+  <Section>
+    <div class="prose">
+      <h2>1. Titolare del trattamento</h2>
+      <p>
+        <strong>Intarget DMCC</strong> — Jumeirah Lakes Towers, Dubai, Emirati Arabi Uniti.
+        Licenza DMCC-809871. Email: <a href="mailto:info@r4f.it">info@r4f.it</a>.
+      </p>
+      <p>
+        Ufficio operativo Italia: Via Davide Gagliardo 7, 16043 Chiavari (GE) — Italia.
+      </p>
+
+      <h2>2. Dati raccolti</h2>
+      <p>
+        Questo sito non utilizza form di contatto e non raccoglie dati personali in modo diretto.
+        I dati eventualmente condivisi dall'utente tramite email vengono trattati esclusivamente
+        per rispondere alla richiesta e non vengono ceduti a terzi.
+      </p>
+
+      <h2>3. Dati di navigazione</h2>
+      <p>
+        Il server web di hosting raccoglie automaticamente dati tecnici (indirizzo IP, browser,
+        sistema operativo, pagine visitate, data e ora di accesso) necessari al funzionamento
+        del sito. Questi dati non vengono associati a utenti identificati e vengono conservati
+        per il tempo strettamente necessario alle finalità tecniche.
+      </p>
+
+      <h2>4. Cookie</h2>
+      <p>
+        Per informazioni dettagliate sui cookie utilizzati, consulta la{" "}
+        <a href="/cookie-policy">Cookie Policy</a>.
+      </p>
+
+      <h2>5. Servizi di terze parti</h2>
+      <p>
+        Il sito può fare riferimento a servizi di terze parti (Vercel per l'hosting statico,
+        Google Maps per i collegamenti agli indirizzi). Questi servizi possono raccogliere dati
+        secondo le rispettive informative privacy. Al momento del go-live non sono attivi
+        strumenti di analytics o tracker pubblicitari.
+      </p>
+
+      <h2>6. Base giuridica e finalità</h2>
+      <p>
+        Il trattamento dei dati è basato sul legittimo interesse del titolare (funzionamento
+        tecnico del sito) e, dove applicabile, sul consenso dell'utente (eventuali cookie non
+        tecnici, attualmente non utilizzati).
+      </p>
+
+      <h2>7. Diritti dell'utente</h2>
+      <p>
+        In conformità al Regolamento (UE) 2016/679 (GDPR), l'utente ha diritto di accesso,
+        rettifica, cancellazione, limitazione del trattamento, portabilità e opposizione. Per
+        esercitare questi diritti, scrivere a{" "}
+        <a href="mailto:info@r4f.it">info@r4f.it</a>. Risponderemo entro 30 giorni.
+      </p>
+
+      <h2>8. Conservazione</h2>
+      <p>
+        I dati personali sono conservati per il tempo necessario al perseguimento delle finalità
+        per cui sono stati raccolti. Le comunicazioni via email sono archiviate per il tempo
+        utile alla gestione del rapporto professionale.
+      </p>
+
+      <h2>9. Trasferimento dati extra-UE</h2>
+      <p>
+        Essendo il titolare residente negli Emirati Arabi Uniti, alcune comunicazioni email
+        possono essere trattate fuori UE. La gestione avviene comunque nel rispetto degli
+        standard adeguati di protezione dati equivalenti al GDPR.
+      </p>
+
+      <h2>10. Modifiche</h2>
+      <p>
+        La presente informativa può essere aggiornata. La data dell'ultimo aggiornamento è
+        indicata in cima al documento.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .meta { font-family: var(--font-mono); font-size: .82rem; color: var(--color-ink-muted); }
+</style>

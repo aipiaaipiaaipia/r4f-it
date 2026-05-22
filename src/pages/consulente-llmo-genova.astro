@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  llmoServiceSchema,
+  localBusinessSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Consulente LLMO Genova — LLM Optimization in Liguria | r4f.it";
+const description =
+  "Consulenza LLMO a Genova e in Liguria: audit, strategia e implementazione per imprese liguri. Specializzazione manifattura, nautica, vinicole, turismo. Pricing trasparente.";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  llmoServiceSchema(),
+  localBusinessSchema("Genova", 44.4056, 8.9463),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Consulente LLMO Genova", url: "https://r4f.it/consulente-llmo-genova" },
+  ])
+);
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Genova · Liguria</Pill>
+    <h1>Consulente LLMO a Genova e in Liguria.</h1>
+    <p class="lead">
+      Base operativa Chiavari (GE), 40 minuti dal centro città. Lavoro con imprese liguri che
+      vogliono comparire nelle risposte di ChatGPT, Gemini e nelle AI Overview di Google.
+      Workshop on-site su Genova senza sovrapprezzo trasferta.
+    </p>
+    <div class="hero-cta">
+      <MagneticCTA href="/audit-llmo" variant="magenta">Audit LLMO</MagneticCTA>
+      <Button href="mailto:r@r4f.it?subject=LLMO%20Genova" variant="ghost">Scrivimi</Button>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose">
+      <Pill>Il contesto locale</Pill>
+      <h2>Liguria, white space LLMO.</h2>
+      <p>
+        Il market research 2026 lo conferma: in Italia i consulenti LLMO/AIO si concentrano su
+        Milano e Roma. <strong>Liguria e nord-ovest sono di fatto scoperti.</strong> Per le
+        imprese locali significa due cose: meno rumore competitivo nei posizionamenti generativi,
+        più finestra di vantaggio nei prossimi 12-18 mesi.
+      </p>
+      <p>
+        Il tessuto produttivo ligure ha caratteristiche perfette per LLMO: PMI con knowledge
+        specifico, prodotti considerati (nautica, vinicole, manifattura di precisione, turismo
+        esperienziale), bacini di clientela informata che già usa ChatGPT per ricerche pre-acquisto.
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Verticali su cui lavoro a Genova</Pill>
+    <h2>Quattro settori, quattro angolazioni.</h2>
+    <div class="grid-2 cards-asym" style="margin-top: 2.5rem;">
+      <Card title="Nautica & cantieri">
+        <p>Liguria è cluster nautico. Quando un armatore chiede a ChatGPT consigli su refit, cantieri, allestimenti — chi compare? LLMO per cantieri navali, refit, accessoristica, charter.</p>
+      </Card>
+      <Card title="Vinicole & food artigianale">
+        <p>Cinque Terre, Levante, Imperiese: produzione di nicchia con domanda internazionale. LLMO con schema Product, entità Wikidata sui terroir, citation rate su query enoturismo e D2C.</p>
+      </Card>
+      <Card title="Manifattura B2B">
+        <p>Distretti industriali Tigullio, Val Polcevera, Valbormida. LLMO per fornitori B2B che vendono a buyer informati: schema Organization, FAQ tecniche citabili, knowledge graph rinforzato.</p>
+      </Card>
+      <Card title="Turismo esperienziale">
+        <p>Hotel boutique, retreat, charter, esperienze. Schema LocalBusiness e Event, llms.txt strutturato, citation rate su query "cosa fare a [zona]" e raccomandazioni di viaggio AI-driven.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Come lavoriamo</Pill>
+    <h2>Modalità operative per la Liguria.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      <Card number="01" title="On-site Genova/Chiavari">
+        <p>Workshop, kick-off, brainstorming presso il tuo ufficio. Zero costi di trasferta entro provincia di Genova e Spezia.</p>
+      </Card>
+      <Card number="02" title="Remoto + check trimestrale">
+        <p>Sprint mensili da remoto + check-in in presenza ogni 3 mesi. Modello più frequente per i retainer.</p>
+      </Card>
+      <Card number="03" title="Audit one-shot">
+        <p>Diagnosi singola, deliverable PDF, call di restituzione. Senza impegno di proseguimento.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="prose">
+      <Pill>Operatività ligure</Pill>
+      <h2>Da Chiavari a Genova in 40 minuti.</h2>
+      <p>
+        Base operativa <strong>Via Davide Gagliardo 7, 16043 Chiavari (GE)</strong>. Treno per
+        Brignole/Principe in 40 minuti, autostrada A12 senza pedaggio fino a Genova Est. Per
+        clienti dello Spezzino, Tigullio e Riviera di Levante, la distanza è ancora più breve.
+      </p>
+      <p>
+        Telefono diretto <a class="tel" href="tel:+390107767545">+39 010 776 7545</a>, email
+        <a href="mailto:r@r4f.it"> r@r4f.it</a>. Niente form: ti risponde la persona giusta.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Iniziamo?</Pill>
+        <h2>Audit LLMO per la tua azienda ligure.</h2>
+        <p class="lead">
+          Una call di 60 minuti, condivisione schermo, 10-15 query del tuo settore testate live.
+          €200 e capiamo se ha senso lavorare insieme.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it?subject=LLMO%20Genova" variant="magenta">Prenota call</MagneticCTA>
+        <Button href="/consulente-llmo-italia" variant="ghost">Lavoro anche fuori Liguria</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+</style>

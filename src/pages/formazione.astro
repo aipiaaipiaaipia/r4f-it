@@ -1,0 +1,173 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  courseSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Formazione LLMO — Workshop AI search per team aziendali | r4f.it";
+const description =
+  "Workshop LLMO pratici per team marketing, content, SEO, dev. Mezza giornata (base) o giornata intera (avanzato). In presenza o remoto. Materiali operativi e checklist incluse.";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  courseSchema({
+    name: "Workshop LLMO base",
+    description: "Introduzione operativa al LLM Optimization per team marketing e content. 4 ore.",
+    durationHours: 4,
+  }),
+  courseSchema({
+    name: "Workshop LLMO avanzato",
+    description: "LLMO tecnico per team SEO, dev, content strategist. 7 ore con esercitazioni sul sito reale.",
+    durationHours: 7,
+  }),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Formazione", url: "https://r4f.it/formazione" },
+  ])
+);
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Formazione</Pill>
+    <h1>Il tuo team deve saper gestire l'AI search.</h1>
+    <p class="lead">
+      Workshop pratici che trasferiscono competenze operative. Non teoria astratta — strumenti,
+      processi e checklist che il tuo team può usare già il giorno dopo.
+    </p>
+    <div class="hero-cta">
+      <MagneticCTA href="mailto:r@r4f.it?subject=Workshop%20LLMO" variant="magenta">Richiedi un workshop</MagneticCTA>
+      <Button href="#programmi" variant="ghost">Vedi i programmi</Button>
+    </div>
+  </Section>
+
+  <Section tone="alt" id="programmi">
+    <div class="grid-2 cards-asym">
+      <Card title="Workshop LLMO base">
+        <p class="program-meta"><strong>4 ore</strong> · team marketing, content, comunicazione</p>
+        <p>
+          Introduzione operativa al LLMO: cos'è, perché cambia le regole, come funzionano AI
+          Overview e assistenti AI. Esercitazioni live per verificare la presenza del brand nelle
+          risposte AI. Checklist operativa per i contenuti.
+        </p>
+        <ul class="program-list">
+          <li>Panorama LLM 2026 + casi reali italiani</li>
+          <li>Citation rate: come si misura, come si interpreta</li>
+          <li>Schema.org 101 per chi non lavora in dev</li>
+          <li>Esercizi su 3-5 query del settore del cliente</li>
+          <li>Checklist editoriale post-workshop</li>
+        </ul>
+      </Card>
+
+      <Card title="Workshop LLMO avanzato">
+        <p class="program-meta"><strong>7 ore</strong> · team SEO, dev, content strategist</p>
+        <p>
+          Schema markup avanzato, ottimizzazione entità, strategia contenuti per citazione AI,
+          monitoraggio con tool dedicati, integrazione LLMO nel workflow editoriale. Casi studio
+          reali e sessione di lavoro sul sito del cliente.
+        </p>
+        <ul class="program-list">
+          <li>Schema avanzato: Organization, Service, Product, FAQPage, HowTo, Person</li>
+          <li>llms.txt strutturato: cosa metterci, dove sbagliano gli altri</li>
+          <li>Wikidata + Wikipedia entity strengthening</li>
+          <li>Citation tracking: tool, prompt scripting, dashboard semplici</li>
+          <li>Sessione hands-on sul sito reale del cliente</li>
+          <li>Q&amp;A follow-up email 30 giorni</li>
+        </ul>
+      </Card>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Modalità</Pill>
+    <h2>In presenza o remoto, gruppi 3-20.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      <Card number="01" title="In presenza">
+        <p>Milano, Genova, Roma, e altre città su richiesta. Trasferta inclusa per Nord-Centro, a parte per Sud/isole.</p>
+      </Card>
+      <Card number="02" title="Remoto live">
+        <p>Zoom o Meet, con sessioni interattive. Materiali condivisi via Drive/Notion. Sessione registrata su richiesta.</p>
+      </Card>
+      <Card number="03" title="Materiali inclusi">
+        <p>Slide, checklist, lista strumenti consigliati, follow-up email Q&amp;A 30 giorni post-workshop.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose">
+      <Pill>Esperienza docente</Pill>
+      <h2>Più di sei anni di formazione AI.</h2>
+      <p>
+        Insegno da oltre sei anni a <strong>IED Milano</strong> nel Master Evolution Marketing &amp;
+        Growth Hacking. Sono docente AI applicata all'Università degli Studi di Firenze e formatore
+        presso <strong>Nana Bianca</strong> (incubatore startup Firenze).
+      </p>
+      <p>
+        Ho gestito formazioni corporate per team digital di TIM, Microsoft, AC Milan e altri.
+        Le formule che propongo qui sono testate, non improvvisate.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Pronto a formare il team?</Pill>
+        <h2>Quante persone, quando, dove?</h2>
+        <p class="lead">
+          Scrivimi con numero di partecipanti, modalità preferita (in presenza/remoto), date
+          ideali e settore aziendale. Rispondo con proposta personalizzata.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it?subject=Workshop%20LLMO%20—%20preventivo" variant="magenta">Richiedi preventivo</MagneticCTA>
+        <Button href="/audit-llmo" variant="ghost">Vai all'audit</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .program-meta {
+    font-family: var(--font-mono);
+    font-size: .82rem;
+    color: var(--color-ink-muted);
+    margin-bottom: .5rem;
+  }
+  .program-meta strong { color: var(--color-magenta); }
+  .program-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border-top: 1px solid var(--color-line-soft);
+    padding-top: 1rem;
+  }
+  .program-list li {
+    padding-left: 1.2rem;
+    position: relative;
+    font-size: .92rem;
+  }
+  .program-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-magenta);
+  }
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+</style>

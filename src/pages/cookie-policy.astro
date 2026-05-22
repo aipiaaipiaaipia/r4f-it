@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+
+const title = "Cookie Policy | r4f.it";
+const description = "Informativa sull'uso dei cookie su r4f.it. Sito cookie-free al go-live, senza tracker.";
+const updated = "2026-05-22";
+---
+
+<BaseLayout {title} {description} noindex>
+  <Section tight>
+    <Pill>Legali</Pill>
+    <h1>Cookie Policy</h1>
+    <p class="meta">Ultimo aggiornamento: {updated}</p>
+  </Section>
+
+  <Section>
+    <div class="prose">
+      <h2>1. Cosa sono i cookie</h2>
+      <p>
+        I cookie sono piccoli file di testo che i siti web memorizzano sul dispositivo
+        dell'utente, utilizzati per memorizzare informazioni di navigazione, preferenze o
+        sessione.
+      </p>
+
+      <h2>2. Cookie utilizzati su r4f.it</h2>
+      <p>
+        <strong>Al momento del go-live, r4f.it non utilizza cookie di alcun tipo.</strong> Il
+        sito è statico, non c'è autenticazione, non sono attivi strumenti di analytics o di
+        tracking pubblicitario.
+      </p>
+      <p>
+        Successivamente al go-live (dopo un periodo di osservazione cookieless di almeno 7
+        giorni), potrebbero essere introdotti strumenti di analytics che rispettano la privacy
+        (es. Vercel Analytics in modalità cookieless o Plausible). In tal caso questa policy
+        verrà aggiornata e l'utente verrà informato secondo le modalità previste dal GDPR.
+      </p>
+
+      <h2>3. Cookie tecnici</h2>
+      <p>
+        Quando attivati, i cookie tecnici sono necessari al corretto funzionamento delle pagine
+        e non richiedono il consenso esplicito dell'utente. Esempi tipici: preferenze di lingua,
+        sessione utente.
+      </p>
+
+      <h2>4. Cookie di terze parti</h2>
+      <p>
+        Il sito non integra widget di terze parti che impostano cookie. I link a servizi esterni
+        (Amazon per i libri, aipia.it, mailto/tel) non impostano cookie sul dominio r4f.it.
+      </p>
+
+      <h2>5. Cookie analitici</h2>
+      <p>
+        Al momento il sito non utilizza strumenti di analytics. Qualora vengano introdotti,
+        verrà privilegiata una modalità cookieless (es. fingerprint-free analytics) o una
+        soluzione con consenso esplicito secondo GDPR.
+      </p>
+
+      <h2>6. Gestione dei cookie</h2>
+      <p>
+        L'utente può sempre gestire le preferenze sui cookie attraverso le impostazioni del
+        proprio browser. Istruzioni:
+      </p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" rel="noopener" target="_blank">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/it/kb/Bloccare%20i%20cookie" rel="noopener" target="_blank">Firefox</a></li>
+        <li><a href="https://support.apple.com/it-it/HT201265" rel="noopener" target="_blank">Safari</a></li>
+        <li><a href="https://support.microsoft.com/it-it/help/4027947" rel="noopener" target="_blank">Microsoft Edge</a></li>
+      </ul>
+
+      <h2>7. Diritti</h2>
+      <p>
+        Per qualsiasi richiesta relativa al trattamento dei dati personali, scrivere a{" "}
+        <a href="mailto:info@r4f.it">info@r4f.it</a>. Per maggiori informazioni vedi{" "}
+        <a href="/privacy-policy">Privacy Policy</a>.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .meta { font-family: var(--font-mono); font-size: .82rem; color: var(--color-ink-muted); }
+</style>

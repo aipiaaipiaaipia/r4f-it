@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  llmoServiceSchema,
+  localBusinessSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Consulente LLMO Milano — LLM Optimization per imprese lombarde | r4f.it";
+const description =
+  "Consulenza LLMO a Milano e in Lombardia: audit, strategia, implementazione per imprese e agenzie del nord-ovest. Workshop on-site, sessioni in presenza, retainer mensili.";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  llmoServiceSchema(),
+  localBusinessSchema("Milano", 45.4642, 9.1900),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Consulente LLMO Milano", url: "https://r4f.it/consulente-llmo-milano" },
+  ])
+);
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Milano · Lombardia</Pill>
+    <h1>Consulente LLMO a Milano e in Lombardia.</h1>
+    <p class="lead">
+      Hub corporate del paese, terreno di gioco principale per SaaS, fintech, retail B2B, agenzie
+      e brand che competono in SERP affollate. LLMO per chi vuole compariree dove i competitor
+      sono già visibili.
+    </p>
+    <div class="hero-cta">
+      <MagneticCTA href="/audit-llmo" variant="magenta">Audit LLMO</MagneticCTA>
+      <Button href="mailto:r@r4f.it?subject=LLMO%20Milano" variant="ghost">Scrivimi</Button>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose">
+      <Pill>Il contesto Milano</Pill>
+      <h2>Mercato saturo, citation rate ancora basso.</h2>
+      <p>
+        Su Milano la concorrenza SEO è massima: agenzie storiche, consulenti freelance, in-house
+        team. Ma sul LLMO il panorama cambia. Il market research 2026 lo conferma: anche le
+        agenzie milanesi più note stanno appena entrando nel territorio LLMO, e il citation rate
+        sui brand B2B lombardi resta basso anche per chi domina la SERP tradizionale.
+      </p>
+      <p>
+        Questo significa che <strong>la SEO classica non basta più a difendere il posizionamento
+        lombardo</strong>. Le aziende che hanno costruito autorità su Google rischiano di non
+        comparire nelle risposte di ChatGPT, Gemini e Perplexity dove i loro buyer iniziano oggi
+        la ricerca.
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Settori che funzionano bene</Pill>
+    <h2>Cluster milanesi su cui ho lavorato.</h2>
+    <div class="grid-2 cards-asym" style="margin-top: 2.5rem;">
+      <Card title="SaaS & B2B tech">
+        <p>I buyer SaaS chiedono a ChatGPT consigli per categorie software. Schema Product+Service avanzato, documentazione tecnica citabile, llms.txt che dirige i bot verso i contenuti giusti.</p>
+      </Card>
+      <Card title="Agenzie & consulenze professionali">
+        <p>Studi legali, commercialisti, agenzie marketing. Schema Person rich, sameAs network coerente, presenza Wikidata. Quando ChatGPT consiglia "il miglior X a Milano", il tuo nome compare.</p>
+      </Card>
+      <Card title="Retail & fashion D2C">
+        <p>Brand fashion che vendono direct-to-consumer. Schema Product+Offer ottimizzati per Google Shopping AI, ChatGPT shopping. Citation su query "alternativa a [brand noto]".</p>
+      </Card>
+      <Card title="Fintech & assicurazioni">
+        <p>Settore competitivo con grande domanda informativa pre-acquisto. FAQ strutturate citabili, knowledge graph rinforzato, presenza autorevole su query comparative.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Come lavoriamo</Pill>
+    <h2>Modalità operative per Milano.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      <Card number="01" title="In presenza Milano">
+        <p>Workshop on-site mezza/giornata intera presso il tuo ufficio. Trasferta inclusa nel preventivo dei retainer mensili.</p>
+      </Card>
+      <Card number="02" title="Retainer mensile remoto">
+        <p>Sprint mensili da remoto + check-in in presenza ogni 2 mesi. Modello più frequente per medie e grandi imprese.</p>
+      </Card>
+      <Card number="03" title="Formazione team">
+        <p>Workshop SEO/content/dev su LLMO. Base 4h o avanzato 7h. <a href="/formazione">Dettagli</a>.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="prose">
+      <Pill>Operatività Milano</Pill>
+      <h2>Trasferta gestita.</h2>
+      <p>
+        Lavoro da Chiavari, una mattinata di treno da Milano Centrale (1h45 con Frecciarossa). Per
+        clienti milanesi gestisco trasferte settimanali o quindicinali. Workshop, kick-off, audit
+        on-site presso le sedi clienti senza sovrapprezzo straordinario.
+      </p>
+      <p>
+        Inoltre insegno da oltre sei anni a <strong>IED Milano</strong> (Master Evolution
+        Marketing &amp; Growth Hacking), quindi su Milano sono presente regolarmente per docenze.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Iniziamo?</Pill>
+        <h2>Audit LLMO per la tua azienda milanese.</h2>
+        <p class="lead">
+          Possiamo fare la prima call da remoto o vederci direttamente a Milano. Audit base €200
+          oppure audit completo €800 con deliverable PDF.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it?subject=LLMO%20Milano" variant="magenta">Prenota call</MagneticCTA>
+        <Button href="/consulente-llmo-italia" variant="ghost">Resto Italia</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+</style>

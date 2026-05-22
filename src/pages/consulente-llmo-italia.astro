@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Pill from "../components/ui/Pill.astro";
+import Card from "../components/ui/Card.astro";
+import Button from "../components/ui/Button.astro";
+import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
+import {
+  buildGraph,
+  organizationSchema,
+  personSchema,
+  llmoServiceSchema,
+  breadcrumbSchema,
+} from "../lib/schema";
+
+const title = "Consulente LLMO Italia — Visibilità AI search per imprese italiane | r4f.it";
+const description =
+  "Consulenza LLMO da remoto in tutta Italia. Audit, strategia, formazione su LLM Optimization per imprese in Veneto, Emilia-Romagna, Toscana, Lazio, Puglia, Sicilia e altri territori.";
+
+const schema = buildGraph(
+  organizationSchema(),
+  personSchema(),
+  llmoServiceSchema(),
+  breadcrumbSchema([
+    { name: "Home", url: "https://r4f.it/" },
+    { name: "Consulente LLMO Italia", url: "https://r4f.it/consulente-llmo-italia" },
+  ])
+);
+
+const regioni = [
+  { name: "Veneto & Triveneto", focus: "Distretti calzaturieri, occhialeria, vinicole, agroalimentare. Aziende esportatrici con bisogno di citation su query internazionali." },
+  { name: "Emilia-Romagna", focus: "Motor Valley, food, automation industriale, cluster moda Carpi/Reggio. Pubblicità storica forte, LLMO opportunità di completamento." },
+  { name: "Toscana", focus: "Manifattura pelletteria, food, wine, turismo esperienziale. Settori con buyer informati che usano ChatGPT pre-acquisto." },
+  { name: "Lazio & Roma", focus: "Hub corporate e PA. Per consulenze, software house, agenzie marketing romane in concorrenza con Milano." },
+  { name: "Puglia & Sud", focus: "Turismo, agroalimentare, masserie, ricezione esperienziale. Citation rate basso sui brand locali = white space competitivo." },
+  { name: "Sicilia & Sardegna", focus: "Wine, agroalimentare, ricettività di nicchia, manifattura artigianale. Mercati con buyer internazionali AI-ready." },
+];
+---
+
+<BaseLayout {title} {description} schemaJsonLd={schema}>
+  <Section tight>
+    <Pill>Tutta Italia</Pill>
+    <h1>Consulente LLMO in tutta Italia.</h1>
+    <p class="lead">
+      Lavoro da remoto con imprese italiane ovunque. Audit, retainer mensili, formazione team.
+      Workshop in presenza programmati per cluster di clienti per ottimizzare le trasferte.
+    </p>
+    <div class="hero-cta">
+      <MagneticCTA href="/audit-llmo" variant="magenta">Audit LLMO</MagneticCTA>
+      <Button href="mailto:r@r4f.it?subject=LLMO%20Italia" variant="ghost">Scrivimi</Button>
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <div class="prose">
+      <Pill>Operatività remota</Pill>
+      <h2>Distanza zero, qualità intatta.</h2>
+      <p>
+        Tutto il lavoro core (audit, strategia, implementazione, monitoring) gira da remoto via
+        videocall e strumenti condivisi. La diagnostica LLMO non richiede presenza fisica: si fa
+        meglio con uno schermo grande e una connessione stabile che in una sala riunioni.
+      </p>
+      <p>
+        Per workshop di formazione, kick-off importanti o sessioni strategiche programmate, mi
+        sposto: Veneto, Emilia, Toscana, Lazio, Puglia. Per zone più lontane (Sud, isole) gestisco
+        trasferte trimestrali concentrando più clienti nella stessa missione.
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <Pill>Macro-aree</Pill>
+    <h2>Settori che incontro più spesso, per regione.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      {regioni.map((r) => (
+        <Card title={r.name}>
+          <p>{r.focus}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <Section tone="alt">
+    <Pill>Modalità</Pill>
+    <h2>Tre formule per il resto Italia.</h2>
+    <div class="grid-3" style="margin-top: 2.5rem;">
+      <Card number="01" title="Audit one-shot remoto">
+        <p>Diagnosi completa via call + deliverable PDF. Senza trasferta. Tempi 5-7 giorni lavorativi. <strong>€800</strong>.</p>
+      </Card>
+      <Card number="02" title="Retainer mensile remoto">
+        <p>Sprint mensili, check settimanali, dashboard citation rate. Workshop on-site su richiesta a pagamento separato trasferta.</p>
+      </Card>
+      <Card number="03" title="Workshop in presenza">
+        <p>Mezza/giornata intera per il tuo team. Concordiamo data e modalità. Trasferta inclusa per Nord-Centro, su richiesta per Sud/isole.</p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="prose">
+      <Pill>Per chi ha un budget limitato</Pill>
+      <h2>Inizia con l'audit base da €200.</h2>
+      <p>
+        Se sei una PMI o un libero professionista e non vuoi impegnarti subito su un retainer,
+        l'audit base da €200 (call 60 minuti) è il punto d'ingresso giusto. Capisci come ChatGPT
+        risponde sul tuo brand, ricevi tre azioni prioritarie operative, e decidi tu se proseguire
+        in autonomia o con il mio supporto.
+      </p>
+      <p>
+        Nessun lock-in, nessun preventivo opaco. Tutti i prezzi e le opzioni su{" "}
+        <a href="/audit-llmo">/audit-llmo</a>.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="ink">
+    <div class="grid-2 split-cta">
+      <div>
+        <Pill>Iniziamo?</Pill>
+        <h2>Da dove vuoi partire?</h2>
+        <p class="lead">
+          Una call iniziale per capire dove sei e dove vuoi arrivare. Ti rispondo entro 24 ore
+          lavorative e fissiamo il primo confronto.
+        </p>
+      </div>
+      <div class="split-cta__actions">
+        <MagneticCTA href="mailto:r@r4f.it?subject=LLMO%20Italia" variant="magenta">Scrivimi una mail</MagneticCTA>
+        <Button href="/audit-llmo" variant="ghost">Vai all'audit</Button>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .split-cta { gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .split-cta__actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+</style>

@@ -17,7 +17,7 @@ import {
 
 const title = "Audit LLMO: come ChatGPT, Claude, Gemini parlano del tuo brand | r4f.it";
 const description =
-  "Audit LLMO da €200 (call 60 minuti) o €800 (deliverable PDF). Analizzo come ChatGPT, Claude, Gemini, Perplexity e AI Overview rispondono sul tuo brand. Tempi 5-7 giorni.";
+  "Due ingressi: call iniziale di consulenza da €249 (Calendly, 1h) o audit LLMO completo con roadmap, piano d'azione e deliverable PDF da €1.400 (consegna entro 14 giorni). Analizzo ChatGPT, Claude, Gemini, Perplexity e AI Overview.";
 
 const faqs = [
   {
@@ -25,8 +25,8 @@ const faqs = [
     a: "È un'analisi sistematica di come i Large Language Model (ChatGPT, Claude, Gemini, Perplexity, Copilot) e le AI Overview di Google rispondono alle query strategiche del tuo settore. Misura quanto e come il tuo brand viene citato, dove sei invisibile, e cosa fanno i competitor che oggi compaiono al tuo posto.",
   },
   {
-    q: "Qual è la differenza tra audit LLMO da €200 e quello da €800?",
-    a: "L'audit da €200 è una call di 60 minuti: condividiamo lo schermo, testiamo 10-15 query insieme su ChatGPT/Perplexity e identifico le tre azioni a impatto più rapido. È il punto d'ingresso. L'audit completo da €800 è un deliverable PDF strutturato: 30-60 query testate su 5 modelli, screenshot delle risposte, citation rate calcolato, gap map vs 3-5 competitor, lista di 15-25 azioni prioritizzate, call di restituzione da 60 minuti. Richiede 5-7 giorni lavorativi.",
+    q: "Qual è la differenza tra la call iniziale da €249 e l'audit completo da €1.400?",
+    a: "La call iniziale da €249 è una sessione di 60 minuti prenotabile via Calendly: condividiamo lo schermo, testiamo 10-15 query insieme su ChatGPT/Perplexity, identifico tre azioni a impatto rapido e capiamo se ha senso lavorare insieme. È il punto d'ingresso. L'audit LLMO completo da €1.400 è un deliverable PDF strutturato con roadmap operativa e piano d'azione: 30-60 query testate su 5 modelli, screenshot delle risposte, citation rate calcolato, gap map vs 3-5 competitor, 15-25 azioni prioritizzate per impact/effort, call di restituzione da 60 minuti. Consegna entro 14 giorni lavorativi.",
   },
   {
     q: "Per quali settori funziona?",
@@ -59,19 +59,32 @@ const schema = buildGraph(
 
 const pricingOptions = [
   {
-    name: "Audit base",
-    price: "€200",
-    duration: "Call 60 minuti",
-    body: "Sessione live condividendo lo schermo. Testiamo 10-15 query insieme su ChatGPT e Perplexity. Identifico tre azioni a impatto più rapido. Recap email scritto.",
-    bullets: ["10-15 query testate live", "3 azioni prioritarie identificate", "Recap email scritto", "Nessun deliverable PDF"],
+    name: "Call iniziale di consulenza",
+    price: "€249",
+    duration: "1 ora · Calendly",
+    body: "Sessione live di 60 minuti condividendo lo schermo. Testiamo 10-15 query del tuo settore su ChatGPT e Perplexity. Identifico tre azioni a impatto rapido e capiamo se ha senso lavorare insieme. Recap email scritto post-call.",
+    bullets: [
+      "10-15 query testate live",
+      "3 azioni prioritarie identificate",
+      "Recap email scritto",
+      "Prenotazione diretta via Calendly",
+    ],
     cta: "Prenota call",
   },
   {
-    name: "Audit completo",
-    price: "€800",
-    duration: "5-7 giorni lavorativi",
-    body: "Deliverable PDF strutturato. 30-60 query testate su 5 modelli (ChatGPT, Claude, Gemini, Perplexity, Copilot). Citation rate calcolato. Gap map competitor. Call di restituzione da 60 minuti.",
-    bullets: ["30-60 query · 5 modelli", "Citation rate misurato", "3-5 competitor mappati", "15-25 azioni prioritizzate", "Call restituzione 60 min", "PDF condivisibile internamente"],
+    name: "Audit LLMO completo con roadmap",
+    price: "€1.400",
+    duration: "Consegna entro 14 giorni",
+    body: "Deliverable PDF strutturato con roadmap operativa e piano d'azione. 30-60 query testate su 5 modelli (ChatGPT, Claude, Gemini, Perplexity, Copilot). Citation rate calcolato. Gap map vs 3-5 competitor. Call di restituzione da 60 minuti inclusa.",
+    bullets: [
+      "30-60 query · 5 modelli",
+      "Citation rate misurato",
+      "3-5 competitor mappati",
+      "Roadmap 90 giorni · 15-25 azioni",
+      "Call restituzione 60 min",
+      "PDF condivisibile internamente",
+      "Consegna entro 14 giorni",
+    ],
     cta: "Richiedi audit",
     featured: true,
   },
@@ -186,13 +199,14 @@ const cosaAnalizzo = [
         <Pill>Pronto a partire?</Pill>
         <h2>Inizia con una call di un'ora.</h2>
         <p class="lead">
-          L'audit base da €200 è il modo più veloce per capire se il lavoro insieme ha senso.
-          Se decidi di proseguire, l'audit completo si scala da lì.
+          La call iniziale da €249 è il modo più veloce per capire se il lavoro insieme ha
+          senso. Se decidi di proseguire, l'audit completo da €1.400 con roadmap e piano si
+          aggancia da lì.
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO%20base" variant="accent">Prenota call €200</MagneticCTA>
-        <Button href="mailto:r@r4f.it?subject=Audit%20LLMO%20completo" variant="ghost">Audit completo €800</Button>
+        <MagneticCTA href="mailto:r@r4f.it?subject=Call%20iniziale%20LLMO" variant="accent">Prenota call €249</MagneticCTA>
+        <Button href="mailto:r@r4f.it?subject=Audit%20LLMO%20completo" variant="ghost">Audit completo €1.400</Button>
       </div>
     </div>
   </Section>

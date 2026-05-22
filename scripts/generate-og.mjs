@@ -31,7 +31,7 @@ const variants = [
   { file: "og-default.png", eyebrow: "Consulenza LLMO · Italia", title: "Fatti trovare<br/>da ChatGPT.<br/>E da Gemini." },
   { file: "og-home.png", eyebrow: "Consulenza LLMO · Italia", title: "LLM Optimization<br/>per imprese<br/>italiane." },
   { file: "og-chi-sono.png", eyebrow: "Rafael Patron · LLMO", title: "20 anni di SEO.<br/>Adesso scrivo<br/>per gli LLM." },
-  { file: "og-audit-llmo.png", eyebrow: "Audit LLMO · Da €200", title: "Cosa risponde<br/>l'AI sul<br/>tuo brand?" },
+  { file: "og-audit-llmo.png", eyebrow: "Audit LLMO · Da €249", title: "Cosa risponde<br/>l'AI sul<br/>tuo brand?" },
 ];
 
 for (const v of variants) {

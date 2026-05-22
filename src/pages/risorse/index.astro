@@ -107,7 +107,9 @@ const fmtDate = (d: Date) =>
 </BaseLayout>
 
 <script>
-  const filters = document.querySelectorAll<HTMLAnchorElement>("[data-cat]");
+  // Scope to filter chips only — gli <li class="post"> hanno pure data-cat
+  // ma NON devono ricevere preventDefault sui click (rompe la nav al singolo articolo).
+  const filters = document.querySelectorAll<HTMLAnchorElement>(".filter-row a[data-cat]");
   const items = document.querySelectorAll<HTMLLIElement>(".post");
   filters.forEach((f) => {
     f.addEventListener("click", (e) => {

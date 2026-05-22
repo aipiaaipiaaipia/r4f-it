@@ -46,4 +46,4 @@ L'ottimizzazione LLMO non sostituisce la SEO. La estende su tre direttrici nuove
 
 Tutti i prossimi articoli di questa serie scenderanno nei dettagli pratici di ognuno di questi punti.
 
-**Se vuoi sapere come ChatGPT risponde sul tuo brand oggi**, l'audit LLMO base da €200 è il punto d'ingresso. Una call di un'ora, schermo condiviso, 10-15 query del tuo settore testate insieme.
+**Se vuoi sapere come ChatGPT risponde sul tuo brand oggi**, la call iniziale di consulenza da €249 è il punto d'ingresso. Una call di un'ora, schermo condiviso, 10-15 query del tuo settore testate insieme.

@@ -56,4 +56,4 @@ Sul sito r4f.it uso **LLMO come primary, AIO come secondario, GEO e AEO come sin
 
 Lo stesso lavoro che facciamo è quello che alcuni chiamano GEO e altri AEO. Lo so, e va bene. Il giorno in cui il vocabolario si stabilizza, mi sposterò di conseguenza.
 
-**Per parlare di sostanza piuttosto che di nomi**, l'audit LLMO base da €200 è il modo più rapido.
+**Per parlare di sostanza piuttosto che di nomi**, la call iniziale di consulenza da €249 è il modo più rapido.

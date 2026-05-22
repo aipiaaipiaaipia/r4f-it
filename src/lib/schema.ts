@@ -111,19 +111,21 @@ export const llmoServiceSchema = () => ({
   offers: [
     {
       "@type": "Offer",
-      name: "Audit LLMO — call di 1 ora",
-      price: "200",
+      name: "Call iniziale di consulenza LLMO — 1 ora via Calendly",
+      price: "249",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
       url: `${SITE.url}/audit-llmo`,
+      validFrom: "2026-05-22",
     },
     {
       "@type": "Offer",
-      name: "Audit LLMO completo — deliverable PDF",
-      price: "800",
+      name: "Audit LLMO completo con roadmap — deliverable PDF, consegna 14 giorni",
+      price: "1400",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
       url: `${SITE.url}/audit-llmo`,
+      validFrom: "2026-05-22",
     },
   ],
 });

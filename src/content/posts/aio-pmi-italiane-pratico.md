@@ -59,4 +59,4 @@ Quando hai già fatto le tre cose sopra e:
 
 Se sei un freelance o microimpresa con budget marketing < €500/mese, le tre azioni base bastano per i primi 6-12 mesi.
 
-**Per una review veloce e onesta**, l'audit LLMO base da €200 è il punto d'ingresso ragionato. In un'ora capisci se vale la pena investire di più.
+**Per una review veloce e onesta**, la call iniziale di consulenza da €249 è il punto d'ingresso ragionato. In un'ora capisci se vale la pena investire di più.

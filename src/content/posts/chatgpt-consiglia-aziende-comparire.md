@@ -62,4 +62,4 @@ Se vuoi essere consigliato da ChatGPT, l'ordine pratico è:
 4. **Struttura** schema FAQ con domande reali del settore.
 5. **Misura** ogni 30 giorni, aggiusta.
 
-**Vuoi capire da dove partire?** L'audit LLMO base da €200 è il punto d'ingresso più rapido per sapere se le condizioni di base ci sono.
+**Vuoi capire da dove partire?** La call iniziale di consulenza da €249 è il punto d'ingresso più rapido per sapere se le condizioni di base ci sono.

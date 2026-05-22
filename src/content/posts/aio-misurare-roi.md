@@ -64,4 +64,4 @@ Un template che uso con i clienti:
 5. **Slide 5**: rischi (nessun risultato in 90 giorni? rischio "il modello cambia"?).
 6. **Slide 6**: la roadmap mensile.
 
-**Per un audit LLMO che include un business case base**, è già parte del deliverable da €800.
+**Per un audit LLMO che include un business case base**, è già parte del deliverable da €1.400.

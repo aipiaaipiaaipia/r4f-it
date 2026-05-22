@@ -67,7 +67,7 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 
 9. **Tel ufficiale sul sito**: usa +39 010 776 7545 (Chiavari landline da brief), il +39 388 730 8627 del legacy mobile resta in archivio ma non viene esposto.
 
-10. **Pricing audit**: tengo €200 base + €800 completo come da brief progetto. Il market research suggerisce €1.200 ma il brief è esplicito su entry-low. Da rivedere insieme.
+10. **Pricing audit**: tengo €249 base + €1.400 completo come da brief progetto. Il market research suggerisce €1.200 ma il brief è esplicito su entry-low. Da rivedere insieme.
 
 11. **404 design**: KineticHeadline morpha "404" ↔ "NOPE" ↔ "MEH" + path richiesto in mono. Memorabile, fits direzione estetica.
 

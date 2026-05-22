@@ -44,7 +44,7 @@ Il pattern che vedo funzionare: SEO storica copre 70-80% del traffico inbound, L
 
 Per i SaaS milanesi il modello consulenza tipico è:
 
-- **Audit one-shot iniziale**: €800-2000 a seconda complessità.
+- **Audit one-shot iniziale**: €1.400-3.500 a seconda complessità.
 - **Retainer mensile per 6 mesi**: €1500-3500/mese.
 - **Workshop team interno**: €1500-3000 per giornata intera.
 

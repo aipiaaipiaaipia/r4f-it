@@ -60,4 +60,4 @@ Non lasciare che la scelta del termine ti distragga dalla sostanza. Quando valut
 
 Se le risposte sono solide, il nome dell'acronimo conta zero. Se le risposte sono fumose, il nome più cool non salva il preventivo.
 
-**Per una proposta concreta** — qualunque acronimo preferisci — l'audit LLMO base da €200 è il punto d'ingresso più rapido.
+**Per una proposta concreta** — qualunque acronimo preferisci — la call iniziale di consulenza da €249 è il punto d'ingresso più rapido.

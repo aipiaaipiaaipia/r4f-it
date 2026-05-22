@@ -24,7 +24,7 @@ export const GET: APIRoute = async () => {
   lines.push("## Servizi");
   lines.push("");
   lines.push(
-    `- [${SITE.url}/audit-llmo](${SITE.url}/audit-llmo) — Audit LLMO. Call €200 o deliverable PDF €800. Tempi 5-7 giorni.`
+    `- [${SITE.url}/audit-llmo](${SITE.url}/audit-llmo) — Call iniziale di consulenza LLMO (1h via Calendly, €249) oppure audit LLMO completo con roadmap e deliverable PDF (€1.400, consegna entro 14 giorni).`
   );
   lines.push(
     `- [${SITE.url}/audit-aio](${SITE.url}/audit-aio) — Audit AIO. Versione del servizio audit con vocabolario AIO. Stesso lavoro tecnico.`

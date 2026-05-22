@@ -81,4 +81,4 @@ Non sempre. **Le PMI che dovrebbero prioritizzare AIO sono quelle dove:**
 
 Se vendi a impulso, su pubblico locale, con ciclo decisionale corto (es. cibo di consumo, fast fashion), AIO è meno prioritario di altre leve.
 
-**Per una valutazione tua specifica**, l'audit LLMO base da €200 include una review marketing mix che ti aiuta a decidere dove investire.
+**Per una valutazione tua specifica**, la call iniziale di consulenza da €249 include una review marketing mix che ti aiuta a decidere dove investire.

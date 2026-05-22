@@ -24,7 +24,7 @@ Ogni sito ha un `Organization` JSON-LD. Quasi sempre con solo nome e URL. Mancan
 
 "Richiedi un preventivo" è opaco. I LLM citano meno i siti che nascondono il prezzo. Range, fascia entry, esempi concreti aiutano.
 
-**Correzione**: anche solo "Audit da €200, consulenza da €1.500/mese" basta a sbloccare citation rate.
+**Correzione**: anche solo "Call iniziale da €249, consulenza da €1.500/mese" basta a sbloccare citation rate.
 
 ## Errore 4: FAQ mancante o promozionale
 
@@ -55,7 +55,7 @@ Tutti i CTA portano a "richiedi preventivo". Niente entry-level più basso. I le
 Tre opzioni:
 
 1. **Lavorare in autonomia**: la lista sopra è prioritizzata. Comincia dall'1 e procedi. Tempo stimato: 20-40 ore distribuite.
-2. **Audit LLMO base (€200)**: una call di un'ora dove identifico le tue priorità specifiche.
-3. **Audit LLMO completo (€800)**: deliverable PDF con piano d'azione strutturato 90 giorni.
+2. **Audit base — call iniziale (€249)**: una call di un'ora dove identifico le tue priorità specifiche.
+3. **Audit LLMO completo con roadmap (€1.400)**: deliverable PDF con piano d'azione strutturato 90 giorni.
 
 Comunque, **iniziare oggi è meglio che iniziare tra 6 mesi**. Il citation rate è cumulative: chi parte ora ha vantaggio compounded sui competitor che inseguiranno.

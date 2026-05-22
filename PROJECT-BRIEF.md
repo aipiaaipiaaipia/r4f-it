@@ -18,7 +18,7 @@ PMI italiane, professionisti, ecommerce, settori manifattura/nautica/turismo/vin
 
 Tre leve irreplicabili:
 1. Credenziali AIPIA verificabili + 3 libri pubblicati Amazon
-2. Pricing trasparente fascia entry (€200 audit base / €800 audit completo)
+2. Pricing trasparente fascia entry (€249 audit base / €1.400 audit completo)
 3. Presidio Genova/Liguria geo-locale
 
 ## Vincoli editoriali

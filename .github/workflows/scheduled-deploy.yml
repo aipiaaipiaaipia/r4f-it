@@ -8,7 +8,7 @@ name: Scheduled drip-deploy
 
 on:
   schedule:
-    - cron: "15 7 * * *"
+    - cron: '17 5,17 * * *'
   workflow_dispatch:
 
 jobs:

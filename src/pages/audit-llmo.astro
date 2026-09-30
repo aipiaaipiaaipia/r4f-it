@@ -14,10 +14,11 @@ import {
   breadcrumbSchema,
   faqSchema,
 } from "../lib/schema";
+import { contattiRP } from "../lib/site";
 
 const title = "Audit LLMO: come ChatGPT, Claude, Gemini parlano del tuo brand | r4f.it";
 const description =
-  "Due ingressi: call iniziale di consulenza da €249 (Calendly, 1h) o audit LLMO completo con roadmap, piano d'azione e deliverable PDF da €1.400 (consegna entro 14 giorni). Analizzo ChatGPT, Claude, Gemini, Perplexity e AI Overview.";
+  "Due ingressi: call iniziale di consulenza da €249 (1h) o audit LLMO completo con roadmap, piano d'azione e deliverable PDF da €1.400 (consegna entro 14 giorni). Analizzo ChatGPT, Claude, Gemini, Perplexity e AI Overview.";
 
 const faqs = [
   {
@@ -26,7 +27,7 @@ const faqs = [
   },
   {
     q: "Qual è la differenza tra la call iniziale da €249 e l'audit completo da €1.400?",
-    a: "La call iniziale da €249 è una sessione di 60 minuti prenotabile via Calendly: condividiamo lo schermo, testiamo 10-15 query insieme su ChatGPT/Perplexity, identifico tre azioni a impatto rapido e capiamo se ha senso lavorare insieme. È il punto d'ingresso. L'audit LLMO completo da €1.400 è un deliverable PDF strutturato con roadmap operativa e piano d'azione: 30-60 query testate su 5 modelli, screenshot delle risposte, citation rate calcolato, gap map vs 3-5 competitor, 15-25 azioni prioritizzate per impact/effort, call di restituzione da 60 minuti. Consegna entro 14 giorni lavorativi.",
+    a: "La call iniziale da €249 è una sessione di 60 minuti, concordata via email dopo la richiesta: condividiamo lo schermo, testiamo 10-15 query insieme su ChatGPT/Perplexity, identifico tre azioni a impatto rapido e capiamo se ha senso lavorare insieme. È il punto d'ingresso. L'audit LLMO completo da €1.400 è un deliverable PDF strutturato con roadmap operativa e piano d'azione: 30-60 query testate su 5 modelli, screenshot delle risposte, citation rate calcolato, gap map vs 3-5 competitor, 15-25 azioni prioritizzate per impact/effort, call di restituzione da 60 minuti. Consegna entro 14 giorni lavorativi.",
   },
   {
     q: "Per quali settori funziona?",
@@ -61,15 +62,16 @@ const pricingOptions = [
   {
     name: "Call iniziale di consulenza",
     price: "€249",
-    duration: "1 ora · Calendly",
+    duration: "1 ora · da remoto",
     body: "Sessione live di 60 minuti condividendo lo schermo. Testiamo 10-15 query del tuo settore su ChatGPT e Perplexity. Identifico tre azioni a impatto rapido e capiamo se ha senso lavorare insieme. Recap email scritto post-call.",
     bullets: [
       "10-15 query testate live",
       "3 azioni prioritarie identificate",
       "Recap email scritto",
-      "Prenotazione diretta via Calendly",
+      "Data concordata via email",
     ],
-    cta: "Prenota call",
+    cta: "Richiedi la call",
+    ctaId: "audit_llmo_call_249",
   },
   {
     name: "Audit LLMO completo con roadmap",
@@ -86,6 +88,7 @@ const pricingOptions = [
       "Consegna entro 14 giorni",
     ],
     cta: "Richiedi audit",
+    ctaId: "audit_llmo_completo_1400",
     featured: true,
   },
 ];
@@ -110,7 +113,7 @@ const cosaAnalizzo = [
       misurabile.
     </p>
     <div class="hero-cta">
-      <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20LLMO" variant="accent">Richiedi audit</MagneticCTA>
+      <MagneticCTA href={contattiRP("audit_llmo_hero")} variant="accent">Richiedi audit</MagneticCTA>
       <Button href="#pricing" variant="ghost">Vedi i prezzi</Button>
     </div>
   </Section>
@@ -125,7 +128,7 @@ const cosaAnalizzo = [
     <div class="grid-2 pricing-grid">
       {pricingOptions.map((o) => (
         <article class:list={["price-card", o.featured && "price-card--featured"]}>
-          {o.featured && <span class="price-card__ribbon">Più richiesto</span>}
+          {o.featured && <span class="price-card__ribbon">Più completo</span>}
           <h3>{o.name}</h3>
           <div class="price-card__price">
             <span class="price-card__amount">{o.price}</span>
@@ -133,7 +136,7 @@ const cosaAnalizzo = [
           </div>
           <p>{o.body}</p>
           <ul>{o.bullets.map((b) => <li>{b}</li>)}</ul>
-          <Button href={`mailto:r@r4f.it?subject=${encodeURIComponent("Audit LLMO — " + o.name)}`} variant={o.featured ? "accent" : "ink"}>{o.cta}</Button>
+          <Button href={contattiRP(o.ctaId)} variant={o.featured ? "accent" : "ink"}>{o.cta}</Button>
         </article>
       ))}
     </div>
@@ -205,8 +208,8 @@ const cosaAnalizzo = [
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=Call%20iniziale%20LLMO" variant="accent">Prenota call €249</MagneticCTA>
-        <Button href="mailto:r@r4f.it?subject=Audit%20LLMO%20completo" variant="ghost">Audit completo €1.400</Button>
+        <MagneticCTA href={contattiRP("audit_llmo_finale_call")} variant="accent">Richiedi la call €249</MagneticCTA>
+        <Button href={contattiRP("audit_llmo_finale_completo")} variant="ghost">Audit completo €1.400</Button>
       </div>
     </div>
   </Section>

@@ -12,10 +12,11 @@ import {
   personSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import { RAFAEL, contattiRP } from "../lib/site";
 
-const title = "Rafael Patron — consulente LLMO e Presidente CTS AIPIA | r4f.it";
+const title = "Rafael Patron — Chief AI Officer (CAIO) e Presidente CTS AIPIA | r4f.it";
 const description =
-  "Rafael Patron: 20+ anni nel digitale, Presidente del Comitato Tecnico-Scientifico AIPIA, autore di tre libri, docente IED Milano e UNIFI. Consulenza LLMO da Liguria a tutta Italia.";
+  "Rafael Patron: Chief AI Officer (CAIO) di Intarget DMCC, Presidente del Comitato Tecnico-Scientifico AIPIA, 20 anni tra tecnologia e crescita, autore di quattro libri. Su r4f.it: LLMO e AI Search.";
 
 const schema = buildGraph(
   organizationSchema(),
@@ -27,24 +28,23 @@ const schema = buildGraph(
 );
 
 const credentials = [
-  { title: "Presidente CTS AIPIA", body: "Eletto giugno 2025 al Comitato Tecnico-Scientifico dell'Associazione Italiana Professionisti dell'Intelligenza Artificiale." },
-  { title: "AI Program Manager — Intarget DMCC", body: "Dal 2019, agenzia digital con HQ Jumeirah Lakes Towers, Dubai." },
-  { title: "Founder Patron Multimedia", body: "Dal 2012, base operativa Chiavari (Liguria). Consulenza diretta digital + AI." },
+  { title: "Chief AI Officer (CAIO) — Intarget DMCC", body: "Da giugno 2026. In precedenza AI Program Manager di Intarget DMCC, da ottobre 2019 a giugno 2026." },
+  { title: "Presidente CTS AIPIA", body: "Dal 2025 presiedo il Comitato Tecnico-Scientifico dell'Associazione Italiana Professionisti dell'Intelligenza Artificiale." },
+  { title: "Autore e ricerca", body: "Quattro libri tra AI, LLMO e growth hacking. Nel 2026 ho curato il Glossario dell'intelligenza artificiale e firmato due paper su AI Literacy (art. 4 AI Act) e terminologia AI." },
 ];
 
 const teachings = [
-  { where: "IED Milano", what: "Docente Master Evolution Marketing & Growth Hacking — da oltre 6 anni" },
-  { where: "Università degli Studi di Firenze", what: "Docente AI applicata" },
-  { where: "Nana Bianca (Firenze)", what: "Formazione startup incubatore" },
-  { where: "Corporate (TIM, Microsoft, AC Milan)", what: "Workshop team digital, AI strategy" },
+  { where: "IED Milano", what: "Docente 2014–2020, dopo il corso di specializzazione Evolution Marketing and Social Media" },
+  { where: "AIPIA", what: "Formazione e divulgazione su AI generativa, AI Literacy e AI Act" },
+  { where: "r4f.it", what: "Workshop LLMO e AI Search per team marketing, content e SEO" },
 ];
 
 const skills = [
   "Large Language Model Optimization", "AIO", "Generative Engine Optimization",
-  "Answer Engine Optimization", "AI Program Management", "Growth Hacking",
+  "Answer Engine Optimization", "AI Strategy", "AI Governance", "EU AI Act",
   "Schema.org Structured Data", "Knowledge Graph", "Wikidata Entity Authority",
   "Technical SEO", "Prompt Engineering", "RAG Architecture",
-  "Salesforce", "HubSpot", "Digital Marketing Strategy",
+  "Growth Hacking", "Automation",
 ];
 ---
 
@@ -55,17 +55,17 @@ const skills = [
         <Pill>Chi sono</Pill>
         <h1>Rafael Patron.</h1>
         <p class="lead">
-          Consulente LLMO/AIO, AI Program Manager, Presidente del Comitato Tecnico-Scientifico AIPIA.
-          Lavoro nel digitale da oltre vent'anni e nell'AI applicata da quando ha smesso di essere
-          fantascienza.
+          Chief AI Officer (CAIO) di Intarget DMCC e Presidente del Comitato Tecnico-Scientifico
+          AIPIA. Lavoro da vent'anni tra tecnologia, trasformazione digitale e crescita; su r4f.it
+          mi occupo di LLM Optimization e di come i motori AI raccontano i brand.
         </p>
         <div class="bio-hero__cta">
           <MagneticCTA href="/audit-llmo" variant="accent">Richiedi un audit</MagneticCTA>
-          <Button href="/libri" variant="ghost">I miei libri</Button>
+          <Button href={RAFAEL.profile} variant="ghost" external>Profilo completo e CV</Button>
         </div>
       </div>
       <div class="bio-hero__badge">
-        <RotatedBadge text="LLMO · AIPIA CTS · 20 ANNI · IED · UNIFI · " center="r4f" size={200} rotate={-5} variant="ink" />
+        <RotatedBadge text="CAIO · LLMO · AIPIA CTS · 20 ANNI · 4 LIBRI · " center="r4f" size={200} rotate={-5} variant="ink" />
       </div>
     </div>
   </Section>
@@ -83,26 +83,28 @@ const skills = [
         <p>
           Ho iniziato nel digital marketing quando Google era ancora giovane. SEO, SEM, growth
           hacking — li ho fatti tutti, per startup che dovevano crescere in fretta e per aziende
-          che volevano innovare senza sprecare budget. Passaggi formativi a Google San Francisco
-          (2012-2013), Snap Inc. prima dell'IPO (2016-2017, quando Snapchat acquisì un sistema
-          sviluppato dal mio team sui sensori smartphone), Microsoft Milano, TIM, Eni.
+          che volevano innovare senza sprecare budget. Dal 2012 al 2017 ho guidato Patron
+          Multimedia: nel 2017 un progetto digitale sviluppato in quel percorso è stato ceduto a
+          Snap Inc.
         </p>
         <p>
           Quando l'intelligenza artificiale ha iniziato a cambiare le regole del gioco, non ho
-          aspettato. Ho contribuito a fondare il Comitato Tecnico-Scientifico di AIPIA, di cui
-          oggi sono Presidente. Ho scritto tre libri: "Growth Hacking", "AIO: Il tuo prossimo
-          collega è un robot", "Fatti trovare da ChatGPT — Guida operativa al LLMO".
+          aspettato. Da ottobre 2019 sono in Intarget DMCC, prima come AI Program Manager e da
+          giugno 2026 come Chief AI Officer. Dal 2025 presiedo il Comitato Tecnico-Scientifico di
+          AIPIA. Ho scritto quattro libri: "AIO: Il tuo prossimo collega è un robot", "Growth
+          Hacking", "Fatti trovare da ChatGPT" (con Filippo Fassone) e "Non è mai troppo tardi
+          per l'intelligenza artificiale".
         </p>
         <p>
-          Oggi opero tra Italia e UAE. Base operativa Chiavari (Liguria), agenzia di riferimento
-          Intarget DMCC a Dubai. Clienti in tutta Italia e su progetti internazionali.
+          Base operativa Chiavari (Liguria), con Intarget DMCC che ha sede a Dubai. Clienti in
+          tutta Italia e su progetti internazionali.
         </p>
       </div>
       <div class="prose">
         <Pill>Perché LLMO</Pill>
         <h2>Il termine cambia, l'urgenza no.</h2>
         <p>
-          Dopo vent'anni di SEO ho visto il settore cambiare radicalmente con l'arrivo delle AI
+          Dopo vent'anni nel digitale ho visto il settore cambiare radicalmente con l'arrivo delle AI
           Overview e degli assistenti AI. La domanda non è più solo "come mi posiziono su Google".
           È "come compaio quando qualcuno chiede a ChatGPT chi è il migliore nel mio settore?".
         </p>
@@ -138,12 +140,13 @@ const skills = [
     <div class="grid-2" style="gap: clamp(2rem, 4vw, 4rem); align-items: start;">
       <div>
         <Pill>Formazione</Pill>
-        <h2>Da Genova a Harvard.</h2>
+        <h2>Da Genova al MIT.</h2>
         <ul class="formation-list">
-          <li><strong>Università degli Studi di Genova</strong><span>2008-2011 · Laurea in Economia Aziendale e Gestione d'Impresa</span></li>
-          <li><strong>IED Milano</strong><span>2012-2013 · Master Evolution Marketing &amp; Social Media</span></li>
-          <li><strong>Università Bocconi</strong><span>2021-2022 · Bitcoin and Blockchain Program</span></li>
-          <li><strong>Harvard University</strong><span>2023-2024 · CS50's Introduction to AI with Python</span></li>
+          <li><strong>MIT Professional Education</strong><span>2026–2027, in corso · No Code and Agentic AI</span></li>
+          <li><strong>Harvard University / CS50</strong><span>2023 · CS50's Introduction to Artificial Intelligence with Python</span></li>
+          <li><strong>SDA Bocconi School of Management</strong><span>2022 · Artificial Intelligence in Action</span></li>
+          <li><strong>IED Milano</strong><span>Corso di specializzazione Evolution Marketing and Social Media</span></li>
+          <li><strong>Università degli Studi di Genova</strong><span>Studi universitari in Economia Aziendale</span></li>
         </ul>
       </div>
       <div>
@@ -162,8 +165,9 @@ const skills = [
     <Pill>Competenze</Pill>
     <h2>Stack tecnico verificabile.</h2>
     <p class="lead">
-      Oltre 50 certificazioni internazionali tra Salesforce, Google, HubSpot, SEMrush, Amazon,
-      YouTube. Le competenze chiave per il lavoro LLMO/AIO sono queste.
+      Le competenze chiave per il lavoro LLMO/AIO, dentro un focus più ampio su AI strategy,
+      AI governance e AI Act. Percorso completo, pubblicazioni e ORCID su{" "}
+      <a href={RAFAEL.profile} rel="noopener" target="_blank">rafaelpatron.com</a>.
     </p>
     <ul class="skills">
       {skills.map((s) => <li><span class="tag">{s}</span></li>)}
@@ -174,14 +178,14 @@ const skills = [
     <div class="grid-2 split-cta">
       <div>
         <Pill>Lavoriamo insieme?</Pill>
-        <h2>Scrivimi.</h2>
+        <h2>Parliamo del progetto.</h2>
         <p class="lead">
-          Niente form, niente CRM intermedi. Una mail diretta. Rispondo entro 24 ore lavorative;
-          se vale la pena, fissiamo una call da 30 minuti.
+          Audit, consulenza o workshop: scrivimi dalla pagina contatti di rafaelpatron.it.
+          Rispondo entro 24 ore lavorative; se vale la pena, ne parliamo a voce.
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it" variant="accent">r@r4f.it</MagneticCTA>
+        <MagneticCTA href={contattiRP("chi_sono_contatta")} variant="accent">Contatta Rafael</MagneticCTA>
         <Button href="/contatti" variant="ghost">Tutti i contatti</Button>
       </div>
     </div>

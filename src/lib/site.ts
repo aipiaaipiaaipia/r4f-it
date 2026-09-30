@@ -35,3 +35,17 @@ export const SITE = {
   personalSites: ["https://rafaelpatron.com", "https://rafaelpatron.it"],
   aipia: "https://aipia.it",
 } as const;
+
+// Canone RP (brief "presenza RP" 2026-09-30): ruoli e dati di Rafael citati nel sito.
+export const RAFAEL = {
+  jobTitle: "Chief AI Officer (CAIO)",
+  employer: "Intarget DMCC",
+  aipiaRole: "Presidente del Comitato Tecnico-Scientifico AIPIA",
+  aipiaName: "Associazione Italiana Professionisti dell'Intelligenza Artificiale",
+  orcid: "https://orcid.org/0009-0007-1257-7105",
+  profile: "https://rafaelpatron.com/",
+} as const;
+
+/** Contatti di rafaelpatron.it, hub di conversione dell'ecosistema RP. `cta` identifica il bottone. */
+export const contattiRP = (cta: string) =>
+  `https://rafaelpatron.it/contatti/?utm_source=r4f.it&utm_medium=referral&utm_campaign=ecosistema_rp&utm_content=${cta}`;

@@ -12,6 +12,7 @@ import {
   courseSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import { contattiRP } from "../lib/site";
 
 const title = "Formazione LLMO e AIO per team marketing, SEO e dev | r4f.it";
 const description =
@@ -46,7 +47,7 @@ const schema = buildGraph(
       processi e checklist che il tuo team può usare già il giorno dopo.
     </p>
     <div class="hero-cta">
-      <MagneticCTA href="mailto:r@r4f.it?subject=Workshop%20LLMO" variant="accent">Richiedi un workshop</MagneticCTA>
+      <MagneticCTA href={contattiRP("formazione_hero")} variant="accent">Richiedi un workshop</MagneticCTA>
       <Button href="#programmi" variant="ghost">Vedi i programmi</Button>
     </div>
   </Section>
@@ -107,15 +108,16 @@ const schema = buildGraph(
   <Section tone="alt">
     <div class="prose">
       <Pill>Esperienza docente</Pill>
-      <h2>Più di sei anni di formazione AI.</h2>
+      <h2>Formazione in aula dal 2014.</h2>
       <p>
-        Insegno da oltre sei anni a <strong>IED Milano</strong> nel Master Evolution Marketing &amp;
-        Growth Hacking. Sono docente AI applicata all'Università degli Studi di Firenze e formatore
-        presso <strong>Nana Bianca</strong> (incubatore startup Firenze).
+        Ho insegnato a <strong>IED Milano</strong> dal 2014 al 2020, dopo aver frequentato il
+        corso di specializzazione Evolution Marketing and Social Media. Oggi porto in aula AI
+        generativa, AI Literacy e AI Act anche come Presidente del Comitato Tecnico-Scientifico
+        <a href="/aipia">AIPIA</a>.
       </p>
       <p>
-        Ho gestito formazioni corporate per team digital di TIM, Microsoft, AC Milan e altri.
-        Le formule che propongo qui sono testate, non improvvisate.
+        I workshop che propongo qui nascono da quel lavoro in aula e dalle consulenze LLMO:
+        strumenti e checklist già usati, non improvvisati.
       </p>
     </div>
   </Section>
@@ -131,7 +133,7 @@ const schema = buildGraph(
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=Workshop%20LLMO%20—%20preventivo" variant="accent">Richiedi preventivo</MagneticCTA>
+        <MagneticCTA href={contattiRP("formazione_preventivo")} variant="accent">Richiedi preventivo</MagneticCTA>
         <Button href="/audit-llmo" variant="ghost">Vai all'audit</Button>
       </div>
     </div>

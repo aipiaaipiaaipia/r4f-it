@@ -12,7 +12,7 @@ Lo dico chiaro, all'inizio: **il lavoro non è cambiato**. Cambia solo il nome c
 
 Quando ho iniziato a parlare di questo servizio nel 2023, il termine più comune era AIO — Artificial Intelligence Optimization. Era abbastanza in voga, soprattutto tra le agenzie americane, e aveva il vantaggio di descrivere bene una categoria: ottimizzare la presenza per l'intelligenza artificiale.
 
-Lo usavo nei deck, sui siti, nei libri. Il mio secondo libro si chiama proprio "AIO: Il tuo prossimo collega è un robot".
+Lo usavo nei deck, sui siti, nei libri. Uno dei miei libri si chiama proprio "AIO: Il tuo prossimo collega è un robot".
 
 ## Cosa è cambiato nel 2025-2026
 

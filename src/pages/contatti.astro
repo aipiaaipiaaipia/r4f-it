@@ -10,6 +10,8 @@ import {
   personSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import Button from "../components/ui/Button.astro";
+import { contattiRP } from "../lib/site";
 
 const title = "Contatti — scrivimi per consulenza LLMO o AIO | r4f.it";
 const description =
@@ -110,12 +112,14 @@ const schema = buildGraph(
   <Section tone="ink">
     <div class="cta-final">
       <Pill>Iniziamo?</Pill>
-      <h2>Il modo più rapido è una mail.</h2>
+      <h2>Audit, consulenza o workshop?</h2>
       <p class="lead">
-        Audit, retainer, workshop, o solo una chiacchierata per capire se ha senso lavorare
-        insieme. Rispondo entro 24 ore lavorative.
+        Le richieste di audit, retainer e workshop passano dalla pagina contatti di
+        rafaelpatron.it: un solo punto d'ingresso per tutti i progetti di Rafael. Rispondo entro
+        24 ore lavorative.
       </p>
-      <MagneticCTA href="mailto:r@r4f.it" variant="accent">r@r4f.it</MagneticCTA>
+      <MagneticCTA href={contattiRP("contatti_richiesta")} variant="accent">Parla del progetto</MagneticCTA>
+      <Button href="mailto:r@r4f.it" variant="ghost">Oppure scrivi a r@r4f.it</Button>
     </div>
   </Section>
 </BaseLayout>

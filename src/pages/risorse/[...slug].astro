@@ -12,6 +12,7 @@ import {
   articleSchema,
   breadcrumbSchema,
 } from "../../lib/schema";
+import { contattiRP } from "../../lib/site";
 
 export async function getStaticPaths() {
   const now = new Date();
@@ -134,7 +135,7 @@ const related = allPosts
       </div>
       <div class="split-cta__actions">
         <MagneticCTA href="/audit-llmo" variant="accent">Vai all'audit</MagneticCTA>
-        <Button href="mailto:r@r4f.it" variant="ghost">Scrivimi</Button>
+        <Button href={contattiRP("risorse_articolo")} variant="ghost">Contatta Rafael</Button>
       </div>
     </div>
   </Section>

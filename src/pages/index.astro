@@ -16,6 +16,7 @@ import {
   llmoServiceSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import { contattiRP } from "../lib/site";
 
 const title = "Consulenza LLMO Italia: farsi citare da ChatGPT e Google AI | r4f.it";
 const description =
@@ -30,10 +31,10 @@ const schema = buildGraph(
 );
 
 const trustItems = [
-  { value: "20+", label: "anni nel digitale" },
-  { value: "3", label: "libri pubblicati" },
+  { value: "20", label: "anni tra tecnologia e crescita" },
+  { value: "4", label: "libri pubblicati" },
   { value: "Presidente CTS", label: "AIPIA" },
-  { value: "6 LLM", label: "monitorati daily" },
+  { value: "CAIO", label: "Intarget DMCC" },
 ];
 
 const phases = [
@@ -85,7 +86,7 @@ const phases = [
     </div>
 
     <div class="hero__trust" data-reveal style="--reveal-delay: 320ms">
-      <RotatedBadge text="LLMO · AIPIA · PRESIDENTE CTS · 3 LIBRI · 20 ANNI · " center="r4f" size={130} rotate={-4} />
+      <RotatedBadge text="LLMO · CAIO · PRESIDENTE CTS AIPIA · 4 LIBRI · 20 ANNI · " center="r4f" size={130} rotate={-4} />
       <ul class="trust-line">
         {trustItems.map((t) => (
           <li><strong>{t.value}</strong><span>{t.label}</span></li>
@@ -149,9 +150,9 @@ const phases = [
           adatta; gli altri perdono posizioni.
         </p>
         <p class="prose">
-          Oggi sono AI Program Manager presso Intarget DMCC, Presidente del Comitato
-          Tecnico-Scientifico <a href="/aipia">AIPIA</a> e autore di <a href="/libri">tre libri</a>{" "}
-          su growth hacking, AIO e LLMO.
+          Oggi sono Chief AI Officer (CAIO) di Intarget DMCC, Presidente del Comitato
+          Tecnico-Scientifico <a href="/aipia">AIPIA</a> e autore di <a href="/libri">quattro libri</a>{" "}
+          su AI, LLMO e growth hacking.
         </p>
       </div>
       <div data-reveal style="--reveal-delay: 120ms">
@@ -199,8 +200,8 @@ const phases = [
         </p>
       </div>
       <div class="cta-final__actions">
-        <MagneticCTA href="/audit-llmo" variant="accent">Richiedi un audit</MagneticCTA>
-        <Button href="mailto:r@r4f.it" variant="ghost" arrow={false}>r@r4f.it</Button>
+        <MagneticCTA href={contattiRP("home_richiedi_audit")} variant="accent">Richiedi un audit</MagneticCTA>
+        <Button href="/audit-llmo" variant="ghost">Come funziona l'audit</Button>
       </div>
     </div>
   </Section>

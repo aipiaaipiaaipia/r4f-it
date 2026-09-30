@@ -20,17 +20,22 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 - Dati legali compaiono SOLO in footer + privacy/cookie policy — MAI in hero/heading
 - **NIENTE** "Crafted with ♥ in Dubai" o derivati
 
-## Identità Rafael (verificata, vedi `.tmp/bio-research/rafael-verified.md`)
-- Italo-**peruviano** (NON argentino come dice il brief globale operatore — verifica WebSearch ha confermato)
-- 20+ anni esperienza digitale (non 16+ — il legacy diceva 16+ ma le fonti pubbliche danno 20+)
-- AI Program Manager presso Intarget DMCC (dal 2019)
-- Founder Patron Multimedia (Chiavari, dal 2012)
-- **Presidente del Comitato Tecnico-Scientifico AIPIA** (eletto giugno 2025) — non "Presidente AIPIA" tout court
-- 3 libri Amazon verificati (vedi `.tmp/bio-research/rafael-verified.md` per ASIN aggiornati)
-- Docenze: IED Milano (6+ anni), UNIFI, Nana Bianca
-- 50+ certificazioni
-- Sede: tra Italia e UAE (non solo UAE)
-- Persona non grata permanente: Andrea Murchio / ADEL Digital (legacy clean confermato dal grep)
+## Identità Rafael — canone RP (brief "presenza RP" 2026-09-30, prevale su `.tmp/bio-research/`)
+- **Chief AI Officer (CAIO) — Intarget DMCC**, da giugno 2026. AI Program Manager (ott. 2019 – giu. 2026) solo come ruolo storico.
+- **Presidente del Comitato Tecnico-Scientifico AIPIA** (dal 2025) — mai "Presidente AIPIA". Soci AIPIA: circa 80 → 1.080 (set. 2025 → set. 2026), crescita non attribuita solo a Rafael.
+- 20 anni tra tecnologia, trasformazione digitale e crescita. Italo-peruviano, base Chiavari.
+- Patron Multimedia 2012–2017; nel 2017 un progetto digitale di quel percorso è stato ceduto a Snap Inc. (Snap NON è stato datore di lavoro).
+- Formazione: MIT Professional Education No Code and Agentic AI (2026–2027, in corso), Harvard CS50 AI with Python (2023), SDA Bocconi AI in Action (2022), IED Milano corso di specializzazione + docenza 2014–2020, UniGe studi in Economia Aziendale **senza laurea**.
+- **4 libri**: AIO (2023), Growth Hacking (2024), Fatti trovare da ChatGPT con Filippo Fassone (2025), Non è mai troppo tardi per l'intelligenza artificiale (2026, ASIN non ancora verificato → niente link Amazon).
+- ORCID 0009-0007-1257-7105. Profilo completo: rafaelpatron.com.
+- **Vietati**: conteggi certificazioni (50+/52/55), UNIFI e Nana Bianca, Google SF/Microsoft/TIM/Eni come esperienze, "Growth Hacker"/"consulente" come identità primaria, "6 LLM monitorati daily" (nessun monitoraggio nel prodotto).
+- Dati centralizzati in `src/lib/site.ts` (`RAFAEL`, `contattiRP()`); controllo post-build: `npm run verifica`.
+- Persona non grata permanente: Andrea Murchio / ADEL Digital.
+
+## Funnel (ecosistema RP)
+- r4f.it resta verticale LLMO/AI Search, non sito personale generalista. Nessun redirect di dominio.
+- CTA di audit/call/consulenza/workshop → `contattiRP("<id_cta>")` = rafaelpatron.it/contatti/ con UTM `utm_source=r4f.it&utm_medium=referral&utm_campaign=ecosistema_rp&utm_content=<id_cta>`.
+- Email/telefono/WhatsApp di r4f.it restano come canali del brand (contatti, footer). Niente Calendly: la call da €249 si concorda via email.
 
 ## Pivot LLMO → vincoli copy
 - **Home, hero, H1, meta, llms.txt** → LLMO-primary
@@ -77,7 +82,7 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 - NIENTE counter da 0 animati su stat tiles (legacy AI slop)
 - NIENTE three.js sphere (legacy peso 600KB)
 - NIENTE gradient stripe-style viola-rosa (legacy AI slop)
-- Stat numerici SOLO se verificati in bio-research
+- Stat numerici SOLO se coerenti col canone RP (sopra)
 - Cookie banner minimal 1-liner anche se zero tracker
 - AIPIA citata SEMPRE come credenziale italiana di Rafael, MAI come ente del mercato target
 - Anti-Murchio check: grep clean confermato nel legacy

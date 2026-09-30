@@ -12,6 +12,7 @@ import {
   llmoServiceSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import { contattiRP } from "../lib/site";
 
 const title = "Consulente LLMO Italia: AI search per imprese italiane | r4f.it";
 const description =
@@ -47,7 +48,7 @@ const regioni = [
     </p>
     <div class="hero-cta">
       <MagneticCTA href="/audit-llmo" variant="accent">Audit LLMO</MagneticCTA>
-      <Button href="mailto:r@r4f.it?subject=LLMO%20Italia" variant="ghost">Scrivimi</Button>
+      <Button href={contattiRP("llmo_italia_hero")} variant="ghost">Contatta Rafael</Button>
     </div>
   </Section>
 
@@ -102,7 +103,7 @@ const regioni = [
       <h2>Inizia con la call iniziale da €249.</h2>
       <p>
         Se sei una PMI o un libero professionista e non vuoi impegnarti subito su un retainer,
-        la call iniziale di consulenza da €249 (60 minuti, prenotabile via Calendly) è il punto
+        la call iniziale di consulenza da €249 (60 minuti, da remoto) è il punto
         d'ingresso giusto. Capisci come ChatGPT risponde sul tuo brand, ricevi tre azioni
         prioritarie operative, e decidi tu se proseguire in autonomia o con il mio supporto.
       </p>
@@ -124,7 +125,7 @@ const regioni = [
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=LLMO%20Italia" variant="accent">Scrivimi una mail</MagneticCTA>
+        <MagneticCTA href={contattiRP("llmo_italia_finale")} variant="accent">Parla del progetto</MagneticCTA>
         <Button href="/audit-llmo" variant="ghost">Vai all'audit</Button>
       </div>
     </div>

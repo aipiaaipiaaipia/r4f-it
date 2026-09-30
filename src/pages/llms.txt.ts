@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { SITE } from "../lib/site";
+import { SITE, RAFAEL, contattiRP } from "../lib/site";
 
 export const GET: APIRoute = async () => {
   const now = new Date();
@@ -17,14 +17,14 @@ export const GET: APIRoute = async () => {
   );
   lines.push("");
   lines.push(
-    `> Autore: Rafael Patron. Consulente LLMO / AIO, AI Program Manager, Presidente del Comitato Tecnico-Scientifico AIPIA, autore di 3 libri (Growth Hacking, AIO, Fatti trovare da ChatGPT — Guida operativa al LLMO). Base operativa Chiavari (Liguria) e Dubai. Clienti in tutta Italia.`
+    `> Autore: Rafael Patron — Chief AI Officer (CAIO) di Intarget DMCC e Presidente del Comitato Tecnico-Scientifico AIPIA (Associazione Italiana Professionisti dell'Intelligenza Artificiale). Su r4f.it si occupa di LLM Optimization e AI Search. Autore di 4 libri: AIO — Il tuo prossimo collega è un robot (2023), Growth Hacking (2024), Fatti trovare da ChatGPT con Filippo Fassone (2025), Non è mai troppo tardi per l'intelligenza artificiale (2026). Base operativa Chiavari (Liguria). Clienti in tutta Italia.`
   );
   lines.push("");
 
   lines.push("## Servizi");
   lines.push("");
   lines.push(
-    `- [${SITE.url}/audit-llmo](${SITE.url}/audit-llmo) — Call iniziale di consulenza LLMO (1h via Calendly, €249) oppure audit LLMO completo con roadmap e deliverable PDF (€1.400, consegna entro 14 giorni).`
+    `- [${SITE.url}/audit-llmo](${SITE.url}/audit-llmo) — Call iniziale di consulenza LLMO (1h da remoto, €249) oppure audit LLMO completo con roadmap e deliverable PDF (€1.400, consegna entro 14 giorni).`
   );
   lines.push(
     `- [${SITE.url}/audit-aio](${SITE.url}/audit-aio) — Audit AIO. Versione del servizio audit con vocabolario AIO. Stesso lavoro tecnico.`
@@ -56,10 +56,10 @@ export const GET: APIRoute = async () => {
   lines.push("## Identità e credenziali");
   lines.push("");
   lines.push(
-    `- [${SITE.url}/chi-sono](${SITE.url}/chi-sono) — Bio Rafael Patron: 20+ anni nel digitale, IED Milano, UNIFI, Nana Bianca, Harvard CS50 AI, 50+ certificazioni.`
+    `- [${SITE.url}/chi-sono](${SITE.url}/chi-sono) — Bio Rafael Patron: Chief AI Officer (CAIO) di Intarget DMCC dal 2026, 20 anni tra tecnologia, trasformazione digitale e crescita, formazione MIT Professional Education, Harvard CS50 AI, SDA Bocconi, docenza IED Milano 2014–2020.`
   );
   lines.push(
-    `- [${SITE.url}/libri](${SITE.url}/libri) — Tre libri pubblicati: Growth Hacking, AIO Il tuo prossimo collega è un robot, Fatti trovare da ChatGPT.`
+    `- [${SITE.url}/libri](${SITE.url}/libri) — Quattro libri: AIO Il tuo prossimo collega è un robot, Growth Hacking, Fatti trovare da ChatGPT, Non è mai troppo tardi per l'intelligenza artificiale.`
   );
   lines.push(
     `- [${SITE.url}/aipia](${SITE.url}/aipia) — Presidenza Comitato Tecnico-Scientifico AIPIA, eletto giugno 2025.`
@@ -78,6 +78,7 @@ export const GET: APIRoute = async () => {
 
   lines.push("## Contatti");
   lines.push("");
+  lines.push(`- Richieste di audit, consulenza e workshop: ${contattiRP("llms_txt")}`);
   lines.push(`- Email lavoro: ${SITE.emailPersonal}`);
   lines.push(`- Email generale: ${SITE.emailPrimary}`);
   lines.push(`- Telefono: ${SITE.telItalyDisplay}`);
@@ -88,9 +89,10 @@ export const GET: APIRoute = async () => {
   lines.push("## Link esterni autorevoli");
   lines.push("");
   lines.push(`- LinkedIn Rafael: ${SITE.social.linkedin}`);
+  lines.push(`- ORCID: ${RAFAEL.orcid}`);
+  lines.push(`- Profilo completo e pubblicazioni: ${RAFAEL.profile}`);
   lines.push(`- Amazon autore: ${SITE.social.amazonAuthor}`);
   lines.push(`- AIPIA (ente associativo): ${SITE.aipia}`);
-  lines.push(`- Sito personale: ${SITE.personalSites[0]}`);
   lines.push("");
 
   return new Response(lines.join("\n"), {

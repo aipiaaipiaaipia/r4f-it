@@ -11,6 +11,7 @@ import {
   personSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import { contattiRP } from "../lib/site";
 
 const title = "Audit AIO: come il tuo brand appare su Google AI e ChatGPT | r4f.it";
 const description =
@@ -95,7 +96,7 @@ const schema = buildGraph(
       </p>
       <p>
         Se preferisci una sessione introduttiva più rapida, la <strong>call iniziale di
-        consulenza</strong> da <strong>€249</strong> (60 minuti via Calendly, 10-15 query testate
+        consulenza</strong> da <strong>€249</strong> (60 minuti da remoto, 10-15 query testate
         live) è il punto d'ingresso. Tutti i dettagli su <a href="/audit-llmo">/audit-llmo</a>.
       </p>
     </div>
@@ -112,7 +113,7 @@ const schema = buildGraph(
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=Audit%20AIO" variant="accent">Richiedi audit AIO</MagneticCTA>
+        <MagneticCTA href={contattiRP("audit_aio_finale")} variant="accent">Richiedi audit AIO</MagneticCTA>
         <Button href="/audit-llmo" variant="ghost">Vedi versione LLMO</Button>
       </div>
     </div>

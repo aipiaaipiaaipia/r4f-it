@@ -13,6 +13,7 @@ import {
   localBusinessSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import { contattiRP } from "../lib/site";
 
 const title = "Consulente LLMO a Genova: visibilità AI search per PMI liguri | r4f.it";
 const description =
@@ -41,7 +42,7 @@ const schema = buildGraph(
     </p>
     <div class="hero-cta">
       <MagneticCTA href="/audit-llmo" variant="accent">Audit LLMO</MagneticCTA>
-      <Button href="mailto:r@r4f.it?subject=LLMO%20Genova" variant="ghost">Scrivimi</Button>
+      <Button href={contattiRP("llmo_genova_hero")} variant="ghost">Contatta Rafael</Button>
     </div>
   </Section>
 
@@ -125,7 +126,7 @@ const schema = buildGraph(
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=LLMO%20Genova" variant="accent">Prenota call</MagneticCTA>
+        <MagneticCTA href={contattiRP("llmo_genova_finale")} variant="accent">Richiedi la call</MagneticCTA>
         <Button href="/consulente-llmo-italia" variant="ghost">Lavoro anche fuori Liguria</Button>
       </div>
     </div>

@@ -12,20 +12,20 @@ import {
   breadcrumbSchema,
 } from "../lib/schema";
 
-const title = "I tre libri di Rafael Patron su LLMO, AIO e growth hacking | r4f.it";
+const title = "I quattro libri di Rafael Patron su LLMO, AI e growth hacking | r4f.it";
 const description =
-  "Tre libri Amazon: Fatti trovare da ChatGPT (2026, LLMO), AIO Il tuo prossimo collega è un robot (2023/2025), Growth Hacking (2023). Manuali operativi per imprese italiane.";
+  "Quattro libri: Fatti trovare da ChatGPT (2025, LLMO, con Filippo Fassone), AIO Il tuo prossimo collega è un robot (2023), Growth Hacking (2024), Non è mai troppo tardi per l'intelligenza artificiale (2026).";
 
 const books = [
   {
     asin: "B0GQ37KM4S",
     title: "Fatti trovare da ChatGPT",
     subtitle: "Guida operativa al LLMO (Large Language Model Optimization)",
-    year: "2026",
-    publishDate: "2026-01-15",
-    coAuthors: "Rafael Patron, AIPIA, Filippo Fassone",
+    year: "2025",
+    publishDate: "2025",
+    coAuthors: "Rafael Patron con Filippo Fassone",
     abstract:
-      "Il primo manuale italiano di LLMO. Come ottimizzare la presenza online perché ChatGPT, Claude, Gemini e Perplexity citino e raccomandino il tuo brand. Schema.org, llms.txt, entità Wikidata, citation rate: framework operativi testati su clienti reali.",
+      "Un manuale operativo di LLMO in italiano. Come ottimizzare la presenza online perché ChatGPT, Claude, Gemini e Perplexity citino e raccomandino il tuo brand. Schema.org, llms.txt, entità Wikidata, citation rate: framework operativi, non teoria.",
     why:
       "Se hai un sito o gestisci la presenza online di un brand, questo libro ti dà il framework che applico quotidianamente nelle mie consulenze.",
     tags: ["LLMO", "AI Search", "Schema.org", "Citation Rate"],
@@ -34,9 +34,9 @@ const books = [
     asin: "B0FBL336QV",
     title: "AIO: Il tuo prossimo collega è un robot",
     subtitle: "C'era una volta Google. Ora non cerchiamo più: chiediamo, e chi possiede la risposta domina il mercato.",
-    year: "2023, nuova ed. 2025",
-    publishDate: "2023-09-01",
-    coAuthors: "Rafael Patron, AIPIA",
+    year: "2023",
+    publishDate: "2023",
+    coAuthors: "Rafael Patron",
     abstract:
       "Come l'Intelligenza Artificiale sta trasformando il mondo del lavoro e come prepararsi. Scritto con il supporto di AIPIA, affronta il tema dell'AI in azienda con un approccio pratico e accessibile. Nuova edizione 2025 con aggiornamenti su LLM e AI Overview.",
     why:
@@ -47,14 +47,27 @@ const books = [
     asin: "B0CN538KZL",
     title: "Growth Hacking",
     subtitle: "I segreti di una crescita rapida e sostenibile. Una guida per affrontare il labirinto del Growth Hacking.",
-    year: "2023/2024",
-    publishDate: "2023-12-01",
+    year: "2024",
+    publishDate: "2024",
     coAuthors: "Rafael Patron",
     abstract:
       "Manuale operativo per startup e PMI che vogliono crescere velocemente con risorse limitate. Strategie testate sul campo, casi studio reali, framework applicabili da subito. Niente teoria americana riciclata: principi calati sul mercato italiano.",
     why:
       "Se stai lanciando un prodotto o vuoi accelerare un'attività esistente con budget limitato, ti dà un metodo strutturato.",
     tags: ["Growth Hacking", "Startup", "PMI"],
+  },
+  {
+    asin: null,
+    title: "Non è mai troppo tardi per l'intelligenza artificiale",
+    subtitle: "La guida pratica per parlare con l'intelligenza artificiale, senza fretta e senza paura.",
+    year: "2026",
+    publishDate: "2026",
+    coAuthors: "Rafael Patron",
+    abstract:
+      "Saggio divulgativo per lettori over 60 e per chi li accompagna: come usare l'intelligenza artificiale nella vita di tutti i giorni, senza gergo tecnico.",
+    why:
+      "Se devi accompagnare genitori o persone meno digitali verso l'AI, è il libro da mettere loro in mano.",
+    tags: ["Divulgazione", "AI per tutti"],
   },
 ];
 
@@ -67,7 +80,7 @@ const schema = buildGraph(
       description: b.abstract,
       author: "Rafael Patron",
       datePublished: b.publishDate,
-      asin: b.asin,
+      asin: b.asin ?? undefined,
       abstract: b.subtitle,
     })
   ),
@@ -81,11 +94,11 @@ const schema = buildGraph(
 <BaseLayout {title} {description} schemaJsonLd={schema}>
   <Section tight>
     <Pill>Libri</Pill>
-    <h1>Tre libri per capire il digitale che cambia.</h1>
+    <h1>Quattro libri per capire il digitale che cambia.</h1>
     <p class="lead">
-      Scritti per chi vuole capire e agire, non per chi cerca buzzword. Disponibili su Amazon in
-      formato cartaceo e Kindle. Il più recente — "Fatti trovare da ChatGPT" — è il primo manuale
-      italiano dedicato interamente al LLMO.
+      Scritti per chi vuole capire e agire, non per chi cerca buzzword. Quello più vicino al
+      lavoro di r4f.it è "Fatti trovare da ChatGPT", scritto con Filippo Fassone e dedicato
+      interamente al LLMO.
     </p>
   </Section>
 
@@ -113,7 +126,7 @@ const schema = buildGraph(
             <ul class="book__tags">
               {b.tags.map((t) => <li><span class="tag">{t}</span></li>)}
             </ul>
-            <Button href={`https://www.amazon.it/dp/${b.asin}`} variant="ink" external>Vedi su Amazon</Button>
+            {b.asin && <Button href={`https://www.amazon.it/dp/${b.asin}`} variant="ink" external>Vedi su Amazon</Button>}
           </div>
         </article>
       ))}

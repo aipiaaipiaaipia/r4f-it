@@ -1,4 +1,4 @@
-import { SITE } from "./site";
+import { SITE, RAFAEL } from "./site";
 
 const personId = `${SITE.url}/#rafael`;
 const orgId = `${SITE.url}/#org`;
@@ -9,32 +9,28 @@ export const personSchema = () => ({
   "@id": personId,
   name: SITE.author,
   alternateName: ["Rafael Alberto Patron Sanguineti", "Rafael Patron Sanguineti"],
-  url: SITE.url,
+  url: `${SITE.url}/chi-sono`,
   image: `${SITE.url}/assets/og/rafael-portrait.jpg`,
-  jobTitle: "AI Program Manager · Consulente LLMO",
+  jobTitle: RAFAEL.jobTitle,
   description:
-    "Consulente LLMO/AIO con oltre 20 anni di esperienza nel digitale. Presidente del Comitato Tecnico-Scientifico AIPIA, autore di tre libri su growth hacking e ottimizzazione AI.",
+    "Chief AI Officer (CAIO) di Intarget DMCC e Presidente del Comitato Tecnico-Scientifico AIPIA. 20 anni tra tecnologia, trasformazione digitale e crescita; su r4f.it lavora su LLM Optimization e AI Search. Autore di quattro libri, tra cui Fatti trovare da ChatGPT.",
   birthPlace: { "@type": "Place", name: "Perù" },
   nationality: ["Italian", "Peruvian"],
   worksFor: { "@id": orgId },
   memberOf: {
     "@type": "Organization",
-    name: "AIPIA — Associazione Italiana Professionisti Intelligenza Artificiale",
+    name: `AIPIA — ${RAFAEL.aipiaName}`,
     url: SITE.aipia,
   },
-  alumniOf: [
-    { "@type": "CollegeOrUniversity", name: "Università degli Studi di Genova" },
-    { "@type": "CollegeOrUniversity", name: "IED — Istituto Europeo di Design" },
-    { "@type": "CollegeOrUniversity", name: "Università Bocconi" },
-    { "@type": "CollegeOrUniversity", name: "Harvard University (CS50 AI)" },
-  ],
   knowsAbout: [
     "Large Language Model Optimization (LLMO)",
     "Artificial Intelligence Optimization (AIO)",
     "Generative Engine Optimization (GEO)",
     "Answer Engine Optimization (AEO)",
     "Schema.org structured data",
-    "AI Program Management",
+    "AI Strategy",
+    "AI Governance",
+    "Generative AI",
     "Growth Hacking",
     "SEO",
     "Prompt Engineering",
@@ -49,6 +45,7 @@ export const personSchema = () => ({
     SITE.social.instagram,
     SITE.social.facebook,
     SITE.social.amazonAuthor,
+    RAFAEL.orcid,
     ...SITE.personalSites,
   ],
 });
@@ -111,7 +108,7 @@ export const llmoServiceSchema = () => ({
   offers: [
     {
       "@type": "Offer",
-      name: "Call iniziale di consulenza LLMO — 1 ora via Calendly",
+      name: "Call iniziale di consulenza LLMO — 1 ora",
       price: "249",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
@@ -159,7 +156,7 @@ export const bookSchema = (book: {
   description: string;
   author: string;
   datePublished: string;
-  asin: string;
+  asin?: string;
   inLanguage?: string;
   abstract?: string;
 }) => ({
@@ -171,7 +168,7 @@ export const bookSchema = (book: {
   description: book.description,
   inLanguage: book.inLanguage ?? "it",
   bookFormat: "https://schema.org/Paperback",
-  sameAs: `https://www.amazon.it/dp/${book.asin}`,
+  sameAs: book.asin ? `https://www.amazon.it/dp/${book.asin}` : undefined,
   abstract: book.abstract,
 });
 

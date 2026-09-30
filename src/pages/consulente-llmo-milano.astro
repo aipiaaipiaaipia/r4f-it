@@ -13,6 +13,7 @@ import {
   localBusinessSchema,
   breadcrumbSchema,
 } from "../lib/schema";
+import { contattiRP } from "../lib/site";
 
 const title = "Consulente LLMO a Milano: AI search per imprese lombarde | r4f.it";
 const description =
@@ -41,7 +42,7 @@ const schema = buildGraph(
     </p>
     <div class="hero-cta">
       <MagneticCTA href="/audit-llmo" variant="accent">Audit LLMO</MagneticCTA>
-      <Button href="mailto:r@r4f.it?subject=LLMO%20Milano" variant="ghost">Scrivimi</Button>
+      <Button href={contattiRP("llmo_milano_hero")} variant="ghost">Contatta Rafael</Button>
     </div>
   </Section>
 
@@ -109,8 +110,8 @@ const schema = buildGraph(
         on-site presso le sedi clienti senza sovrapprezzo straordinario.
       </p>
       <p>
-        Inoltre insegno da oltre sei anni a <strong>IED Milano</strong> (Master Evolution
-        Marketing &amp; Growth Hacking), quindi su Milano sono presente regolarmente per docenze.
+        Milano la conosco anche dall'aula: ho insegnato a <strong>IED Milano</strong> dal 2014 al
+        2020, dopo il corso di specializzazione Evolution Marketing and Social Media.
       </p>
     </div>
   </Section>
@@ -126,7 +127,7 @@ const schema = buildGraph(
         </p>
       </div>
       <div class="split-cta__actions">
-        <MagneticCTA href="mailto:r@r4f.it?subject=LLMO%20Milano" variant="accent">Prenota call</MagneticCTA>
+        <MagneticCTA href={contattiRP("llmo_milano_finale")} variant="accent">Richiedi la call</MagneticCTA>
         <Button href="/consulente-llmo-italia" variant="ghost">Resto Italia</Button>
       </div>
     </div>

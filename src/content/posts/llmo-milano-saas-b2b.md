@@ -50,4 +50,4 @@ Per i SaaS milanesi il modello consulenza tipico è:
 
 Sono cifre orientative. Su retainer di 6 mesi prevedo deliverable mensili specifici (schema audit, content brief, citation tracking, sprint review).
 
-**Vuoi parlarne?** Lavoro a Milano regolarmente per docenze IED, sono presente almeno una volta al mese. Possiamo fissare on-site o remoto.
+**Vuoi parlarne?** [Scrivimi dalla pagina contatti](https://rafaelpatron.it/contatti/?utm_source=r4f.it&utm_medium=referral&utm_campaign=ecosistema_rp&utm_content=articolo_llmo_milano): possiamo vederci a Milano o lavorare da remoto.

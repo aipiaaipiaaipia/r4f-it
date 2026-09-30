@@ -44,6 +44,7 @@ export const RAFAEL = {
   aipiaName: "Associazione Italiana Professionisti dell'Intelligenza Artificiale",
   orcid: "https://orcid.org/0009-0007-1257-7105",
   profile: "https://rafaelpatron.com/",
+  wikidata: "https://www.wikidata.org/wiki/Q141604504",
 } as const;
 
 /** Contatti di rafaelpatron.it, hub di conversione dell'ecosistema RP. `cta` identifica il bottone. */

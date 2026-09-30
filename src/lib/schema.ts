@@ -9,7 +9,7 @@ export const personSchema = () => ({
   "@id": personId,
   name: SITE.author,
   alternateName: ["Rafael Alberto Patron Sanguineti", "Rafael Patron Sanguineti"],
-  url: `${SITE.url}/chi-sono`,
+  url: RAFAEL.profile,
   image: `${SITE.url}/assets/og/rafael-portrait.jpg`,
   jobTitle: RAFAEL.jobTitle,
   description:
@@ -46,6 +46,7 @@ export const personSchema = () => ({
     SITE.social.facebook,
     SITE.social.amazonAuthor,
     RAFAEL.orcid,
+    RAFAEL.wikidata,
     ...SITE.personalSites,
   ],
 });

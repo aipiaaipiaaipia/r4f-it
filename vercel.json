@@ -4,6 +4,7 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/(.*)", "has": [{ "type": "host", "value": "www.r4f.it" }], "destination": "https://r4f.it/$1", "statusCode": 301 },
+    { "source": "/sitemap.xml", "destination": "/sitemap-index.xml", "statusCode": 301 },
     { "source": "/chi-siamo", "destination": "/chi-sono", "statusCode": 301 },
     { "source": "/aio-ecommerce", "destination": "/servizi#ecommerce", "statusCode": 301 },
     { "source": "/aio-professionisti", "destination": "/servizi#professionisti", "statusCode": 301 },

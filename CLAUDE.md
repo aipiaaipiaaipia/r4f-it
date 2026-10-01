@@ -77,7 +77,7 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 
 11. **404 design**: KineticHeadline morpha "404" ↔ "NOPE" ↔ "MEH" + path richiesto in mono. Memorabile, fits direzione estetica.
 
-12. **Hero home = 21st "glass-headline-hero" verbatim (2026-10-01)**: `src/components/ui/glass-headline-hero.tsx` non si modifica MAI; `scripts/check-glass.mjs` (prebuild) confronta lo sha256, l'atteso è nello script perché `.tmp/` è gitignored. Adattamenti solo da props, wrapper `.r4f-glass` e CSS esterno in `global.css`. KineticHeadline resta sulle altre pagine.
+12. **Hero home = 21st "glass-headline-hero" (2026-10-01)**: `src/components/ui/glass-headline-hero.tsx` è l'originale 21st più UNA modifica autorizzata dall'operatore (prop `speed`, v. 18); l'originale intatto sta in `src/components/ui/_upstream/glass-headline-hero.orig.tsx`. `scripts/check-glass.mjs` (prebuild) verifica sha256 dell'originale, che originale + le 5 modifiche ammesse = componente (`diff -w -B`) e sha256 del componente; gli attesi sono nello script perché `.tmp/` è gitignored. Altri adattamenti solo da props, wrapper `.r4f-glass` e CSS esterno in `global.css`. KineticHeadline resta sulle altre pagine.
 
 13. **Altezza hero = `calc(100svh - var(--r4f-header-h))`**: l'header misura 73.78px fino a 900px e 78.13px sopra, un solo valore in px non basta. Variabile 74px/78px in `global.css`.
 
@@ -88,6 +88,10 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 16. **Titolo hero con `font-feature-settings`/`font-variation-settings: normal`**: la maschera del vetro è disegnata su canvas, che ignora feature e assi; il DOM trasparente deve avere gli stessi glifi.
 
 17. **Ombra di contatto su mobile**: il componente proietta l'ombra a 0.012 uv (~1,2% dell'altezza hero, ~9px a 390x844); con il titolo a 41.6px si legge come un secondo titolo. Non correggibile da fuori senza cambiare altezza o corpo prescritti.
+
+18. **Hero più lento e più scuro (2026-10-01, `.tmp/inbox/PROMPT-r4f.md`)**: `speed={0.25}`, palette `#060504 #C94100 #9C5A41 #1A2A8C #CBBFA8`. Il componente consegnato aveva, oltre alle 5 modifiche elencate, la riga JSDoc della prop `speed` e 2 righe vuote in meno a fine file: solo commento e spazi, accettati e dichiarati. La baseline di lentezza (speed=1) è presa con la palette nuova, così il rapporto misura solo la velocità; gate in `.tmp/gate-glass-v2.mjs`.
+
+19. **`_inbox/` in `.gitignore` + `.vercelignore` nuovo (`.tmp/`, `_inbox/`, `dist/`, `.astro/`)**: la CLI Vercel non applica `.gitignore`, quindi nella build remota Tailwind scansionava anche cartelle ignorate in locale. Il CSS di prod aveva 4 utility in più (`.block .inline .table .resize`) che nessuna pagina usa. Verifica: dopo il deploy prod serve lo stesso file CSS (stesso hash) della build locale.
 
 ## Guardrail specifici di questo sito
 - NIENTE form contatti — solo mailto, tel, WhatsApp

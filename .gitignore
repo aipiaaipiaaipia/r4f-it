@@ -32,3 +32,6 @@ pnpm-debug.log*
 # WSL & OS
 Thumbs.db
 .vercel
+
+# operator drop folder (Tailwind v4 scans every non-ignored file)
+_inbox/

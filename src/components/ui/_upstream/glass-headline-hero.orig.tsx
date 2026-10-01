@@ -13,8 +13,6 @@ import * as React from "react"
  * where each word landed. Search engines, screen readers and text selection
  * all see ordinary text; the glass is paint over it.
  *
- * Local change (r4f.it): optional `speed` prop scales the field and light drift; everything else is the 21st.dev original.
- *
  * WebGL2, React is the only import. Without WebGL2 the headline simply shows
  * as solid type over a CSS gradient.
  */
@@ -36,8 +34,6 @@ export type GlassHeadlineHeroProps = {
   /** **Must be a definite length.** */
   height?: string
   className?: string
-  /** Speed of the colour field and of the drifting light: 1 is the original pace, 0.25 a quarter of it. */
-  speed?: number
 }
 
 // #region glass
@@ -390,7 +386,6 @@ export default function GlassHeadlineHero({
   colors,
   height = "100svh",
   className = "",
-  speed = 1,
 }: GlassHeadlineHeroProps) {
   const rootRef = React.useRef<HTMLElement | null>(null)
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null)
@@ -401,8 +396,8 @@ export default function GlassHeadlineHero({
   const palette = paletteOf(colors)
   const words = splitWords(title)
   // The engine reads these live, so a new palette or title never rebuilds the GL context.
-  const live = React.useRef({ palette, title, speed })
-  live.current = { palette, title, speed }
+  const live = React.useRef({ palette, title })
+  live.current = { palette, title }
   const pointer = React.useRef({ x: 0.5, y: 0.56, at: -1e9, rebuild: () => {}, kick: () => {} })
 
   React.useEffect(() => {
@@ -638,7 +633,7 @@ export default function GlassHeadlineHero({
           size()
         }
       }
-      if (animating()) time += dt * Math.max(0, live.current.speed)
+      if (animating()) time += dt
       const pt = pointer.current
       const idle = (now - pt.at) / 1000 > IDLE_S
       const [tx, ty] = idle && animating() ? orbit(time) : [pt.x, pt.y]
@@ -776,3 +771,5 @@ export default function GlassHeadlineHero({
     </section>
   )
 }
+
+

@@ -1,0 +1,6 @@
+# La CLI Vercel carica tutto cio' che non e' elencato qui e non applica .gitignore:
+# nella build remota Tailwind v4 scansiona ogni file caricato e il CSS cambia.
+.tmp/
+_inbox/
+dist/
+.astro/

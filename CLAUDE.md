@@ -91,7 +91,7 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 
 18. **Hero più lento e più scuro (2026-10-01, `.tmp/inbox/PROMPT-r4f.md`)**: `speed={0.25}`, palette `#060504 #C94100 #9C5A41 #1A2A8C #CBBFA8`. Il componente consegnato aveva, oltre alle 5 modifiche elencate, la riga JSDoc della prop `speed` e 2 righe vuote in meno a fine file: solo commento e spazi, accettati e dichiarati. La baseline di lentezza (speed=1) è presa con la palette nuova, così il rapporto misura solo la velocità; gate in `.tmp/gate-glass-v2.mjs`.
 
-19. **`_inbox/` in `.gitignore` + `.vercelignore` nuovo (`.tmp/`, `_inbox/`, `dist/`, `.astro/`)**: la CLI Vercel non applica `.gitignore`, quindi nella build remota Tailwind scansionava anche cartelle ignorate in locale. Il CSS di prod aveva 4 utility in più (`.block .inline .table .resize`) che nessuna pagina usa. Verifica: dopo il deploy prod serve lo stesso file CSS (stesso hash) della build locale.
+19. **`_inbox/` in `.gitignore` + `.vercelignore` nuovo (`.tmp/`, `_inbox/`, `dist/`, `.astro/`)**: la CLI Vercel non applica `.gitignore`, quindi nella build remota Tailwind scansionava anche cartelle ignorate in locale. Il CSS di prod aveva 4 utility in più che nessuna pagina usa (elenco in `.tmp/REVIEW.md`). Non nominare classi Tailwind in questo file: Tailwind scansiona anche `CLAUDE.md` e le genera. Verifica: dopo il deploy prod serve lo stesso file CSS (stesso hash) della build locale.
 
 ## Guardrail specifici di questo sito
 - NIENTE form contatti — solo mailto, tel, WhatsApp

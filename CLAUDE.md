@@ -4,6 +4,7 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 
 ## Stack
 - Astro 5.18.x (MAI 6 — rolldown-vite incompatibile con @tailwindcss/vite v4)
+- React solo per `src/components/ui/glass-headline-hero.tsx`: `@astrojs/react` **4.x** (la 7.x è per Astro 6; `astro add react` la installa comunque, va riportata a ^4.4.2)
 - Tailwind v4 via `@tailwindcss/vite` (no PostCSS plugin)
 - Tokens custom in `src/styles/global.css` con `@theme`
 - Vercel static deploy
@@ -76,6 +77,18 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 
 11. **404 design**: KineticHeadline morpha "404" ↔ "NOPE" ↔ "MEH" + path richiesto in mono. Memorabile, fits direzione estetica.
 
+12. **Hero home = 21st "glass-headline-hero" verbatim (2026-10-01)**: `src/components/ui/glass-headline-hero.tsx` non si modifica MAI; `scripts/check-glass.mjs` (prebuild) confronta lo sha256, l'atteso è nello script perché `.tmp/` è gitignored. Adattamenti solo da props, wrapper `.r4f-glass` e CSS esterno in `global.css`. KineticHeadline resta sulle altre pagine.
+
+13. **Altezza hero = `calc(100svh - var(--r4f-header-h))`**: l'header misura 73.78px fino a 900px e 78.13px sopra, un solo valore in px non basta. Variabile 74px/78px in `global.css`.
+
+14. **`html:has(.r4f-glass)` + body `overflow-x: clip`**: il drawer `.mobile-nav` chiuso (fixed + translateX(100%)) raddoppia lo scrollWidth sotto 900px su TUTTE le pagine (pre-esistente, la pagina scorre in orizzontale via script fino al drawer). Corretto solo sulla home per non toccare header e altre pagine; clip su entrambi perché con il solo html il body diventa scroll container e l'header sticky si stacca. Da estendere al sito quando si decide.
+
+15. **`.r4f-glass` z-index 2**: sopra il grain fisso di `body.noise`, così il vetro resta quello della demo.
+
+16. **Titolo hero con `font-feature-settings`/`font-variation-settings: normal`**: la maschera del vetro è disegnata su canvas, che ignora feature e assi; il DOM trasparente deve avere gli stessi glifi.
+
+17. **Ombra di contatto su mobile**: il componente proietta l'ombra a 0.012 uv (~1,2% dell'altezza hero, ~9px a 390x844); con il titolo a 41.6px si legge come un secondo titolo. Non correggibile da fuori senza cambiare altezza o corpo prescritti.
+
 ## Guardrail specifici di questo sito
 - NIENTE form contatti — solo mailto, tel, WhatsApp
 - NIENTE Vercel Analytics al go-live (riattivabile dopo 7gg cookieless)
@@ -95,7 +108,8 @@ Sito personale di Rafael Patron, consulente LLMO/AIO. Pivot strategico AIO → L
 - `.tmp/bio-research/rafael-verified.md` — bio verificata (PRIORITÀ per /chi-sono, /libri, /aipia)
 
 ## Comandi rapidi
-- `npm run dev` — dev server :4321
+- `npm run dev` — dev server :4435 (porta registrata in `~/.claude/PORT-REGISTRY.md`, non più 4321)
+- `node .tmp/gate-glass.mjs [https://r4f.it]` — gate hero vetro (preflight 0–5 + 9 gate)
 - `npm run build` — output statico in `dist/`
 - `npm run check` — astro check (TypeScript + content collection)
 - `vercel deploy --prod` — production deploy

@@ -438,3 +438,32 @@ code, pre {
 
 /* Tel anti-break */
 .tel { white-space: nowrap; }
+
+/* ============================================
+   Glass headline hero (21st, verbatim in components/ui)
+   Il componente non si tocca: si adatta solo da qui, via wrapper .r4f-glass.
+   ============================================ */
+/* Altezza reale di .site-header: 73.78px fino a 900px (toggle), 78.13px sopra. */
+:root { --r4f-header-h: 78px; }
+@media (max-width: 900px) { :root { --r4f-header-h: 74px; } }
+
+/* Sopra il grain fisso di body.noise (z-index 1): il vetro resta quello della demo. */
+.r4f-glass { position: relative; z-index: 2; }
+
+.r4f-glass .ghr-title{font-family:var(--font-display);font-weight:800;max-width:14ch;font-size:clamp(2.6rem,calc(8.2cqw + .5rem),9.5rem);line-height:.98;letter-spacing:-.03em}
+.r4f-glass .ghr-eyebrow{font-family:var(--font-mono);letter-spacing:.1em}
+.r4f-glass .ghr-desc{font-family:var(--font-body);max-width:40rem}
+.r4f-glass .ghr-btn{font-family:var(--font-body)}
+.r4f-glass .ghr-primary{background:var(--color-accent);color:#fff}
+@media (hover:hover){.r4f-glass .ghr-primary:hover{background:var(--color-accent-dark)}}
+
+/* La maschera del vetro è disegnata su canvas, che ignora feature e assi variabili:
+   il DOM (trasparente) deve avere gli stessi glifi, o selezione e posizioni divergono
+   da html { ss01, ss02, cv01 } e h1 { "wdth" 96 }. */
+.r4f-glass .ghr-title{font-feature-settings:normal;font-variation-settings:normal}
+
+/* Il drawer .mobile-nav chiuso (fixed + translateX(100%)) raddoppia lo scrollWidth sotto 900px:
+   gia' cosi' su tutte le pagine, l'header non si tocca. Sulla home si taglia da fuori.
+   clip su entrambi: con il solo html, body diventa scroll container e l'header sticky si stacca. */
+html:has(.r4f-glass) { overflow-x: clip; }
+html:has(.r4f-glass) body { overflow-x: clip; }

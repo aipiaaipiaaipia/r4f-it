@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/check-glass.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -16,13 +17,18 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.7",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.0",
     "@fontsource-variable/albert-sans": "^5.2.8",
     "@fontsource-variable/bricolage-grotesque": "^5.2.10",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.1.16",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "astro": "5.18.1",
     "gray-matter": "^4.0.3",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.16"
   }

@@ -34,6 +34,10 @@ export const SITE = {
   },
   personalSites: ["https://rafaelpatron.com", "https://rafaelpatron.it"],
   aipia: "https://aipia.it",
+  /** Porta di dev/preview, la stessa fissata in astro.config.mjs (PORT-REGISTRY). */
+  devPort: 4435,
+  /** Fingerprint <meta name="x-project"> che l'harness verifica su ogni pagina. */
+  projectSlug: "r4f-it",
 } as const;
 
 // Canone RP (brief "presenza RP" 2026-09-30): ruoli e dati di Rafael citati nel sito.

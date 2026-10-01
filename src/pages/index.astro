@@ -4,7 +4,7 @@ import Section from "../components/ui/Section.astro";
 import Button from "../components/ui/Button.astro";
 import Card from "../components/ui/Card.astro";
 import Pill from "../components/ui/Pill.astro";
-import KineticHeadline from "../components/kinetic/KineticHeadline.astro";
+import GlassHeadlineHero from "../components/ui/glass-headline-hero";
 import RotatedBadge from "../components/kinetic/RotatedBadge.astro";
 import MagneticCTA from "../components/kinetic/MagneticCTA.astro";
 import RevealStack from "../components/kinetic/RevealStack.astro";
@@ -66,25 +66,20 @@ const phases = [
 ---
 
 <BaseLayout {title} {description} schemaJsonLd={schema}>
-  <Section tight class="hero">
-    <Pill class="hero__eyebrow">LLM Optimization · Italia</Pill>
-    <h1 class="hero__title" data-reveal>
-      Il tuo sito deve farsi trovare.
-      <br />
-      <span class="hero__title-line">
-        Anche quando lo cerca un
-        <KineticHeadline primary="LLM" secondary="AIO" level={2} />.
-      </span>
-    </h1>
-    <p class="lead hero__lead" data-reveal style="--reveal-delay: 100ms">
-      ChatGPT consiglia aziende. Google genera risposte AI prima dei link blu. Se il tuo brand
-      non compare in quelle risposte, per quel pubblico semplicemente non esisti.
-    </p>
-    <div class="hero__cta" data-reveal style="--reveal-delay: 200ms">
-      <MagneticCTA href="/audit-llmo" variant="accent">Richiedi un audit</MagneticCTA>
-      <Button href="/metodo" variant="ghost">Scopri il metodo</Button>
-    </div>
+  <div class="r4f-glass">
+    <GlassHeadlineHero
+      client:load
+      eyebrow="LLM Optimization · Italia"
+      title="Ottimizzazione LLM / AIO"
+      description="Il tuo brand dentro le risposte di ChatGPT, Gemini e degli AI Overviews di Google. Rendo il tuo sito leggibile, citabile e consigliato dai modelli linguistici."
+      primaryAction={{ label: "Richiedi un audit", href: "/audit-llmo" }}
+      secondaryAction={{ label: "Scopri il metodo", href: "/metodo" }}
+      colors={["#120F0C", "#FF5500", "#FFB48F", "#2F4CFF", "#FAF7F0"]}
+      height="calc(100svh - var(--r4f-header-h))"
+    />
+  </div>
 
+  <Section tight class="hero">
     <div class="hero__trust" data-reveal style="--reveal-delay: 320ms">
       <RotatedBadge text="LLMO · CAIO · CTS AIPIA · 4 LIBRI · 20 ANNI · " center="r4f" size={130} rotate={-4} />
       <ul class="trust-line">
@@ -215,21 +210,6 @@ const phases = [
     padding-bottom: clamp(2rem, 4vw, 3rem);
     position: relative;
   }
-  .hero__eyebrow { margin-bottom: 1.5rem; }
-  .hero__title {
-    max-width: 18ch;
-    margin-bottom: 1.4rem;
-  }
-  .hero__title-line { display: block; }
-  .hero__lead { max-width: 38ch; margin-bottom: 2rem; }
-
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-
   .hero__trust {
     display: flex;
     align-items: center;

@@ -3,10 +3,16 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
+
+// Porta registrata in ~/.claude/PORT-REGISTRY.md, letta anche dall'harness via SITE.devPort.
+const PORT = 4435;
 
 export default defineConfig({
   site: 'https://r4f.it',
   trailingSlash: 'never',
+  server: { port: PORT, host: '127.0.0.1' },
+  preview: { port: PORT, host: '127.0.0.1' },
   build: {
     format: 'directory',
     inlineStylesheets: 'auto',
@@ -16,6 +22,7 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
+    react(),
     sitemap({
       changefreq: 'weekly',
       lastmod: new Date(),
